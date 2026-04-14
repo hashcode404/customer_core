@@ -9,7 +9,8 @@ import 'package:customer_core/src/core/utils/alert_dialogs.dart';
 import 'package:customer_core/src/domain/user/models/user_address_list_data_model.dart';
 import 'package:customer_core/src/presentation/widgets/custom_close_icon.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:dart_extensions/dart_extensions.dart';
+import 'package:dartx/dartx.dart';
+
 import 'package:dartx/dartx.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -1046,7 +1047,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                height: context.heightPx * 0.8,
+                height: context.screenHeight * 0.8,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Theme.of(context).scaffoldBackgroundColor,

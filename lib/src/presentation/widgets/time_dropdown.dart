@@ -1,4 +1,6 @@
-import 'package:dart_extensions/dart_extensions.dart';
+import 'package:customer_core/src/core/utils/ui_utils.dart';
+import 'package:dartx/dartx.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +25,7 @@ class TimeDropdown extends StatelessWidget {
         value: listener.selectedTime,
         padding: EdgeInsets.zero,
         isExpanded: true,
-        menuMaxHeight: context.heightPx / 2,
+        menuMaxHeight: context.screenHeight / 2,
         icon: const Icon(Icons.keyboard_arrow_down_rounded),
         decoration: const InputDecoration(
           isDense: true,

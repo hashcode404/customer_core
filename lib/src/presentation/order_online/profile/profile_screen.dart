@@ -5,7 +5,8 @@ import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:customer_core/src/application/order/order_provider.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:dart_extensions/dart_extensions.dart';
+import 'package:dartx/dartx.dart';
+
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/products/products_provider.dart';
@@ -679,7 +680,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                 ),
                 builder: (context) {
                   return Container(
-                      height: context.heightPx * 0.4,
+                      height: context.screenHeight * 0.4,
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10)

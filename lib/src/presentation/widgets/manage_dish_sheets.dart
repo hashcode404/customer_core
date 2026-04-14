@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dart_extensions/dart_extensions.dart';
+import 'package:dartx/dartx.dart';
+
 import 'package:dartx/dartx.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -134,7 +135,7 @@ class AddDishBottomSheet extends GetProviderView<CartProvider> {
                 ),
               ),
               constraints: BoxConstraints(
-                maxHeight: context.heightPx * 0.8,
+                maxHeight: context.screenHeight * 0.8,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,

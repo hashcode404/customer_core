@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:dart_extensions/dart_extensions.dart';
+
 import 'package:html/parser.dart';
 
 import 'dart:math' as math;
@@ -48,7 +48,7 @@ class Utils {
     if (value.isEmpty) {
       return "*required";
     }
-    if (value.isNotEmpty && !value.isEmail(value)) {
+    if (value.isNotEmpty ) {
       return "Invalid Email Id";
     }
     return null;

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:dart_extensions/dart_extensions.dart';
+import 'package:dartx/dartx.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:customer_core/src/application/core/time_dropdown_provider.dart';
@@ -46,7 +47,7 @@ class TableReservationScreen extends GetProviderView<TableProvider> {
           title: const Text("Book A Table"),
         ),
         bottomSheet: Visibility(
-          visible: context.mq.viewInsets.bottom == 0.0,
+          visible: MediaQuery.viewInsetsOf(context).bottom == 0.0,
           child: Container(
             width: double.infinity,
             padding:

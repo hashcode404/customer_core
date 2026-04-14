@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dart_extensions/dart_extensions.dart';
+import 'package:dartx/dartx.dart';
+
 import 'package:dartx/dartx.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -947,8 +948,8 @@ class _CartScreenState extends State<CartScreen>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   height: userListener.userAddressList.isNotEmpty
-                      ? context.heightPx * 0.8
-                      : context.heightPx * 0.3,
+                      ? context.screenHeight * 0.8
+                      : context.screenHeight * 0.3,
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: AppColors.kOffWhite4,

@@ -14,7 +14,6 @@ import 'package:injectable/injectable.dart';
 import 'package:customer_core/src/domain/user/i_user_shared_prefs.dart';
 
 import '../../domain/store/models/product_details_model.dart';
-
 // enum FoodType { nonVeg, veg }
 
 @LazySingleton()

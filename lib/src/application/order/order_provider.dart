@@ -1,4 +1,5 @@
-import 'package:dart_extensions/dart_extensions.dart';
+// import 'package:dartx/dartx.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:customer_core/src/application/core/base_controller.dart';
 import 'package:customer_core/src/domain/user/i_user_repo.dart';
@@ -7,6 +8,7 @@ import 'package:customer_core/src/domain/user/i_user_shared_prefs.dart';
 
 import '../../domain/user/models/order_history_raw_data_model.dart';
 import '../core/api_response.dart';
+import 'package:dartx/dartx.dart';
 
 @LazySingleton()
 class OrderProvider extends ChangeNotifier with BaseController {
