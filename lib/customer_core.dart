@@ -1,0 +1,2 @@
+library customer_core;
+

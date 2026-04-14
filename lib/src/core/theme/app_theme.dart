@@ -1,0 +1,314 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'app_colors.dart';
+import 'custom_text_styles.dart';
+
+const double defaultRoundedRadius = 10.0;
+
+InputDecorationTheme buildInputDecorationTheme({
+  required Color borderColor,
+  required Color focusedColor,
+  required Color disabledColor,
+  required Color errorColor,
+}) {
+  return InputDecorationTheme(
+    hintStyle: const TextStyle(fontSize: 14.0),
+    border: OutlineInputBorder(
+      borderSide: BorderSide(color: borderColor),
+      borderRadius:
+          const BorderRadius.all(Radius.circular(defaultRoundedRadius)),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: focusedColor),
+      borderRadius:
+          const BorderRadius.all(Radius.circular(defaultRoundedRadius)),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: borderColor),
+      borderRadius:
+          const BorderRadius.all(Radius.circular(defaultRoundedRadius)),
+    ),
+    disabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: disabledColor),
+      borderRadius:
+          const BorderRadius.all(Radius.circular(defaultRoundedRadius)),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: errorColor),
+      borderRadius:
+          const BorderRadius.all(Radius.circular(defaultRoundedRadius)),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: errorColor, width: 2.0),
+      borderRadius:
+          const BorderRadius.all(Radius.circular(defaultRoundedRadius)),
+    ),
+  );
+}
+
+ThemeData quickSandTextTheme(BuildContext context) {
+  final baseTextTheme = Theme.of(context).textTheme;
+  return Theme.of(context).copyWith(
+      textTheme: GoogleFonts.quicksandTextTheme(baseTextTheme).apply(
+    displayColor: AppColors.kBlack2,
+    bodyColor: AppColors.kBlack2,
+  ));
+}
+
+ThemeData poppinsTextTheme(BuildContext context) {
+  final baseTextTheme = Theme.of(context).textTheme;
+  return Theme.of(context).copyWith(
+      textTheme: GoogleFonts.poppinsTextTheme(baseTextTheme).apply(
+    displayColor: AppColors.kBlack2,
+    bodyColor: AppColors.kBlack2,
+  ));
+}
+
+ThemeData appLightTheme(BuildContext context) {
+  final baseTextTheme = Theme.of(context).textTheme;
+  final textTheme = GoogleFonts.poppinsTextTheme(baseTextTheme).apply(
+    displayColor: AppColors.kBlack2,
+    bodyColor: AppColors.kBlack2,
+  );
+
+  final inputTheme = buildInputDecorationTheme(
+    borderColor: AppColors.kGray2,
+    focusedColor: AppColors.kPrimaryColor,
+    disabledColor: AppColors.kLightGray,
+    errorColor: AppColors.kRed,
+  );
+
+  return ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.light,
+    extensions: [lightCustomTextStyle],
+    scaffoldBackgroundColor: AppColors.kLightWhite2,
+    appBarTheme: const AppBarTheme(
+      color: AppColors.kLightWhite,
+      surfaceTintColor: AppColors.kLightWhite,
+      elevation: 0,
+      iconTheme: IconThemeData(color: AppColors.kBlack2),
+    ),
+    drawerTheme: DrawerThemeData(
+        backgroundColor: AppColors.kPrimaryColor.withOpacity(0.1)),
+    iconTheme: const IconThemeData(
+      color: AppColors.kBlack, // light mode
+    ),
+    colorScheme: const ColorScheme.light(
+      primary: AppColors.kPrimaryColor,
+      secondary: AppColors.kBlack2,
+      surface: AppColors.kWhite,
+      background: AppColors.kLightWhite,
+      onPrimary: AppColors.kWhite,
+      onSurface: AppColors.kBlack2,
+      onBackground: AppColors.kBlack2,
+    ),
+    textTheme: textTheme,
+    inputDecorationTheme: inputTheme,
+    cardTheme: CardTheme(
+      color: AppColors.kWhite,
+      elevation: 0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(defaultRoundedRadius),
+        side: const BorderSide(color: AppColors.kLightGray),
+      ),
+    ),
+    filledButtonTheme: const FilledButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppColors.kPrimaryColor),
+        foregroundColor: WidgetStatePropertyAll(AppColors.kWhite),
+      ),
+    ),
+  );
+}
+
+ThemeData appDarkTheme(BuildContext context) {
+  final baseTextTheme = Theme.of(context).textTheme;
+  final textTheme = GoogleFonts.poppinsTextTheme(baseTextTheme).apply(
+    displayColor: AppColors.kWhite,
+    bodyColor: AppColors.kWhite,
+  );
+
+  final inputTheme = buildInputDecorationTheme(
+    borderColor: AppColors.kGray2,
+    focusedColor: AppColors.kPrimaryColor,
+    disabledColor: Colors.grey.shade700,
+    errorColor: AppColors.kRed,
+  );
+
+  return ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    extensions: [darkCustomTextStyle],
+    scaffoldBackgroundColor: AppColors.kDarkBg,
+    appBarTheme: const AppBarTheme(
+      color: AppColors.kDarkBg,
+      surfaceTintColor: AppColors.kDarkBg,
+      elevation: 0,
+      iconTheme: IconThemeData(color: AppColors.kWhite),
+    ),
+    drawerTheme: DrawerThemeData(backgroundColor: AppColors.kDarkBg),
+    iconTheme: IconThemeData(
+      color: AppColors.kBlack, // light mode
+    ),
+    colorScheme: const ColorScheme.dark(
+      primary: AppColors.kPrimaryColor,
+      secondary: AppColors.kLightGray,
+      surface: Color(0xFF1E1E1E),
+      background: AppColors.kDarkBg,
+      onPrimary: AppColors.kWhite,
+      onSurface: AppColors.kWhite,
+      onBackground: AppColors.kWhite,
+    ),
+    textTheme: textTheme,
+    inputDecorationTheme: inputTheme,
+    cardTheme: CardTheme(
+      color: const Color(0xFF1E1E1E),
+      elevation: 0,
+      margin: const EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(defaultRoundedRadius),
+        side: const BorderSide(color: Colors.grey),
+      ),
+    ),
+    filledButtonTheme: const FilledButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppColors.kPrimaryColor),
+        foregroundColor: WidgetStatePropertyAll(AppColors.kWhite),
+      ),
+    ),
+  );
+}
+
+
+// ThemeData appTheme(BuildContext context) {
+//   final baseTextTheme = Theme.of(context).textTheme;
+//   final textTheme = GoogleFonts.poppinsTextTheme(baseTextTheme).apply(
+//     displayColor: AppColors.kBlack2,
+//     bodyColor: AppColors.kBlack2,
+//   );
+
+//   const double defaultRoundedRadius = 10.0;
+
+//   InputDecorationTheme inputDecorationTheme = const InputDecorationTheme(
+//     hintStyle: TextStyle(fontSize: 14.0),
+//     border: OutlineInputBorder(
+//       borderSide: BorderSide(color: AppColors.kGray2), // Default border
+//       borderRadius: BorderRadius.all(
+//         Radius.circular(defaultRoundedRadius),
+//       ),
+//     ),
+//     focusedBorder: OutlineInputBorder(
+//       borderSide: BorderSide(color: AppColors.kPrimaryColor),
+//       // Color when focused
+//       borderRadius: BorderRadius.all(
+//         Radius.circular(defaultRoundedRadius),
+//       ),
+//     ),
+//     enabledBorder: OutlineInputBorder(
+//       borderSide: BorderSide(color: AppColors.kGray2), // Color when enabled
+//       borderRadius: BorderRadius.all(
+//         Radius.circular(defaultRoundedRadius),
+//       ),
+//     ),
+//     disabledBorder: OutlineInputBorder(
+//       borderSide: BorderSide(color: AppColors.kLightGray),
+//       // Color when disabled
+//       borderRadius: BorderRadius.all(
+//         Radius.circular(defaultRoundedRadius),
+//       ),
+//     ),
+//     errorBorder: OutlineInputBorder(
+//       borderSide: BorderSide(color: AppColors.kRed), // Color when error occurs
+//       borderRadius: BorderRadius.all(
+//         Radius.circular(defaultRoundedRadius),
+//       ),
+//     ),
+//     focusedErrorBorder: OutlineInputBorder(
+//       borderSide: BorderSide(color: AppColors.kRed, width: 2.0),
+//       // Color when focused and there's an error
+//       borderRadius: BorderRadius.all(
+//         Radius.circular(defaultRoundedRadius),
+//       ),
+//     ),
+//   );
+
+//   final colorScheme = Theme.of(context).colorScheme;
+
+//   return ThemeData(
+//     useMaterial3: true,
+//     scaffoldBackgroundColor: AppColors.kLightWhite,
+//     appBarTheme: const AppBarTheme(
+//       color: AppColors.kLightWhite,
+//       surfaceTintColor: AppColors.kLightWhite,
+//       elevation: 0,
+//     ),
+//     progressIndicatorTheme: const ProgressIndicatorThemeData(
+//       color: AppColors.kWhite,
+//     ),
+//     colorScheme: colorScheme.copyWith(
+//       primary: AppColors.kBlack2,
+//     ),
+//     dropdownMenuTheme: DropdownMenuThemeData(
+//       inputDecorationTheme: inputDecorationTheme,
+//     ),
+//     textTheme: textTheme,
+//     extensions: [customTextStyle],
+//     timePickerTheme: const TimePickerThemeData(
+//       dialHandColor: AppColors.kPrimaryColor,
+//       backgroundColor: AppColors.kLightWhite,
+//       dialBackgroundColor: AppColors.kLightWhite,
+//       hourMinuteShape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.all(
+//           Radius.circular(defaultRoundedRadius),
+//         ),
+//       ),
+//     ),
+//     cardTheme: CardTheme(
+//       color: Colors.transparent,
+//       elevation: 0,
+//       margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+//       shape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.circular(10.0),
+//         side: const BorderSide(
+//           color: AppColors.kLightGray,
+//         ),
+//       ),
+//     ),
+//     bottomSheetTheme: const BottomSheetThemeData(
+//       backgroundColor: AppColors.kWhite,
+//     ),
+//     inputDecorationTheme: inputDecorationTheme,
+//     textButtonTheme: const TextButtonThemeData(
+//       style: ButtonStyle(
+//         foregroundColor: WidgetStatePropertyAll(AppColors.kBlack3),
+//         shape: WidgetStatePropertyAll(
+//           RoundedRectangleBorder(
+//             borderRadius: BorderRadius.all(
+//               Radius.circular(defaultRoundedRadius),
+//             ),
+//           ),
+//         ),
+//       ),
+//     ),
+//     filledButtonTheme: const FilledButtonThemeData(
+//       style: ButtonStyle(
+//         backgroundColor: WidgetStatePropertyAll(AppColors.kPrimaryColor),
+//         foregroundColor: WidgetStatePropertyAll(AppColors.kWhite),
+//         minimumSize: WidgetStatePropertyAll(Size(200, 50)),
+//         shape: WidgetStatePropertyAll(
+//           RoundedRectangleBorder(
+//             borderRadius: BorderRadius.all(
+//               Radius.circular(defaultRoundedRadius),
+//             ),
+//             side: BorderSide(
+//               color: AppColors.kGray2,
+//             ),
+//           ),
+//         ),
+//       ),
+//     ),
+//   );
+// }
