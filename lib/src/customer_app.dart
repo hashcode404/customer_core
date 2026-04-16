@@ -16,6 +16,7 @@ class CustomerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // initialize global config
     AppConfig.instance = config;
+    DependencyRegistrar.initializeAllProviders(context);
 
     return MultiProvider(
       providers: DependencyRegistrar.providers,
