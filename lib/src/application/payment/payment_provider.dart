@@ -75,8 +75,9 @@ class PaymentProvider extends ChangeNotifier with BaseController {
         if (exception is StripeException) {
           if (exception.error.code == FailureCode.Canceled ||
               exception.error.code == FailureCode.Failed ||
-              exception.error.code == FailureCode.Timeout ||
-              exception.error.code == FailureCode.Unknown) {
+              exception.error.code == FailureCode.Timeout) {
+            // exception.error.code == FailureCode.Unknown)
+
             final response = await checkoutRepo.cancelPaymentIntent(
               transactionId!,
             );
