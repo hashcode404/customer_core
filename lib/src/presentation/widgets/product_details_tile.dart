@@ -62,7 +62,8 @@ class ProductDetailsTile extends StatelessWidget {
       // color: AppColors.kCardBackground,
       elevation: 0,
       shape: RoundedRectangleBorder(
-          side: BorderSide(color: AppColors.kPrimaryColor.withOpacity(0.3)),
+          side: BorderSide(
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.3)),
           borderRadius: BorderRadius.circular(10)),
       child: Stack(
         children: [
@@ -97,7 +98,7 @@ class ProductDetailsTile extends StatelessWidget {
                           //   child: Center(
                           //     child: CircularProgressIndicator(
                           //       value: progress.progress,
-                          //       color: AppColors.kPrimaryColor,
+                          //       color: Theme.of(context).colorScheme.primary,
                           //     ),
                           //   ),
                           // ),
@@ -147,8 +148,8 @@ class ProductDetailsTile extends StatelessWidget {
                             height: 30,
                             width: 70,
                             decoration: BoxDecoration(
-                                color: AppColors.kPrimaryColor,
-                                // border: Border.all(color: AppColors.kPrimaryColor.withOpacity(0.2)),
+                                color: Theme.of(context).colorScheme.primary,
+                                // border: Border.all(color: Theme.of(context).colorScheme.primary.withOpacity(0.2)),
                                 borderRadius: BorderRadius.circular(5.0)),
                             child: Center(
                               child: Text(
@@ -193,7 +194,7 @@ class ProductDetailsTile extends StatelessWidget {
       // color: Colors.black12,
       shape: RoundedRectangleBorder(
           // side: BorderSide(
-          //     color: AppColors.kPrimaryColor.withOpacity(0.3)),
+          //     color: Theme.of(context).colorScheme.primary.withOpacity(0.3)),
           borderRadius: BorderRadius.circular(10)),
       child: Stack(
         children: [
@@ -281,10 +282,10 @@ class ProductDetailsTile extends StatelessWidget {
                             fixedSize: const Size(double.infinity, 30),
                             side: BorderSide(
                                 color: product.isAvailable == true
-                                    ? AppColors.kPrimaryColor
+                                    ? Theme.of(context).colorScheme.primary
                                     : Colors.grey),
                             backgroundColor: product.isAvailable == true
-                                ? AppColors.kPrimaryColor
+                                ? Theme.of(context).colorScheme.primary
                                 : Colors.transparent),
                         onPressed:
                             product.isAvailable == true ? onPressAddBtn : null,
@@ -418,8 +419,9 @@ class ProductDetailsTile extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5.0)),
                                 fixedSize: const Size(double.infinity, 30),
-                                side: const BorderSide(
-                                    color: AppColors.kPrimaryColor),
+                                side:  BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                               ),
                               onPressed: onPressAddBtn,
                               child: Text(

@@ -115,7 +115,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                     selected: currentPage == 0,
                     icon: Icons.home,
                     label: "Home",
-                    activeColor: AppColors.kPrimaryColor,
+                    activeColor: Theme.of(context).colorScheme.primary,
                     inactiveColor: Colors.grey,
                     onTap: () => provider.onChangeCurrentPage(0),
                   ),
@@ -123,7 +123,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                     selected: currentPage == 1,
                     icon: Icons.category,
                     label: "Categories",
-                    activeColor: AppColors.kPrimaryColor,
+                    activeColor: Theme.of(context).colorScheme.primary,
                     inactiveColor: Colors.grey,
                     onTap: () async {
                       provider.onChangeCurrentPage(1);
@@ -155,7 +155,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                     selected: currentPage == 2,
                     icon: Icons.history,
                     label: "Orders",
-                    activeColor: AppColors.kPrimaryColor,
+                    activeColor: Theme.of(context).colorScheme.primary,
                     inactiveColor: Colors.grey,
                     onTap: () => provider.onChangeCurrentPage(2),
                   ),
@@ -163,7 +163,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                     selected: currentPage == 3,
                     icon: Icons.person,
                     label: "Profile",
-                    activeColor: AppColors.kPrimaryColor,
+                    activeColor: Theme.of(context).colorScheme.primary,
                     inactiveColor: Colors.grey,
                     onTap: () => provider.onChangeCurrentPage(3),
                   ),
@@ -212,7 +212,10 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                           borderRadius: BorderRadius.circular(15),
                           color: Theme.of(context).brightness == Brightness.dark
                               ? AppColors.kCardBackground2
-                              : AppColors.kPrimaryColor.withOpacity(0.1),
+                              : Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.1),
                           boxShadow: [
                             BoxShadow(
                               color: Theme.of(context).brightness ==
@@ -257,7 +260,8 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                             const Spacer(),
                             FilledButton(
                               style: FilledButton.styleFrom(
-                                backgroundColor: AppColors.kPrimaryColor,
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.primary,
                                 foregroundColor: AppColors.kWhite,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),

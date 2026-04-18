@@ -207,8 +207,9 @@ class AddNewAddressScreen extends GetProviderView<UserProvider> {
         width: context.screenWidth,
         height: 45,
         child: ElevatedButton(
-          style: const ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(AppColors.kPrimaryColor)),
+          style:  ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(
+                  Theme.of(context).colorScheme.primary)),
           onPressed: () async {
             if (userLitsner.isAddingOrUpdatingUserAddress) return;
             if (userProvider.newAddressFormKey.currentState?.validate() ??

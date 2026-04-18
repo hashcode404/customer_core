@@ -183,8 +183,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                             },
                             style: TextButton.styleFrom(
                               shape: RoundedRectangleBorder(
-                                side: const BorderSide(
-                                    color: AppColors.kPrimaryColor),
+                                side:  BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
@@ -276,7 +277,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
             child: Text(
               'See All',
               style: context.customTextTheme.text14W500
-                  .copyWith(color: AppColors.kPrimaryColor),
+                  .copyWith(color: Theme.of(context).colorScheme.primary),
             ))
       ],
     );
@@ -468,7 +469,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
         style: context.customTextTheme.text14W500,
       ),
       trailing: CupertinoSwitch(
-        activeColor: AppColors.kPrimaryColor,
+        activeColor: Theme.of(context).colorScheme.primary,
         value: context.watch<ThemeProvider>().isDarkMode,
         onChanged: (val) {
           context.read<ThemeProvider>().toggleTheme();
@@ -571,7 +572,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
       decoration: BoxDecoration(
         color: AppColors.kWhite,
         borderRadius: BorderRadius.circular(10.0),
-        // border: Border.all(color: AppColors.kPrimaryColor)
+        // border: Border.all(color: Theme.of(context).colorScheme.primary)
         boxShadow: [
           BoxShadow(
             color: AppColors.kGray2.withOpacity(0.5),
@@ -704,12 +705,15 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                             width: context.screenWidth * 0.2,
                             height: context.screenWidth * 0.2,
                             decoration: BoxDecoration(
-                              color: AppColors.kPrimaryColor.withOpacity(0.1),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.1),
                               borderRadius: BorderRadius.circular(25),
                             ),
-                            child: const Icon(
+                            child:  Icon(
                               Icons.logout_rounded,
-                              color: AppColors.kPrimaryColor,
+                              color: Theme.of(context).colorScheme.primary,
                               size: 50,
                             ),
                           ),
@@ -755,8 +759,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                                               style: context
                                                   .customTextTheme.text14W600
                                                   .copyWith(
-                                                      color: AppColors
-                                                          .kPrimaryColor),
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .primary),
                                             ),
                                           ),
                                         ),
@@ -791,7 +796,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                                             },
                                             style: FilledButton.styleFrom(
                                                 backgroundColor:
-                                                    AppColors.kPrimaryColor),
+                                                    Theme.of(context)
+                                                        .colorScheme
+                                                        .primary),
                                             child: Text(
                                               'Logout',
                                               style: context
@@ -889,7 +896,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                   if (states.contains(WidgetState.pressed)) {
                     return AppColors.kWhite;
                   }
-                  return AppColors.kPrimaryColor;
+                  return Theme.of(context).colorScheme.primary;
                 },
               ),
               foregroundColor: WidgetStateProperty.resolveWith<Color>(
@@ -901,7 +908,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                 },
               ),
               side: WidgetStateProperty.all(
-                const BorderSide(color: AppColors.kPrimaryColor),
+                 BorderSide(color: Theme.of(context).colorScheme.primary),
               ),
               padding: WidgetStateProperty.all(
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -935,8 +942,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
 
           Container(
             padding: const EdgeInsets.all(14.0),
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle, color: AppColors.kPrimaryColor),
+            decoration:  BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).colorScheme.primary),
             child: Icon(
               FluentIcons.person_48_regular,
               size: MediaQuery.of(context).size.height * 0.05,
@@ -1056,7 +1064,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Divider(
               color: order.orderAccepted || order.orderDispatched
-                  ? AppColors.kPrimaryColor
+                  ? Theme.of(context).colorScheme.primary
                   : Colors.grey.shade300,
               thickness: 1,
             ),
@@ -1071,7 +1079,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Divider(
               color: order.orderDispatched
-                  ? AppColors.kPrimaryColor
+                  ? Theme.of(context).colorScheme.primary
                   : Colors.grey.shade300,
               thickness: 1,
             ),
@@ -1091,14 +1099,18 @@ class ProfileScreen extends GetProviderView<UserProvider> {
         children: <Widget>[
           Icon(
             Icons.adjust_rounded,
-            color: completed ? AppColors.kPrimaryColor : AppColors.kGray7,
+            color: completed
+                ? Theme.of(context).colorScheme.primary
+                : AppColors.kGray7,
             size: 22,
           ),
           verticalSpaceTiny,
           Text(
             data,
             style: context.customTextTheme.text12W400.copyWith(
-              color: completed ? AppColors.kPrimaryColor : AppColors.kGray7,
+              color: completed
+                  ? Theme.of(context).colorScheme.primary
+                  : AppColors.kGray7,
             ),
           )
         ],

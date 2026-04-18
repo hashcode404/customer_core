@@ -265,7 +265,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
               //                   return Theme(
               //                     data: Theme.of(context).copyWith(
               //                       colorScheme: const ColorScheme.light(
-              //                         primary: AppColors.kPrimaryColor,
+              //                         primary: Theme.of(context).colorScheme.primary,
               //                       ),
               //                     ),
               //                     child: child!,
@@ -349,7 +349,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
               //                         return Theme(
               //                           data: Theme.of(context).copyWith(
               //                             colorScheme: const ColorScheme.light(
-              //                               primary: AppColors.kPrimaryColor,
+              //                               primary: Theme.of(context).colorScheme.primary,
               //                             ),
               //                           ),
               //                           child: child!,
@@ -436,7 +436,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                 side: BorderSide(
                                   color: cartListener.selectedPaymentMethod ==
                                           PaymentMethod.cash
-                                      ? AppColors.kPrimaryColor
+                                      ? Theme.of(context).colorScheme.primary
                                       : AppColors.kWhite,
                                   width: 1.0,
                                 ),
@@ -454,13 +454,14 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                     context.customTextTheme.text14W600.copyWith(
                                   color: cartListener.selectedPaymentMethod ==
                                           PaymentMethod.cash
-                                      ? AppColors.kPrimaryColor
+                                      ? Theme.of(context).colorScheme.primary
                                       : AppColors.kWhite,
                                 ),
                               ),
                               value: PaymentMethod.cash,
                               groupValue: cartListener.selectedPaymentMethod,
-                              activeColor: AppColors.kPrimaryColor,
+                              activeColor:
+                                  Theme.of(context).colorScheme.primary,
                               onChanged: (_) {
                                 cartListener
                                     .onChangePaymentMethod(PaymentMethod.cash);
@@ -483,7 +484,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                 side: BorderSide(
                                   color: cartListener.selectedPaymentMethod ==
                                           PaymentMethod.card
-                                      ? AppColors.kPrimaryColor
+                                      ? Theme.of(context).colorScheme.primary
                                       : AppColors.kWhite,
                                   width: 1.0,
                                 ),
@@ -501,14 +502,15 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                     context.customTextTheme.text14W600.copyWith(
                                   color: cartListener.selectedPaymentMethod ==
                                           PaymentMethod.card
-                                      ? AppColors.kPrimaryColor
+                                      ? Theme.of(context).colorScheme.primary
                                       : AppColors.kWhite,
                                 ),
                               ),
                               value: PaymentMethod.card,
 
                               groupValue: cartListener.selectedPaymentMethod,
-                              activeColor: AppColors.kPrimaryColor,
+                              activeColor:
+                                  Theme.of(context).colorScheme.primary,
 
                               onChanged: (_) {
                                 cartListener
@@ -647,7 +649,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                     color: cartListener.selectedOrderType == OrderType.delivery
-                        ? AppColors.kPrimaryColor
+                        ? Theme.of(context).colorScheme.primary
                         : AppColors.kWhite,
                     width: 1.0,
                   ),
@@ -656,13 +658,13 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                 leading: Assets.lib.assets.icons.fastDelivery.image(
                     height: 34.0,
                     color: cartListener.selectedOrderType == OrderType.delivery
-                        ? AppColors.kPrimaryColor
+                        ? Theme.of(context).colorScheme.primary
                         : AppColors.kWhite),
                 title: Text(
                   "Delivery",
                   style: context.customTextTheme.text14W600.copyWith(
                     color: cartListener.selectedOrderType == OrderType.delivery
-                        ? AppColors.kPrimaryColor
+                        ? Theme.of(context).colorScheme.primary
                         : AppColors.kWhite,
                   ),
                 ),
@@ -691,7 +693,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                     color: cartListener.selectedOrderType == OrderType.takeaway
-                        ? AppColors.kPrimaryColor
+                        ? Theme.of(context).colorScheme.primary
                         : AppColors.kWhite,
                     width: 1.0,
                   ),
@@ -700,13 +702,13 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                 leading: Assets.lib.assets.icons.takeAway.image(
                     height: 34.0,
                     color: cartListener.selectedOrderType == OrderType.takeaway
-                        ? AppColors.kPrimaryColor
+                        ? Theme.of(context).colorScheme.primary
                         : AppColors.kWhite),
                 title: Text(
                   "Take Away",
                   style: context.customTextTheme.text14W600.copyWith(
                     color: cartListener.selectedOrderType == OrderType.takeaway
-                        ? AppColors.kPrimaryColor
+                        ? Theme.of(context).colorScheme.primary
                         : AppColors.kWhite,
                   ),
                 ),
@@ -805,8 +807,9 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                         padding:
                                             const EdgeInsets.only(right: 10.0),
                                         child: ChoiceChip(
-                                            selectedColor:
-                                                AppColors.kPrimaryColor,
+                                            selectedColor: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
                                             color: const WidgetStatePropertyAll(
                                                 Colors.white),
                                             onSelected: (value) {
@@ -846,7 +849,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                     width: context.screenWidth,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: AppColors.kPrimaryColor),
+                        color: Theme.of(context).colorScheme.primary),
                     child: Center(
                         child: Text(
                       shopListener.slotForSelectedDate?.isEmpty == true
@@ -908,14 +911,14 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                         dayPeriodColor: WidgetStateColor.resolveWith(
                           (states) {
                             if (states.contains(WidgetState.selected)) {
-                              return AppColors.kPrimaryColor;
+                              return Theme.of(context).colorScheme.primary;
                             }
                             return AppColors.kBlack;
                           },
                         ),
                         hourMinuteColor: WidgetStateColor.resolveWith((states) {
                           if (states.contains(WidgetState.selected)) {
-                            return AppColors.kPrimaryColor;
+                            return Theme.of(context).colorScheme.primary;
                           }
                           return AppColors.kBlack;
                         }),
@@ -1209,9 +1212,11 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                                   ),
                                                 );
                                               },
-                                              icon: Assets.lib.assets.icons.editIcon.svg(
-                                                  color:
-                                                      themeListener.isDarkMode
+                                              icon: Assets
+                                                  .lib.assets.icons.editIcon
+                                                  .svg(
+                                                      color: themeListener
+                                                              .isDarkMode
                                                           ? Colors.white
                                                           : null),
                                             ),
@@ -1280,17 +1285,17 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                                                                       Navigator.of(context).pop();
                                                                                     },
                                                                               style: OutlinedButton.styleFrom(
-                                                                                side: const BorderSide(
-                                                                                  color: AppColors.kPrimaryColor,
+                                                                                side:  BorderSide(
+                                                                                  color: Theme.of(context).colorScheme.primary,
                                                                                 ),
                                                                               ),
                                                                               child: const Text('Cancel'),
                                                                             ),
                                                                             const SizedBox(width: 10),
                                                                             ElevatedButton(
-                                                                              style: const ButtonStyle(
+                                                                              style:  ButtonStyle(
                                                                                 backgroundColor: WidgetStatePropertyAll(
-                                                                                  AppColors.kPrimaryColor,
+                                                                                  Theme.of(context).colorScheme.primary,
                                                                                 ),
                                                                                 foregroundColor: WidgetStatePropertyAll(
                                                                                   AppColors.kBlack,
@@ -1393,13 +1398,18 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
 
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
-                                      side: const BorderSide(
-                                          color: AppColors.kPrimaryColor)),
+                                      side:  BorderSide(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary)),
                                 ),
                                 child: Text(
                                   '+ Add Address',
                                   style: context.customTextTheme.text14W600
-                                      .copyWith(color: AppColors.kPrimaryColor),
+                                      .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                 ),
                               )),
                               horizontalSpaceSmall,
@@ -1483,14 +1493,14 @@ class _PaymentOptionCard extends StatelessWidget {
                   top: 0,
                   child: Card(
                     color: selected
-                        ? AppColors.kPrimaryColor.withOpacity(1)
+                        ? Theme.of(context).colorScheme.primary.withOpacity(1)
                         : AppColors.kWhite,
                     margin: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       side: BorderSide(
                         color: selected
-                            ? AppColors.kPrimaryColor
+                            ? Theme.of(context).colorScheme.primary
                             : AppColors.kLightGray,
                       ),
                     ),

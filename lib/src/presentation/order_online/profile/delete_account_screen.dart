@@ -76,7 +76,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
             LinearProgressIndicator(
               value: loadingPercentage / 100,
               backgroundColor: Colors.grey[200],
-              color: AppColors.kPrimaryColor,
+              color: Theme.of(context).colorScheme.primary,
               minHeight: 3,
             ),
         ],

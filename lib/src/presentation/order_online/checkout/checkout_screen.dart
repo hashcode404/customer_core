@@ -453,7 +453,7 @@ class CheckoutScreen extends GetProviderView<CartProvider> {
                       width: context.screenWidth,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: AppColors.kPrimaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                       child: cartListener.createOrderPending ||
                               paymentListener.creatingPaymentIntent
@@ -513,14 +513,15 @@ class _PaymentOptionCard extends StatelessWidget {
                 Positioned.fill(
                   top: 0,
                   child: Card(
-                    color:
-                        selected ? AppColors.kPrimaryColor : AppColors.kWhite,
+                    color: selected
+                        ? Theme.of(context).colorScheme.primary
+                        : AppColors.kWhite,
                     margin: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       side: BorderSide(
                         color: selected
-                            ? AppColors.kPrimaryColor
+                            ? Theme.of(context).colorScheme.primary
                             : AppColors.kLightGray,
                       ),
                     ),

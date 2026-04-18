@@ -36,6 +36,7 @@ class NotificationPreferenceScreen extends GetProviderView<UserProvider> {
                     }
                     userProvider.onChangeTransactionalConsentChanged();
                   },
+                  context: context
                 ),
                 verticalSpaceRegular,
                 _buildTile(
@@ -43,13 +44,16 @@ class NotificationPreferenceScreen extends GetProviderView<UserProvider> {
                   value: userLisenter.isPromotionalConsentChanged,
                   onChanged: (_) =>
                       userProvider.onChangePromotionalConsentChanged(),
+                      context: context
                 ),
                 verticalSpaceRegular,
                 _buildTile(
+                
                   userLisenter.newsLetterUserConsent,
                   value: userLisenter.isNewsletterConsentChanged,
                   onChanged: (_) =>
                       userProvider.onChangeNewsLetterConsentChanged(),
+                      context: context
                 ),
                 verticalSpaceRegular,
                 SizedBox(
@@ -75,7 +79,7 @@ class NotificationPreferenceScreen extends GetProviderView<UserProvider> {
   }
 
   Widget _buildTile(UserConsentSubDataModel? consent,
-      {required bool value, required void Function(bool)? onChanged}) {
+      {required bool value, required void Function(bool)? onChanged, required BuildContext context}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Column(
@@ -91,7 +95,7 @@ class NotificationPreferenceScreen extends GetProviderView<UserProvider> {
               CupertinoSwitch(
                 value: value,
                 onChanged: onChanged,
-                activeColor: AppColors.kPrimaryColor,
+                activeColor: Theme.of(context).colorScheme.primary,
               ),
             ],
           ),

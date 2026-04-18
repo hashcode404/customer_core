@@ -113,7 +113,7 @@ class _AnimatedLottieIconState extends State<AnimatedLottieIcon>
           ValueDelegate.color(
             const ['**'],
             value: widget.selected
-                ? AppColors.kPrimaryColor
+                ? Theme.of(context).colorScheme.primary
                 : Colors.grey,
           ),
         ],

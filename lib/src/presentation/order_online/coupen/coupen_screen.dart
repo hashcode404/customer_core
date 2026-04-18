@@ -34,9 +34,9 @@ class CoupenScreen extends GetProviderView<CartProvider> {
         centerTitle: true,
       ),
       body: cartListener.isOfferListLoading
-          ? const Center(
+          ?  Center(
               child: CircularProgressIndicator(
-              color: AppColors.kPrimaryColor,
+              color: Theme.of(context).colorScheme.primary,
             ))
           : Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -120,8 +120,8 @@ class _CouponDetailsTile extends StatelessWidget {
                           horizontalSpaceTiny,
                           Text(
                             detailsModel.coupenCode ?? '',
-                            style: context.customTextTheme.text14W700
-                                .copyWith(color: AppColors.kPrimaryColor),
+                            style: context.customTextTheme.text14W700.copyWith(
+                                color: Theme.of(context).colorScheme.primary),
                           ),
                           horizontalSpaceSmall,
                         ],

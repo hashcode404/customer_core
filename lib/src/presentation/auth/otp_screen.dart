@@ -157,7 +157,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       height: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: AppColors.kPrimaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                       child: Center(
                         child: !authListener.registerLoading

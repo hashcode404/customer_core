@@ -357,7 +357,7 @@ class _OrderSectionWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 color: product.isAvailable == false
                     ? AppColors.kGray
-                    : AppColors.kPrimaryColor,
+                    : Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(10.0),
               ),
               width: context.screenWidth * 0.4,

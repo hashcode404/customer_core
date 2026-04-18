@@ -89,11 +89,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 50,
                       width: context.screenWidth,
                       decoration: BoxDecoration(
-                        color: AppColors.kPrimaryColor,
+                        color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(10),
                         // gradient: LinearGradient(colors: [
                         //   AppColors.kSecondaryColor,
-                        //   AppColors.kPrimaryColor,
+                        //   Theme.of(context).colorScheme.primary,
                         // ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                       ),
                       child: Center(

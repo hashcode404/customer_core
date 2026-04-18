@@ -37,7 +37,7 @@ class UserAddressScreen extends GetProviderView<UserProvider> {
             centerTitle: true,
           ),
           floatingActionButton: FloatingActionButton(
-            backgroundColor: AppColors.kPrimaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             onPressed: () {
               userNotifier.initAllTextEditingController();
               Navigator.push(
@@ -69,7 +69,7 @@ class UserAddressScreen extends GetProviderView<UserProvider> {
                         Visibility(
                           visible: userListener.isUserAddressListLoading,
                           child: LinearProgressIndicator(
-                            color: AppColors.kPrimaryColor,
+                            color: Theme.of(context).colorScheme.primary,
                             minHeight: 2.0,
                             backgroundColor: AppColors.kBlack2.withOpacity(0.1),
                           ),
@@ -119,7 +119,9 @@ class UserAddressScreen extends GetProviderView<UserProvider> {
                                                       horizontal: 8,
                                                       vertical: 4),
                                               decoration: BoxDecoration(
-                                                color: AppColors.kPrimaryColor
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary
                                                     .withOpacity(0.1),
                                                 borderRadius:
                                                     BorderRadius.circular(5),
@@ -131,8 +133,9 @@ class UserAddressScreen extends GetProviderView<UserProvider> {
                                                     .copyWith(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        color: AppColors
-                                                            .kPrimaryColor),
+                                                        color: Theme.of(context)
+                                                            .colorScheme
+                                                            .primary),
                                               ),
                                             ),
                                         ],

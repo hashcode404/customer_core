@@ -109,7 +109,7 @@ class _CartScreenState extends State<CartScreen>
                             visible: cartListener.cartDeleteLoading ||
                                 cartListener.isClearCartProgress,
                             child: LinearProgressIndicator(
-                              color: AppColors.kPrimaryColor,
+                              color: Theme.of(context).colorScheme.primary,
                               minHeight: 2.0,
                               backgroundColor:
                                   AppColors.kBlack2.withOpacity(0.1),
@@ -145,11 +145,13 @@ class _CartScreenState extends State<CartScreen>
                                   cartProvider.onchangeCartTabbarIndex(value);
                                 },
                                 controller: cartProvider.tabController,
-                                labelColor: AppColors.kPrimaryColor,
+                                labelColor:
+                                    Theme.of(context).colorScheme.primary,
                                 labelStyle: const TextStyle(
                                     fontWeight: FontWeight.w600),
                                 unselectedLabelColor: Colors.grey.shade400,
-                                indicatorColor: AppColors.kPrimaryColor,
+                                indicatorColor:
+                                    Theme.of(context).colorScheme.primary,
                                 dividerColor: Colors.transparent,
 
                                 // isScrollable: true,
@@ -192,7 +194,8 @@ class _CartScreenState extends State<CartScreen>
                             ),
                             child: Center(
                               child: Shimmer.fromColors(
-                                baseColor: AppColors.kPrimaryColor,
+                                baseColor:
+                                    Theme.of(context).colorScheme.primary,
                                 highlightColor: Colors.grey,
                                 child: Text(
                                   value.cartTransferring
@@ -475,7 +478,9 @@ class _CartScreenState extends State<CartScreen>
                                 child: Container(
                                     height: 40,
                                     decoration: BoxDecoration(
-                                        color: AppColors.kPrimaryColor,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
                                         borderRadius:
                                             BorderRadius.circular(10.0)),
                                     child: Row(
@@ -578,7 +583,9 @@ class _CartScreenState extends State<CartScreen>
                                     child: Container(
                                         height: 40,
                                         decoration: BoxDecoration(
-                                            color: AppColors.kPrimaryColor,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
                                             borderRadius:
                                                 BorderRadius.circular(10.0)),
                                         child: Row(
@@ -700,7 +707,9 @@ class _CartScreenState extends State<CartScreen>
                                     child: Container(
                                       height: 40,
                                       decoration: BoxDecoration(
-                                          color: AppColors.kPrimaryColor,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                           borderRadius:
                                               BorderRadius.circular(10.0)),
                                       child: cartListener.createOrderPending
@@ -750,8 +759,8 @@ class _CartScreenState extends State<CartScreen>
       visible: false,
       child: Container(
         height: 82.0,
-        decoration: const BoxDecoration(
-          color: AppColors.kPrimaryColor,
+        decoration:  BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -1085,8 +1094,9 @@ class _CartScreenState extends State<CartScreen>
                                             child: Padding(
                                               padding: const EdgeInsets.only(
                                                   right: 20.0),
-                                              child:
-                                                  Assets.lib.assets.icons.editIcon.svg(),
+                                              child: Assets
+                                                  .lib.assets.icons.editIcon
+                                                  .svg(),
                                             ),
                                           ),
                                         ],
@@ -1251,7 +1261,8 @@ class _CartScreenState extends State<CartScreen>
                                   height: 50,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: AppColors.kPrimaryColor,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                   child: cartListener
                                           .deliveryOrTakeAwayChargeCalculating
@@ -1353,7 +1364,7 @@ class _CartScreenState extends State<CartScreen>
                   width: context.screenWidth,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    color: AppColors.kPrimaryColor,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                   child: Center(
                       child: Text(

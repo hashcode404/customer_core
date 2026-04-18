@@ -210,7 +210,7 @@ class _QtyCounterButton2State extends State<QtyCounterButton2> {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: AppColors.kPrimaryColor,
+                color: Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: const Icon(

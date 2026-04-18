@@ -280,7 +280,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: AppColors.kPrimaryColor),
+                            color: Theme.of(context).colorScheme.primary),
                         height: 50,
                         width: context.screenWidth,
                         child: Center(
@@ -578,7 +578,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: AppColors.kPrimaryColor),
+                        color: Theme.of(context).colorScheme.primary),
                     height: 50,
                     width: context.screenWidth,
                     child: Center(
@@ -683,7 +683,7 @@ class _LoginScreenState extends State<LoginScreen> {
           inactiveColor: AppColors.kGray,
           inactiveFillColor: AppColors.kWhite.withOpacity(0.1),
           activeFillColor: AppColors.kWhite.withOpacity(0.1),
-          selectedColor: AppColors.kPrimaryColor,
+          selectedColor: Theme.of(context).colorScheme.primary,
           selectedFillColor: AppColors.kWhite.withOpacity(0.1),
           fieldHeight: MediaQuery.of(context).size.width * 0.12,
           fieldWidth: MediaQuery.of(context).size.width * 0.12,
@@ -902,7 +902,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: AppColors.kPrimaryColor),
+                      color: Theme.of(context).colorScheme.primary),
                   height: 50,
                   width: context.screenWidth,
                   child: Center(

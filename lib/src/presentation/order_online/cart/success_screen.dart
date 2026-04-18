@@ -26,11 +26,11 @@ class SuccessScreen extends StatelessWidget {
           Center(
             child: SizedBox(
               height: 250,
-              child:  Assets.lib.assets.lottie.successCircleCheck.lottie(
+              child: Assets.lib.assets.lottie.successCircleCheck.lottie(
                   delegates: LottieDelegates(values: [
                 ValueDelegate.color(
                   ['**'],
-                  value: AppColors.kPrimaryColor,
+                  value: Theme.of(context).colorScheme.primary,
                 ),
                 ValueDelegate.strokeColor(
                   ['**'],
@@ -68,11 +68,12 @@ class SuccessScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),
-                      side: const WidgetStatePropertyAll(
-                        BorderSide(color: AppColors.kPrimaryColor),
+                      side:  WidgetStatePropertyAll(
+                        BorderSide(
+                            color: Theme.of(context).colorScheme.primary),
                       ),
-                      foregroundColor: const WidgetStatePropertyAll(
-                        AppColors.kPrimaryColor,
+                      foregroundColor:  WidgetStatePropertyAll(
+                        Theme.of(context).colorScheme.primary,
                       ),
                       padding: const WidgetStatePropertyAll(
                         EdgeInsets.symmetric(horizontal: 40, vertical: 16),
@@ -101,8 +102,9 @@ class SuccessScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),
-                      side: const WidgetStatePropertyAll(
-                        BorderSide(color: AppColors.kPrimaryColor),
+                      side:  WidgetStatePropertyAll(
+                        BorderSide(
+                            color: Theme.of(context).colorScheme.primary),
                       ),
                       foregroundColor: const WidgetStatePropertyAll(
                         AppColors.kBlack,

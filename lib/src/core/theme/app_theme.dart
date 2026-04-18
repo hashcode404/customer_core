@@ -74,7 +74,7 @@ ThemeData appLightTheme(BuildContext context) {
 
   final inputTheme = buildInputDecorationTheme(
     borderColor: AppColors.kGray2,
-    focusedColor: AppColors.kPrimaryColor,
+    focusedColor: Theme.of(context).colorScheme.primary,
     disabledColor: AppColors.kLightGray,
     errorColor: AppColors.kRed,
   );
@@ -91,12 +91,12 @@ ThemeData appLightTheme(BuildContext context) {
       iconTheme: IconThemeData(color: AppColors.kBlack2),
     ),
     drawerTheme: DrawerThemeData(
-        backgroundColor: AppColors.kPrimaryColor.withOpacity(0.1)),
+        backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1)),
     iconTheme: const IconThemeData(
       color: AppColors.kBlack, // light mode
     ),
-    colorScheme: const ColorScheme.light(
-      primary: AppColors.kPrimaryColor,
+    colorScheme:  ColorScheme.light(
+      primary: Theme.of(context).colorScheme.primary,
       secondary: AppColors.kBlack2,
       surface: AppColors.kWhite,
       background: AppColors.kLightWhite,
@@ -115,10 +115,10 @@ ThemeData appLightTheme(BuildContext context) {
         side: const BorderSide(color: AppColors.kLightGray),
       ),
     ),
-    filledButtonTheme: const FilledButtonThemeData(
+    filledButtonTheme:  FilledButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(AppColors.kPrimaryColor),
-        foregroundColor: WidgetStatePropertyAll(AppColors.kWhite),
+        backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
+        foregroundColor: const WidgetStatePropertyAll(AppColors.kWhite),
       ),
     ),
   );
@@ -133,7 +133,7 @@ ThemeData appDarkTheme(BuildContext context) {
 
   final inputTheme = buildInputDecorationTheme(
     borderColor: AppColors.kGray2,
-    focusedColor: AppColors.kPrimaryColor,
+    focusedColor: Theme.of(context).colorScheme.primary,
     disabledColor: Colors.grey.shade700,
     errorColor: AppColors.kRed,
   );
@@ -149,14 +149,14 @@ ThemeData appDarkTheme(BuildContext context) {
       elevation: 0,
       iconTheme: IconThemeData(color: AppColors.kWhite),
     ),
-    drawerTheme: DrawerThemeData(backgroundColor: AppColors.kDarkBg),
-    iconTheme: IconThemeData(
+    drawerTheme: const DrawerThemeData(backgroundColor: AppColors.kDarkBg),
+    iconTheme: const IconThemeData(
       color: AppColors.kBlack, // light mode
     ),
-    colorScheme: const ColorScheme.dark(
-      primary: AppColors.kPrimaryColor,
+    colorScheme:  ColorScheme.dark(
+      primary: Theme.of(context).colorScheme.primary,
       secondary: AppColors.kLightGray,
-      surface: Color(0xFF1E1E1E),
+      surface: const Color(0xFF1E1E1E),
       background: AppColors.kDarkBg,
       onPrimary: AppColors.kWhite,
       onSurface: AppColors.kWhite,
@@ -173,10 +173,10 @@ ThemeData appDarkTheme(BuildContext context) {
         side: const BorderSide(color: Colors.grey),
       ),
     ),
-    filledButtonTheme: const FilledButtonThemeData(
+    filledButtonTheme:  FilledButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(AppColors.kPrimaryColor),
-        foregroundColor: WidgetStatePropertyAll(AppColors.kWhite),
+        backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
+        foregroundColor: const WidgetStatePropertyAll(AppColors.kWhite),
       ),
     ),
   );
@@ -201,7 +201,7 @@ ThemeData appDarkTheme(BuildContext context) {
 //       ),
 //     ),
 //     focusedBorder: OutlineInputBorder(
-//       borderSide: BorderSide(color: AppColors.kPrimaryColor),
+//       borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
 //       // Color when focused
 //       borderRadius: BorderRadius.all(
 //         Radius.circular(defaultRoundedRadius),
@@ -257,7 +257,7 @@ ThemeData appDarkTheme(BuildContext context) {
 //     textTheme: textTheme,
 //     extensions: [customTextStyle],
 //     timePickerTheme: const TimePickerThemeData(
-//       dialHandColor: AppColors.kPrimaryColor,
+//       dialHandColor: Theme.of(context).colorScheme.primary,
 //       backgroundColor: AppColors.kLightWhite,
 //       dialBackgroundColor: AppColors.kLightWhite,
 //       hourMinuteShape: RoundedRectangleBorder(
@@ -295,7 +295,7 @@ ThemeData appDarkTheme(BuildContext context) {
 //     ),
 //     filledButtonTheme: const FilledButtonThemeData(
 //       style: ButtonStyle(
-//         backgroundColor: WidgetStatePropertyAll(AppColors.kPrimaryColor),
+//         backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
 //         foregroundColor: WidgetStatePropertyAll(AppColors.kWhite),
 //         minimumSize: WidgetStatePropertyAll(Size(200, 50)),
 //         shape: WidgetStatePropertyAll(

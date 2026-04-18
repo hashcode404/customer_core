@@ -361,7 +361,7 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
         //     decoration: BoxDecoration(
         //         color: AppColors.kWhite,
         //         borderRadius: BorderRadius.circular(30),
-        //         border: Border.all(color: AppColors.kPrimaryColor, width: 1.5)),
+        //         border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1.5)),
         //     child: TextField(
         //       textAlignVertical: TextAlignVertical.center,
         //       decoration: InputDecoration(
@@ -377,7 +377,7 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
         //             ),
         //             horizontalSpaceSmall,
         //             const Icon(Icons.tune_rounded,
-        //                 color: AppColors.kPrimaryColor),
+        //                 color: Theme.of(context).colorScheme.primary),
         //           ],
         //         ),
         //         border: InputBorder.none,
@@ -444,7 +444,7 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
           //     Container(
           //       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
           //       decoration: BoxDecoration(
-          //         color: AppColors.kPrimaryColor,
+          //         color: Theme.of(context).colorScheme.primary,
           //         borderRadius: BorderRadius.circular(10),
           //       ),
           //       child: Center(
@@ -840,7 +840,8 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
                           child: Text(
                             "See All",
                             style: context.customTextTheme.text16W600.copyWith(
-                                fontSize: 14, color: AppColors.kPrimaryColor),
+                                fontSize: 14,
+                                color: Theme.of(context).colorScheme.primary),
                           ),
                         ),
                       ],
@@ -1285,9 +1286,9 @@ class __SearchResultsState extends State<_SearchResults> {
     return Consumer<SearchProvider>(
       builder: (context, value, child) {
         if (value.isSearchLoading) {
-          return const Center(
+          return  Center(
               child: CircularProgressIndicator(
-            color: AppColors.kPrimaryColor,
+            color: Theme.of(context).colorScheme.primary,
           ));
         } else if (value.searchResponse == null ||
             value.searchResponse?.isEmpty == true) {

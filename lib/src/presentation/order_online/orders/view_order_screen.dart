@@ -319,7 +319,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Divider(
               color: order.orderAccepted || order.orderDispatched
-                  ? AppColors.kPrimaryColor
+                  ? Theme.of(context).colorScheme.primary
                   : Colors.grey.shade300,
               thickness: 1,
             ),
@@ -334,7 +334,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Divider(
               color: order.orderDispatched
-                  ? AppColors.kPrimaryColor
+                  ? Theme.of(context).colorScheme.primary
                   : Colors.grey.shade300,
               thickness: 1,
             ),
@@ -354,14 +354,18 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
         children: <Widget>[
           Icon(
             Icons.adjust_rounded,
-            color: completed ? AppColors.kPrimaryColor : AppColors.kGray7,
+            color: completed
+                ? Theme.of(context).colorScheme.primary
+                : AppColors.kGray7,
             size: 22,
           ),
           verticalSpaceTiny,
           Text(
             data,
             style: context.customTextTheme.text12W400.copyWith(
-              color: completed ? AppColors.kPrimaryColor : AppColors.kGray7,
+              color: completed
+                  ? Theme.of(context).colorScheme.primary
+                  : AppColors.kGray7,
             ),
           )
         ],

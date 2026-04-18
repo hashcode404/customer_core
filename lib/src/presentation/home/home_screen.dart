@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
             return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
-                color: AppColors.kPrimaryColor.withOpacity(0.3),
+                color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
               ),
               margin: const EdgeInsets.only(right: 10.0),
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -434,7 +434,7 @@ class HomeScreen extends StatelessWidget {
                                 height: 40,
                                 width: 40,
                                 decoration: BoxDecoration(
-                                  color: AppColors.kPrimaryColor,
+                                  color: Theme.of(context).colorScheme.primary,
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: const Icon(
@@ -491,7 +491,7 @@ class HomeScreen extends StatelessWidget {
                                 height: 40,
                                 width: 40,
                                 decoration: BoxDecoration(
-                                  color: AppColors.kPrimaryColor,
+                                  color: Theme.of(context).colorScheme.primary,
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: const Icon(

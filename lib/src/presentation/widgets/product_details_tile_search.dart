@@ -75,7 +75,7 @@ class ProductDetailsTileSearch extends StatelessWidget {
                     style: context.customTextTheme.text14W700.copyWith(
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1,
-                        color: AppColors.kPrimaryColor),
+                        color: Theme.of(context).colorScheme.primary),
                   ),
                   const Spacer(),
                   useSecondaryWidget
@@ -88,14 +88,18 @@ class ProductDetailsTileSearch extends StatelessWidget {
                             width: 70,
                             decoration: BoxDecoration(
                                 color: AppColors.kWhite,
-                                border:
-                                    Border.all(color: AppColors.kPrimaryColor),
+                                border: Border.all(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                                 borderRadius: BorderRadius.circular(5.0)),
                             child: Center(
                               child: Text(
                                 'Add',
                                 style: context.customTextTheme.text14W700
-                                    .copyWith(color: AppColors.kPrimaryColor),
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
                               ),
                             ),
                           ),

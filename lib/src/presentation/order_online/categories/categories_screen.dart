@@ -173,7 +173,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                       tabAlignment: TabAlignment.start,
                       isScrollable: true,
                       dividerColor: Colors.transparent,
-                      indicatorColor: AppColors.kPrimaryColor,
+                      indicatorColor: Theme.of(context).colorScheme.primary,
                       tabs: productListner.categories
                           .mapIndexed((index, e) => Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,9 +183,9 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                                     padding: const EdgeInsets.all(2),
                                     margin: const EdgeInsets.only(bottom: 0),
                                     // decoration: BoxDecoration(
-                                    // color: AppColors.kPrimaryColor.withOpacity(0.1),
+                                    // color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                                     // border: productListner.selectedCategory == e
-                                    //     ? Border.all(color: AppColors.kPrimaryColor, width: 1.5)
+                                    //     ? Border.all(color: Theme.of(context).colorScheme.primary, width: 1.5)
                                     //     : null,
                                     // borderRadius: BorderRadius.circular(10)),
                                     child: e.image != null
@@ -238,10 +238,13 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                         Icons.close,
                         color: Colors.black,
                       ),
-                      backgroundColor: AppColors.kPrimaryColor,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                       labelStyle: const TextStyle(color: AppColors.kBlack),
                       side: BorderSide(
-                          color: AppColors.kPrimaryColor.withOpacity(0.3)),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.3)),
                       onSelected: (selected) async {
                         productProvider.onChangeSelectedSubCategory(null);
                         productProvider.onChangeHasMoreProducts(true);
@@ -296,13 +299,19 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                                           : AppColors.kCardBackground2,
                                   side: BorderSide(
                                     color: isSelected
-                                        ? AppColors.kPrimaryColor
+                                        ? Theme.of(context)
+                                            .colorScheme
+                                            .primary
                                             .withOpacity(0.3)
-                                        : AppColors.kPrimaryColor
+                                        : Theme.of(context)
+                                            .colorScheme
+                                            .primary
                                             .withOpacity(0.3),
                                   ),
-                                  selectedColor:
-                                      AppColors.kPrimaryColor.withOpacity(0.1),
+                                  selectedColor: Theme.of(context)
+                                      .colorScheme
+                                      .primary
+                                      .withOpacity(0.1),
                                   onSelected: (selected) async {
                                     if (selected) {
                                       productProvider
@@ -387,7 +396,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                                       child: Assets
                                           .lib.assets.lottie.infiniteLoading
                                           .lottie(),
-                                      // Or CircularProgressIndicator(color: AppColors.kPrimaryColor),
+                                      // Or CircularProgressIndicator(color: Theme.of(context).colorScheme.primary),
                                     ),
                                   ),
                                 );
@@ -459,7 +468,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
 
               // if (!productListner.isFetchingProductsFromPagination)
               //   CircularProgressIndicator(
-              //     color: AppColors.kPrimaryColor,
+              //     color: Theme.of(context).colorScheme.primary,
               //   )
 
               // verticalSpaceRegular,
@@ -547,7 +556,8 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       decoration: BoxDecoration(
           color: AppColors.kWhite,
           borderRadius: BorderRadius.circular(30),
-          border: Border.all(color: AppColors.kPrimaryColor, width: 1.5)),
+          border: Border.all(
+              color: Theme.of(context).colorScheme.primary, width: 1.5)),
       child: TextField(
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
@@ -562,7 +572,8 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                 color: AppColors.kGray2,
               ),
               horizontalSpaceSmall,
-              const Icon(Icons.tune_rounded, color: AppColors.kPrimaryColor),
+               Icon(Icons.tune_rounded,
+                  color: Theme.of(context).colorScheme.primary),
             ],
           ),
           border: InputBorder.none,

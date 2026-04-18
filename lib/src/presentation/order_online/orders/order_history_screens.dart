@@ -105,8 +105,8 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                         },
                         style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                color: AppColors.kPrimaryColor),
+                            side:  BorderSide(
+                                color: Theme.of(context).colorScheme.primary),
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
@@ -136,8 +136,9 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                   ]
                 ],
               )),
-              loading: () =>
-                  Center(child: showButtonProgress(AppColors.kPrimaryColor)),
+              loading: () => Center(
+                  child: showButtonProgress(
+                      Theme.of(context).colorScheme.primary)),
               completed: (_) {
                 final data = orderListener.orders;
                 final orderHistory =
@@ -157,7 +158,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                 //         Text(
                 //           'No orders found..',
                 //           style: context.customTextTheme.text16W700.copyWith(
-                //             color: AppColors.kPrimaryColor,
+                //             color: Theme.of(context).colorScheme.primary,
                 //           ),
                 //         ),
                 //       ],
@@ -604,7 +605,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Divider(
               color: order.orderAccepted || order.orderDispatched
-                  ? AppColors.kPrimaryColor
+                  ? Theme.of(context).colorScheme.primary
                   : Colors.grey.shade300,
               thickness: 1,
             ),
@@ -619,7 +620,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Divider(
               color: order.orderDispatched
-                  ? AppColors.kPrimaryColor
+                  ? Theme.of(context).colorScheme.primary
                   : Colors.grey.shade300,
               thickness: 1,
             ),
@@ -639,14 +640,18 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
         children: <Widget>[
           Icon(
             Icons.adjust_rounded,
-            color: completed ? AppColors.kPrimaryColor : AppColors.kGray7,
+            color: completed
+                ? Theme.of(context).colorScheme.primary
+                : AppColors.kGray7,
             size: 22,
           ),
           verticalSpaceTiny,
           Text(
             data,
             style: context.customTextTheme.text12W400.copyWith(
-              color: completed ? AppColors.kPrimaryColor : AppColors.kGray7,
+              color: completed
+                  ? Theme.of(context).colorScheme.primary
+                  : AppColors.kGray7,
             ),
           )
         ],

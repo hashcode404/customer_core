@@ -59,13 +59,13 @@ class WelcomeScreen extends StatelessWidget {
             },
             style: OutlinedButton.styleFrom(
               side: BorderSide(
-                color: AppColors.kPrimaryColor.withOpacity(1),
+                color: Theme.of(context).colorScheme.primary.withOpacity(1),
                 width: 1,
               ),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
               ),
-              foregroundColor: AppColors.kPrimaryColor,
+              foregroundColor: Theme.of(context).colorScheme.primary,
               minimumSize: Size(context.screenWidth * 0.8, 50.0),
               // backgroundColor: AppColors.kGray.withOpacity(0.3),
             ),
@@ -84,7 +84,7 @@ class WelcomeScreen extends StatelessWidget {
               TextSpan(
                 text: "Register",
                 style: context.customTextTheme.text14W500
-                    .copyWith(color: AppColors.kPrimaryColor),
+                    .copyWith(color: Theme.of(context).colorScheme.primary),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
                     authProvider.onChangeSelectedAuthView(AuthView.register);

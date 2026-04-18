@@ -28,9 +28,9 @@ class StoreScreen extends GetProviderView<ShopProvider> {
       ),
       body: shopListner.shopTiming.when(
         initial: () => const Center(child: Text("Initializing...")),
-        loading: () => const Center(
+        loading: () =>  Center(
             child: CircularProgressIndicator(
-          color: AppColors.kPrimaryColor,
+          color: Theme.of(context).colorScheme.primary,
         )),
         completed: (data) => Container(
           padding: const EdgeInsets.all(12),
@@ -157,13 +157,13 @@ class StoreScreen extends GetProviderView<ShopProvider> {
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: AppColors.kPrimaryColor.withOpacity(0.2),
+                color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
               ),
               child: Center(
                 child: Text(
                   title.substring(0, 3).toUpperCase(),
                   style: context.customTextTheme.text14W700
-                      .copyWith(color: AppColors.kPrimaryColor),
+                      .copyWith(color: Theme.of(context).colorScheme.primary),
                 ),
               ),
             ),
