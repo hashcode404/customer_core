@@ -1,44 +1,57 @@
-import 'package:customer_core/src/application/core/dependency_registrar.dart';
-import 'package:customer_core/src/core/routes/routes.dart';
+import 'package:customer_core/customer_core.dart';
+import 'package:customer_core/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:customer_core/src/presentation/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
-import 'core/config/app_config.dart';
-
-class CustomerApp extends StatelessWidget {
+class CustomerApp extends StatefulWidget {
   final AppConfig config;
 
   const CustomerApp({super.key, required this.config});
 
   @override
-  Widget build(BuildContext context) {
-    // initialize global config
-    AppConfig.instance = config;
-    DependencyRegistrar.initializeAllProviders(context);
+  State<CustomerApp> createState() => _CustomerAppState();
+}
 
+class _CustomerAppState extends State<CustomerApp> {
+  @override
+  void initState() {
+    super.initState();
+
+    // initialize once
+    AppConfig.instance = widget.config;
+    AppEnvironment.current = widget.config.env;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MultiProvider(
       providers: DependencyRegistrar.providers,
       child: Builder(
-        builder: (context) => _buildMaterialApp(context),
+        builder: (context) {
+          DependencyRegistrar.initializeAllProviders(context);
+
+          return _buildMaterialApp(context);
+        },
       ),
     );
   }
 
   Widget _buildMaterialApp(BuildContext context) {
-    final _appRouter = AppRouter();
+    final appRouter = AppRouter();
 
     return MaterialApp.router(
-      title: config.appName,
+      title: widget.config.applicationName,
       debugShowCheckedModeBanner: false,
-      theme: config.themeData,
-      routerConfig: _appRouter.config(),
+      theme: appLightTheme(context),
+      darkTheme: appDarkTheme(context),
+      routerConfig: appRouter.config(),
       builder: (context, child) {
         return MediaQuery(
-            data: MediaQuery.of(context)
-                .copyWith(textScaler: const TextScaler.linear(0.95)),
-            child: ToastificationWrapper(child: child!));
+          data: MediaQuery.of(context)
+              .copyWith(textScaler: const TextScaler.linear(0.95)),
+          child: ToastificationWrapper(child: child!),
+        );
       },
     );
   }

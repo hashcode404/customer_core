@@ -3,7 +3,7 @@ import 'package:customer_core/src/core/constants/app_identifiers.dart';
 import 'package:customer_core/src/domain/notification/models/notification_model.dart';
 
 class NotificationSharedPrefs {
-  static const String kUserPrefsKey =
+  static  String kUserPrefsKey =
       "${AppIdentifiers.kBuildIdentifier}/notification";
 
   static Future<bool> clearNotification() async {

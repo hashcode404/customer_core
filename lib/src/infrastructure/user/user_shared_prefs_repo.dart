@@ -6,9 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @LazySingleton(as: IUserSharedPrefsRepo)
 class UserSharedPrefsRepo implements IUserSharedPrefsRepo {
-  static const String kUserPrefsKey =
-      "${AppIdentifiers.kBuildIdentifier}/user_data";
-  static const String kGuestPrefsKey =
+  static String kUserPrefsKey = "${AppIdentifiers.kBuildIdentifier}/user_data";
+  static String kGuestPrefsKey =
       "${AppIdentifiers.kBuildIdentifier}/guest_data";
 
   @override

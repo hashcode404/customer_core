@@ -25,8 +25,12 @@ mixin _$ValidatedCouponDetails {
   String? get coupenCode => throw _privateConstructorUsedError;
   CoupenData? get coupenData => throw _privateConstructorUsedError;
 
+  /// Serializes this ValidatedCouponDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ValidatedCouponDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ValidatedCouponDetailsCopyWith<ValidatedCouponDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$ValidatedCouponDetailsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ValidatedCouponDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +82,8 @@ class _$ValidatedCouponDetailsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ValidatedCouponDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CoupenDataCopyWith<$Res>? get coupenData {
@@ -114,6 +122,8 @@ class __$$ValidatedCouponDetailsImplCopyWithImpl<$Res>
       $Res Function(_$ValidatedCouponDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ValidatedCouponDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -183,11 +193,13 @@ class _$ValidatedCouponDetailsImpl
                 other.coupenData == coupenData));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, shopID, coupenCode, coupenData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ValidatedCouponDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ValidatedCouponDetailsImplCopyWith<_$ValidatedCouponDetailsImpl>
@@ -217,8 +229,11 @@ abstract class _ValidatedCouponDetails implements ValidatedCouponDetails {
   String? get coupenCode;
   @override
   CoupenData? get coupenData;
+
+  /// Create a copy of ValidatedCouponDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ValidatedCouponDetailsImplCopyWith<_$ValidatedCouponDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -244,8 +259,12 @@ mixin _$CoupenData {
   String? get addedTime => throw _privateConstructorUsedError;
   String? get lastUpdate => throw _privateConstructorUsedError;
 
+  /// Serializes this CoupenData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CoupenData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CoupenDataCopyWith<CoupenData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -283,6 +302,8 @@ class _$CoupenDataCopyWithImpl<$Res, $Val extends CoupenData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CoupenData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -395,6 +416,8 @@ class __$$CoupenDataImplCopyWithImpl<$Res>
       _$CoupenDataImpl _value, $Res Function(_$CoupenDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CoupenData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -584,7 +607,7 @@ class _$CoupenDataImpl with DiagnosticableTreeMixin implements _CoupenData {
                 other.lastUpdate == lastUpdate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -603,7 +626,9 @@ class _$CoupenDataImpl with DiagnosticableTreeMixin implements _CoupenData {
       addedTime,
       lastUpdate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CoupenData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CoupenDataImplCopyWith<_$CoupenDataImpl> get copyWith =>
@@ -665,8 +690,11 @@ abstract class _CoupenData implements CoupenData {
   String? get addedTime;
   @override
   String? get lastUpdate;
+
+  /// Create a copy of CoupenData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CoupenDataImplCopyWith<_$CoupenDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

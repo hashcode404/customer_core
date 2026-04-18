@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/core/theme/app_colors.dart';
@@ -7,7 +8,6 @@ import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/alert_dialogs.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
 import 'package:customer_core/src/domain/offer/models/offer_details_model.dart';
-import 'package:customer_core/src/gen/assets.gen.dart';
 import 'package:customer_core/src/presentation/widgets/custom_back_button.dart';
 import 'package:customer_core/src/presentation/widgets/get_provider_view.dart';
 
@@ -113,7 +113,7 @@ class _CouponDetailsTile extends StatelessWidget {
                     children: [
                       Row(
                         children: <Widget>[
-                          Assets.images.offers.image(
+                          Assets.lib.assets.images.offers.image(
                             height: 20,
                             width: 20,
                           ),

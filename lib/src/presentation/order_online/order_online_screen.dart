@@ -7,7 +7,7 @@ import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:customer_core/src/application/products/products_provider.dart';
 import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
-import 'package:customer_core/src/gen/assets.gen.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:customer_core/src/presentation/order_online/categories/categories_screen.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -116,7 +116,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                     children: [
                       CustomNavItem(
                         selected: currentPage == 0,
-                        icon: Assets.lottie.homeIconLottie,
+                        icon: Icons.home,
                         label: "Home",
                         activeColor: AppColors.kPrimaryColor,
                         inactiveColor: Colors.grey,
@@ -124,7 +124,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                       ),
                       CustomNavItem(
                         selected: currentPage == 1,
-                        icon: Assets.lottie.categoryIconLottie,
+                        icon: Icons.category,
                         label: "Categories",
                         activeColor: AppColors.kPrimaryColor,
                         inactiveColor: Colors.grey,
@@ -158,7 +158,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                       ),
                       CustomNavItem(
                         selected: currentPage == 2,
-                        icon: Assets.lottie.historyIconLottie,
+                        icon: Icons.history,
                         label: "Orders",
                         activeColor: AppColors.kPrimaryColor,
                         inactiveColor: Colors.grey,
@@ -166,7 +166,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                       ),
                       CustomNavItem(
                         selected: currentPage == 3,
-                        icon: Assets.lottie.profileIconLottie,
+                        icon: Icons.person,
                         label: "Profile",
                         activeColor: AppColors.kPrimaryColor,
                         inactiveColor: Colors.grey,

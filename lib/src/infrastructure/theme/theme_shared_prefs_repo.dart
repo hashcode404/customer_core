@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:customer_core/src/core/constants/app_identifiers.dart';
 
 class AppThemeSharedPrefs {
-  static const String kUserPrefsKey =
+  static  String kUserPrefsKey =
       "${AppIdentifiers.kBuildIdentifier}/app_theme";
 
   static Future<bool> clearAppTheme() async {

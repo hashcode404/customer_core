@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
@@ -18,7 +19,6 @@ import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/theme/app_colors.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
-import 'package:customer_core/src/gen/assets.gen.dart';
 import 'package:customer_core/src/infrastructure/theme/theme_shared_prefs_repo.dart';
 import 'package:customer_core/src/presentation/auth/login_screen.dart';
 import 'package:customer_core/src/presentation/order_online/profile/delete_account_screen.dart';
@@ -154,7 +154,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Assets.images.loginpage.image(height: 300),
+                          Assets.lib.assets.images.loginpage.image(height: 300),
                           Text(
                             !isLogged ? "Please log in to continue" : "",
                             style: context.customTextTheme.text16W400
@@ -1134,7 +1134,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Assets.icons.moneyBlack.image(
+        Assets.lib.assets.icons.moneyBlack.image(
           height: 24,
           width: 24,
           color: Theme.of(context).brightness == Brightness.dark
@@ -1165,7 +1165,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
       children: [
         Row(
           children: [
-            Assets.images.shopid.image(
+            Assets.lib.assets.images.shopid.image(
                 width: 20,
                 height: 20,
                 color: Theme.of(context).brightness == Brightness.dark
@@ -1191,14 +1191,14 @@ class ProfileScreen extends GetProviderView<UserProvider> {
           child: Row(
             children: [
               order.isTakeaway
-                  ? Assets.icons.takeAway.image(
+                  ? Assets.lib.assets.icons.takeAway.image(
                       height: 22,
                       width: 22,
                       color: Theme.of(context).brightness == Brightness.dark
                           ? AppColors.kWhite
                           : AppColors.kBlack,
                     )
-                  : Assets.icons.fastDelivery.image(
+                  : Assets.lib.assets.icons.fastDelivery.image(
                       height: 22,
                       width: 22,
                       color: Theme.of(context).brightness == Brightness.dark

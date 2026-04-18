@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:customer_core/src/core/constants/app_identifiers.dart';
 import 'package:customer_core/src/domain/table/i_table_repo.dart';
 import 'package:customer_core/src/domain/table/models/reserve_dining_table.dart';
@@ -45,7 +45,7 @@ class TableRepo implements ITableRepo {
         api: Endpoints.kDiningTableReservationNew,
         data: payload.toJson(),
         additionalHeaders: {
-          "x-secretkey": dotenv.env['RESERVATIONSECRETKEY'],
+          "x-secretkey": AppConfig.instance.reservationSecretKey,
         },
       );
       if (response == null) return Option.of(InternalServerErrorException());

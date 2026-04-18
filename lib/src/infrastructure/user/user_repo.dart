@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:customer_core/src/domain/store/models/favourite_product_data_model.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/src/domain/user/models/user_consent_list_data_model.dart';
 import 'package:customer_core/src/domain/user/models/user_register_response.dart';
 import 'package:dio/dio.dart';
@@ -130,7 +129,7 @@ class UserRepo implements IUserRepo {
         api: Endpoints.kUserLogin,
         data: json.encode({
           "user": userId,
-          "FPsecretkey": dotenv.env['SECRETKEY'],
+          "FPsecretkey": AppConfig.instance.fpSecretKey,
         }),
       );
       if (response == null) return Left(InternalServerErrorException());
@@ -171,7 +170,7 @@ class UserRepo implements IUserRepo {
       final data = {
         "shopID": AppIdentifiers.kShopId,
         "useremailid": userEmail,
-        "FPsecretkey": dotenv.env['FPSECRETKEY'],
+        "FPsecretkey": AppConfig.instance.fpSecretKey,
       };
       final response = await APIManager.post(
         api: Endpoints.kPasswordResetOtp,
@@ -245,7 +244,7 @@ class UserRepo implements IUserRepo {
         "useremailid": userEmail,
         "otp": otp,
         "password": password,
-        "FPsecretkey": dotenv.env['FPSECRETKEY'],
+        "FPsecretkey": AppConfig.instance.fpSecretKey,
       };
       final response = await APIManager.post(
           api: Endpoints.kResetPassword, data: data, dataKeyChecking: false);
@@ -270,7 +269,7 @@ class UserRepo implements IUserRepo {
     try {
       final data = {
         "shopName": AppIdentifiers.kShopName,
-        "FPsecretkey": dotenv.env['FPSECRETKEY'],
+        "FPsecretkey": AppConfig.instance.fpSecretKey,
         "customerName": customerName,
         "subject": "Verify your account",
         "useremailid": userEmail,
@@ -303,7 +302,7 @@ class UserRepo implements IUserRepo {
         "shopID": shopID,
         "userEmail": userEmail,
         "userMobile": userMobile,
-        "FPsecretkey": dotenv.env['FPSECRETKEY'],
+        "FPsecretkey": AppConfig.instance.fpSecretKey,
       };
 
       final response = await APIManager.post(
@@ -327,7 +326,7 @@ class UserRepo implements IUserRepo {
       {required String shopID, required String userID}) async {
     try {
       final data = {
-        "x-secretkey": dotenv.env['FPSECRETKEY'] ?? '',
+        "x-secretkey": AppConfig.instance.fpSecretKey,
       };
 
       final response = await APIManager.get(

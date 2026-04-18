@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:customer_core/src/application/shop/shop_provider.dart';
 import 'package:dartx/dartx.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -14,7 +15,6 @@ import 'package:customer_core/src/presentation/widgets/get_provider_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../gen/assets.gen.dart';
 import '../../widgets/button_progress.dart';
 
 @RoutePage()
@@ -246,7 +246,7 @@ class CheckoutScreen extends GetProviderView<CartProvider> {
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Assets.icons.dicountCopon
+                            Assets.lib.assets.icons.dicountCopon
                                 .image(height: 24, width: 24),
                             horizontalSpaceRegular,
                             Text(
@@ -261,7 +261,7 @@ class CheckoutScreen extends GetProviderView<CartProvider> {
                             Row(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                                Assets.icons.dicountCopon
+                                Assets.lib.assets.icons.dicountCopon
                                     .image(height: 24, width: 24),
                                 horizontalSpaceRegular,
                                 Column(
@@ -317,7 +317,7 @@ class CheckoutScreen extends GetProviderView<CartProvider> {
                   children: <Widget>[
                     _PaymentOptionCard(
                       title: "Cash On\nDelivery",
-                      icon: Assets.icons.money.image(
+                      icon: Assets.lib.assets.icons.money.image(
                         height: 40,
                         fit: BoxFit.contain,
                       ),
@@ -331,7 +331,7 @@ class CheckoutScreen extends GetProviderView<CartProvider> {
                       title: "Card\nPayment",
                       rightPos: -12,
                       bottomPos: -16,
-                      icon: Assets.icons.creditCard.image(
+                      icon: Assets.lib.assets.icons.creditCard.image(
                         height: 34,
                         fit: BoxFit.contain,
                       ),

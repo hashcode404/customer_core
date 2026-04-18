@@ -8,56 +8,57 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:customer_core/src/application/auth/auth_provider.dart' as _i993;
+import 'package:customer_core/src/application/cart/cart_provider.dart' as _i437;
+import 'package:customer_core/src/application/home/home_provider.dart' as _i514;
+import 'package:customer_core/src/application/notification/notification_provider.dart'
+    as _i86;
+import 'package:customer_core/src/application/order/order_provider.dart'
+    as _i592;
+import 'package:customer_core/src/application/payment/payment_provider.dart'
+    as _i412;
+import 'package:customer_core/src/application/products/products_provider.dart'
+    as _i805;
+import 'package:customer_core/src/application/promotion/promotions_provider.dart'
+    as _i184;
+import 'package:customer_core/src/application/search/search_provider.dart'
+    as _i553;
+import 'package:customer_core/src/application/shop/shop_provider.dart' as _i663;
+import 'package:customer_core/src/application/table/table_provider.dart'
+    as _i581;
+import 'package:customer_core/src/application/theme/theme_provider.dart'
+    as _i805;
+import 'package:customer_core/src/application/user/user_provider.dart' as _i914;
+import 'package:customer_core/src/domain/cart/i_cart_repo.dart' as _i696;
+import 'package:customer_core/src/domain/checkout/i_checkout_repo.dart'
+    as _i706;
+import 'package:customer_core/src/domain/offer/i_offer_repo.dart' as _i94;
+import 'package:customer_core/src/domain/promotion/i_promotion_repo.dart'
+    as _i304;
+import 'package:customer_core/src/domain/search/i_search_repo.dart' as _i71;
+import 'package:customer_core/src/domain/store/i_store_repo.dart' as _i333;
+import 'package:customer_core/src/domain/table/i_table_repo.dart' as _i303;
+import 'package:customer_core/src/domain/user/i_user_repo.dart' as _i266;
+import 'package:customer_core/src/domain/user/i_user_shared_prefs.dart'
+    as _i335;
+import 'package:customer_core/src/infrastructure/cart/cart_repo.dart' as _i640;
+import 'package:customer_core/src/infrastructure/checkout/checkout_repo.dart'
+    as _i454;
+import 'package:customer_core/src/infrastructure/offer/offer_repo.dart'
+    as _i459;
+import 'package:customer_core/src/infrastructure/promotions/promotions_repo.dart'
+    as _i1037;
+import 'package:customer_core/src/infrastructure/search/search_repo.dart'
+    as _i662;
+import 'package:customer_core/src/infrastructure/store/store_repo.dart'
+    as _i797;
+import 'package:customer_core/src/infrastructure/table/table_repo.dart'
+    as _i519;
+import 'package:customer_core/src/infrastructure/user/user_repo.dart' as _i854;
+import 'package:customer_core/src/infrastructure/user/user_shared_prefs_repo.dart'
+    as _i447;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:customer_core/src/application/auth/auth_provider.dart' as _i144;
-import 'package:customer_core/src/application/cart/cart_provider.dart' as _i651;
-import 'package:customer_core/src/application/home/home_provider.dart' as _i137;
-import 'package:customer_core/src/application/notification/notification_provider.dart'
-    as _i505;
-import 'package:customer_core/src/application/order/order_provider.dart'
-    as _i797;
-import 'package:customer_core/src/application/payment/payment_provider.dart'
-    as _i623;
-import 'package:customer_core/src/application/products/products_provider.dart'
-    as _i916;
-import 'package:customer_core/src/application/promotion/promotions_provider.dart'
-    as _i795;
-import 'package:customer_core/src/application/search/search_provider.dart'
-    as _i821;
-import 'package:customer_core/src/application/shop/shop_provider.dart' as _i440;
-import 'package:customer_core/src/application/table/table_provider.dart'
-    as _i491;
-import 'package:customer_core/src/application/theme/theme_provider.dart'
-    as _i620;
-import 'package:customer_core/src/application/user/user_provider.dart' as _i861;
-import 'package:customer_core/src/domain/cart/i_cart_repo.dart' as _i761;
-import 'package:customer_core/src/domain/checkout/i_checkout_repo.dart'
-    as _i734;
-import 'package:customer_core/src/domain/offer/i_offer_repo.dart' as _i381;
-import 'package:customer_core/src/domain/promotion/i_promotion_repo.dart'
-    as _i1046;
-import 'package:customer_core/src/domain/search/i_search_repo.dart' as _i32;
-import 'package:customer_core/src/domain/store/i_store_repo.dart' as _i255;
-import 'package:customer_core/src/domain/table/i_table_repo.dart' as _i144;
-import 'package:customer_core/src/domain/user/i_user_repo.dart' as _i357;
-import 'package:customer_core/src/domain/user/i_user_shared_prefs.dart'
-    as _i198;
-import 'package:customer_core/src/infrastructure/cart/cart_repo.dart' as _i656;
-import 'package:customer_core/src/infrastructure/checkout/checkout_repo.dart'
-    as _i742;
-import 'package:customer_core/src/infrastructure/offer/offer_repo.dart'
-    as _i955;
-import 'package:customer_core/src/infrastructure/promotions/promotions_repo.dart'
-    as _i823;
-import 'package:customer_core/src/infrastructure/search/search_repo.dart'
-    as _i785;
-import 'package:customer_core/src/infrastructure/store/store_repo.dart'
-    as _i533;
-import 'package:customer_core/src/infrastructure/table/table_repo.dart' as _i21;
-import 'package:customer_core/src/infrastructure/user/user_repo.dart' as _i731;
-import 'package:customer_core/src/infrastructure/user/user_shared_prefs_repo.dart'
-    as _i1051;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -70,54 +71,54 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.lazySingleton<_i137.HomeProvider>(() => _i137.HomeProvider());
-    gh.lazySingleton<_i505.NotificationProvider>(
-        () => _i505.NotificationProvider());
-    gh.lazySingleton<_i620.ThemeProvider>(() => _i620.ThemeProvider());
-    gh.lazySingleton<_i357.IUserRepo>(() => _i731.UserRepo());
-    gh.lazySingleton<_i198.IUserSharedPrefsRepo>(
-        () => _i1051.UserSharedPrefsRepo());
-    gh.lazySingleton<_i144.ITableRepo>(() => _i21.TableRepo());
-    gh.lazySingleton<_i144.AuthProvider>(() => _i144.AuthProvider(
-          userRepository: gh<_i357.IUserRepo>(),
-          sharedPrefsRepository: gh<_i198.IUserSharedPrefsRepo>(),
+    gh.lazySingleton<_i514.HomeProvider>(() => _i514.HomeProvider());
+    gh.lazySingleton<_i86.NotificationProvider>(
+        () => _i86.NotificationProvider());
+    gh.lazySingleton<_i805.ThemeProvider>(() => _i805.ThemeProvider());
+    gh.lazySingleton<_i335.IUserSharedPrefsRepo>(
+        () => _i447.UserSharedPrefsRepo());
+    gh.lazySingleton<_i71.ISearchRepo>(() => _i662.SearchRepo());
+    gh.lazySingleton<_i303.ITableRepo>(() => _i519.TableRepo());
+    gh.lazySingleton<_i581.TableProvider>(() => _i581.TableProvider(
+          tableRepo: gh<_i303.ITableRepo>(),
+          userSharedPrefsRepo: gh<_i335.IUserSharedPrefsRepo>(),
         ));
-    gh.lazySingleton<_i255.IStoreRepo>(() => _i533.StoreRepo());
-    gh.lazySingleton<_i734.ICheckoutRepo>(() => _i742.CheckoutRepo());
-    gh.lazySingleton<_i761.ICartRepo>(() => _i656.CartRepo());
-    gh.lazySingleton<_i1046.IPromotionRepo>(() => _i823.PromotionsRepo());
-    gh.lazySingleton<_i32.ISearchRepo>(() => _i785.SearchRepo());
-    gh.lazySingleton<_i381.IOfferRepo>(() => _i955.OfferRepo());
-    gh.lazySingleton<_i797.OrderProvider>(() => _i797.OrderProvider(
-          userRepo: gh<_i357.IUserRepo>(),
-          sharedPrefsRepository: gh<_i198.IUserSharedPrefsRepo>(),
+    gh.lazySingleton<_i696.ICartRepo>(() => _i640.CartRepo());
+    gh.lazySingleton<_i266.IUserRepo>(() => _i854.UserRepo());
+    gh.lazySingleton<_i94.IOfferRepo>(() => _i459.OfferRepo());
+    gh.lazySingleton<_i706.ICheckoutRepo>(() => _i454.CheckoutRepo());
+    gh.lazySingleton<_i592.OrderProvider>(() => _i592.OrderProvider(
+          userRepo: gh<_i266.IUserRepo>(),
+          sharedPrefsRepository: gh<_i335.IUserSharedPrefsRepo>(),
         ));
-    gh.lazySingleton<_i861.UserProvider>(() => _i861.UserProvider(
-          userRepo: gh<_i357.IUserRepo>(),
-          sharedPrefsRepository: gh<_i198.IUserSharedPrefsRepo>(),
+    gh.lazySingleton<_i914.UserProvider>(() => _i914.UserProvider(
+          userRepo: gh<_i266.IUserRepo>(),
+          sharedPrefsRepository: gh<_i335.IUserSharedPrefsRepo>(),
         ));
-    gh.lazySingleton<_i821.SearchProvider>(
-        () => _i821.SearchProvider(searchRepo: gh<_i32.ISearchRepo>()));
-    gh.lazySingleton<_i916.ProductsProvider>(() => _i916.ProductsProvider(
-          storeRepo: gh<_i255.IStoreRepo>(),
-          sharedPrefsRepository: gh<_i198.IUserSharedPrefsRepo>(),
+    gh.lazySingleton<_i333.IStoreRepo>(() => _i797.StoreRepo());
+    gh.lazySingleton<_i304.IPromotionRepo>(() => _i1037.PromotionsRepo());
+    gh.lazySingleton<_i805.ProductsProvider>(() => _i805.ProductsProvider(
+          storeRepo: gh<_i333.IStoreRepo>(),
+          sharedPrefsRepository: gh<_i335.IUserSharedPrefsRepo>(),
         ));
-    gh.lazySingleton<_i491.TableProvider>(() => _i491.TableProvider(
-          tableRepo: gh<_i144.ITableRepo>(),
-          userSharedPrefsRepo: gh<_i198.IUserSharedPrefsRepo>(),
+    gh.lazySingleton<_i437.CartProvider>(() => _i437.CartProvider(
+          cartRepo: gh<_i696.ICartRepo>(),
+          checkRepo: gh<_i706.ICheckoutRepo>(),
+          offerRepo: gh<_i94.IOfferRepo>(),
+          sharedPrefsRepository: gh<_i335.IUserSharedPrefsRepo>(),
         ));
-    gh.factory<_i795.PromotionsProvider>(
-        () => _i795.PromotionsProvider(gh<_i1046.IPromotionRepo>()));
-    gh.lazySingleton<_i440.ShopProvider>(
-        () => _i440.ShopProvider(gh<_i255.IStoreRepo>()));
-    gh.lazySingleton<_i623.PaymentProvider>(
-        () => _i623.PaymentProvider(checkoutRepo: gh<_i734.ICheckoutRepo>()));
-    gh.lazySingleton<_i651.CartProvider>(() => _i651.CartProvider(
-          cartRepo: gh<_i761.ICartRepo>(),
-          checkRepo: gh<_i734.ICheckoutRepo>(),
-          offerRepo: gh<_i381.IOfferRepo>(),
-          sharedPrefsRepository: gh<_i198.IUserSharedPrefsRepo>(),
+    gh.lazySingleton<_i412.PaymentProvider>(
+        () => _i412.PaymentProvider(checkoutRepo: gh<_i706.ICheckoutRepo>()));
+    gh.lazySingleton<_i553.SearchProvider>(
+        () => _i553.SearchProvider(searchRepo: gh<_i71.ISearchRepo>()));
+    gh.lazySingleton<_i663.ShopProvider>(
+        () => _i663.ShopProvider(gh<_i333.IStoreRepo>()));
+    gh.lazySingleton<_i993.AuthProvider>(() => _i993.AuthProvider(
+          userRepository: gh<_i266.IUserRepo>(),
+          sharedPrefsRepository: gh<_i335.IUserSharedPrefsRepo>(),
         ));
+    gh.factory<_i184.PromotionsProvider>(
+        () => _i184.PromotionsProvider(gh<_i304.IPromotionRepo>()));
     return this;
   }
 }

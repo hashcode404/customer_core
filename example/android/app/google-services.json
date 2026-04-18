@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "953062921789",
+    "project_id": "customerapp-6d5f7",
+    "storage_bucket": "customerapp-6d5f7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953062921789:android:8a5883d7385f2bbef17c54",
+        "android_client_info": {
+          "package_name": "co.uk.freshden.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdi9vNxXlakPmXwrHKoxlay1eXgZtUENY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953062921789:android:1a6df4847edb1ae7f17c54",
+        "android_client_info": {
+          "package_name": "co.uk.silverspoon.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdi9vNxXlakPmXwrHKoxlay1eXgZtUENY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953062921789:android:b8f49df26f850c2af17c54",
+        "android_client_info": {
+          "package_name": "co.uk.spicegarden.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdi9vNxXlakPmXwrHKoxlay1eXgZtUENY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953062921789:android:681f8f5281a378f7f17c54",
+        "android_client_info": {
+          "package_name": "co.uk.urbanspice.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdi9vNxXlakPmXwrHKoxlay1eXgZtUENY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953062921789:android:58cb81421ca79f3ff17c54",
+        "android_client_info": {
+          "package_name": "com.example.example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdi9vNxXlakPmXwrHKoxlay1eXgZtUENY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

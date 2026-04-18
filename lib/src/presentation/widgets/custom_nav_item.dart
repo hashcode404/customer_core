@@ -1,11 +1,11 @@
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/core/theme/app_colors.dart';
-import 'package:customer_core/src/gen/assets.gen.dart';
 import 'package:lottie/lottie.dart';
 
 class CustomNavItem extends StatelessWidget {
   final bool selected;
-  final LottieGenImage icon;
+  final IconData icon;
   final String label;
   final VoidCallback onTap;
   final Color activeColor;
@@ -41,15 +41,15 @@ class CustomNavItem extends StatelessWidget {
               ),
             ),
 
-            // Icon(
-            //   icon,
-            //   color: selected ? activeColor : inactiveColor,
-            // ),
-            AnimatedLottieIcon(
-              selected: selected,
-              asset: icon,
-              size: 30,
+            Icon(
+              icon,
+              color: selected ? activeColor : inactiveColor,
             ),
+            // AnimatedLottieIcon(
+            //   selected: selected,
+            //   asset: icon,
+            //   size: 30,
+            // ),
 
             const SizedBox(height: 4),
 
@@ -98,21 +98,9 @@ class _AnimatedLottieIconState extends State<AnimatedLottieIcon>
   void didUpdateWidget(covariant AnimatedLottieIcon oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    // Replay animation whenever selected becomes true again
-    if (widget.selected && !oldWidget.selected) {
+    if (widget.selected && _controller.duration != null) {
       _controller.forward(from: 0);
     }
-
-    // If user taps again on selected item:
-    if (widget.selected && oldWidget.selected) {
-      _controller.forward(from: 0);
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
@@ -124,17 +112,25 @@ class _AnimatedLottieIconState extends State<AnimatedLottieIcon>
         values: [
           ValueDelegate.color(
             const ['**'],
-            value: widget.selected ? AppColors.kPrimaryColor : Colors.grey,
-          ),
-          ValueDelegate.strokeColor(
-            const ['**'],
-            value: widget.selected ? AppColors.kPrimaryColor : Colors.grey,
+            value: widget.selected
+                ? AppColors.kPrimaryColor
+                : Colors.grey,
           ),
         ],
       ),
       onLoaded: (composition) {
         _controller.duration = composition.duration;
+
+        if (widget.selected) {
+          _controller.forward(from: 0);
+        }
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

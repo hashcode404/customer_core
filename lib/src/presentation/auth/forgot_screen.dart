@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -7,7 +8,6 @@ import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/theme/app_colors.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
-import 'package:customer_core/src/gen/assets.gen.dart';
 import 'package:customer_core/src/presentation/widgets/custom_back_button.dart';
 import 'package:customer_core/src/presentation/widgets/get_provider_view.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -36,7 +36,7 @@ class ForgotPasswordScreen extends GetProviderView<AuthProvider> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Assets.images.signInImg.image(),
+                Assets.lib.assets.images.signInImg.image(),
                 Text(
                   "Forgot Password",
                   style: context.customTextTheme.text20W600,

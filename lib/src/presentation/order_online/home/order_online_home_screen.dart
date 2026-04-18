@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:customer_core/customer_core.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -33,7 +35,6 @@ import '../../../application/home/home_provider.dart';
 import '../../../application/promotion/promotions_provider.dart';
 
 import '../../../domain/store/models/product_details_model.dart';
-import '../../../gen/assets.gen.dart';
 import '../../widgets/product_details_tile.dart';
 
 @RoutePage()
@@ -51,17 +52,7 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
   int notificationCount = 0;
 
   // final isNewView = true;
-  final List<String> imageUrlsForBanner = [
-    Assets.images.freshdenBanner.path,
-    Assets.images.freshdenBanner1.path,
-    Assets.images.freshdenBanner2.path,
-  ];
-
-  final List<String> imageUrlsForSliders = [
-    Assets.images.sliderOne.path,
-    Assets.images.sliderTwo.path,
-    Assets.images.sliderOne.path,
-  ];
+  final List<String> imageUrlsForBanner = AppConfig.instance.bannerImages;
 
   @override
   void initState() {
@@ -169,10 +160,16 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
                     title: Row(
                       children: [
                         isDark
-                            ? Assets.images.urbanspiceLogoWithoutBg
-                                .image(height: 45, fit: BoxFit.cover)
-                            : Assets.images.urbanSpiceLogo
-                                .image(height: 45, fit: BoxFit.cover),
+                            ? Image.asset(
+                                AppConfig.instance.logo,
+                                height: 45,
+                                fit: BoxFit.cover,
+                              )
+                            : Image.asset(
+                                AppConfig.instance.logo,
+                                height: 45,
+                                fit: BoxFit.cover,
+                              ),
                         horizontalSpaceSmall,
                         Expanded(
                           child: AnimatedSearchBar(
@@ -338,7 +335,7 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
           height: 100,
           // width: 110,
           child: Image(
-            image: AssetImage(Assets.images.appLogo01.path),
+            image: AssetImage(AppConfig.instance.logo),
             // height: MediaQuery.of(context).size.height * 0.1,
             fit: BoxFit.cover,
           ),
@@ -427,29 +424,6 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
   }
 
   //for sliders
-  Widget buildImageForSliders() {
-    return CarouselSlider(
-      options: CarouselOptions(
-        disableCenter: true,
-        height: MediaQuery.of(context).size.height * 0.15,
-        viewportFraction: 0.7,
-        enableInfiniteScroll: true,
-        autoPlayInterval: const Duration(seconds: 3),
-        autoPlay: false,
-        pauseAutoPlayOnTouch: true,
-        enlargeCenterPage: true,
-      ),
-      items: imageUrlsForSliders.map((imageUrl) {
-        return Container(
-          margin: const EdgeInsets.only(right: 10.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
-            child: Image.asset(imageUrl, fit: BoxFit.cover),
-          ),
-        );
-      }).toList(),
-    );
-  }
 
   Widget buildDealsWidget(ProductsProvider productListener,
       CartProvider cartProvider, ProductsProvider productProvider) {
@@ -926,8 +900,9 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
                                           fit: BoxFit.cover,
                                         )
                                       : Image.asset(
-                                          Assets.images.noimage.path,
+                                          Assets.lib.assets.images.noimage.path,
                                           fit: BoxFit.cover,
+                                          package: 'customer_core',
                                         ),
                                 ),
 

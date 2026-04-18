@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,6 @@ import 'package:customer_core/src/core/utils/alert_dialogs.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
 import 'package:customer_core/src/domain/store/models/product_details_model.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:customer_core/src/gen/assets.gen.dart';
 
 import '../../core/theme/app_colors.dart';
 
@@ -78,7 +78,7 @@ class ProductDetailsTile extends StatelessWidget {
               isPlaceHolderUrl
                   ? Padding(
                       padding: const EdgeInsets.only(top: 35.0, bottom: 45.0),
-                      child: Assets.images.noimage.image(height: 60),
+                      child: Assets.lib.assets.images.noimage.image(height: 60),
                     )
                   : ClipRRect(
                       borderRadius: const BorderRadius.only(
@@ -104,7 +104,8 @@ class ProductDetailsTile extends StatelessWidget {
                           errorWidget: (context, url, error) => Padding(
                             padding:
                                 const EdgeInsets.only(top: 35.0, bottom: 45.0),
-                            child: Assets.images.noimage.image(height: 60),
+                            child: Assets.lib.assets.images.noimage
+                                .image(height: 60),
                           ),
                           fit: BoxFit.contain,
                         ),
@@ -205,7 +206,8 @@ class ProductDetailsTile extends StatelessWidget {
                 isPlaceHolderUrl
                     ? Padding(
                         padding: const EdgeInsets.only(top: 35.0, bottom: 45.0),
-                        child: Assets.images.noimage.image(height: 60),
+                        child:
+                            Assets.lib.assets.images.noimage.image(height: 60),
                       )
                     : ClipRRect(
                         borderRadius: const BorderRadius.only(
@@ -223,7 +225,7 @@ class ProductDetailsTile extends StatelessWidget {
                             errorWidget: (context, url, error) => Padding(
                               padding: const EdgeInsets.only(
                                   top: 35.0, bottom: 45.0),
-                              child: Assets.images.noimage.image(),
+                              child: Assets.lib.assets.images.noimage.image(),
                             ),
                             // fit: BoxFit.cover,
                           ),
@@ -334,7 +336,7 @@ class ProductDetailsTile extends StatelessWidget {
             child: isPlaceHolderUrl
                 ? Padding(
                     padding: const EdgeInsets.only(top: 35.0, bottom: 45.0),
-                    child: Assets.images.noimage.image(height: 60),
+                    child: Assets.lib.assets.images.noimage.image(height: 60),
                   )
                 : ClipRRect(
                     borderRadius: const BorderRadius.only(
@@ -352,7 +354,7 @@ class ProductDetailsTile extends StatelessWidget {
                         errorWidget: (context, url, error) => Padding(
                           padding:
                               const EdgeInsets.only(top: 35.0, bottom: 45.0),
-                          child: Assets.images.noimage.image(),
+                          child: Assets.lib.assets.images.noimage.image(),
                         ),
                         fit: BoxFit.cover,
                       ),

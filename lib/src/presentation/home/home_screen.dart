@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/customer_core.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:customer_core/src/core/constants/app_identifiers.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -10,7 +12,7 @@ import 'package:customer_core/src/core/utils/contact_utils.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
 
 import '../../application/products/products_provider.dart';
-import '../../gen/assets.gen.dart';
+// import '../../gen/assets.gen.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -108,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: AppColors.kWhite,
                   radius: 20.0,
-                  backgroundImage: AssetImage(Assets.images.profilePhoto.path),
+                  backgroundImage: AssetImage(AppConfig.instance.logo),
                 ),
               ),
             ],
@@ -148,7 +150,7 @@ class HomeScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
           child: Stack(
             children: <Widget>[
-              Assets.images.foodGifAnimation.image(
+              Assets.lib.assets.images.foodGifAnimation.image(
                 height: 200.0,
                 fit: BoxFit.cover,
                 width: double.infinity,
@@ -273,7 +275,7 @@ class HomeScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
           child: Stack(
             children: <Widget>[
-              Assets.images.restaurantSeating.image(
+              Assets.lib.assets.images.restaurantSeating.image(
                 height: 140.0,
                 fit: BoxFit.cover,
                 width: double.infinity,

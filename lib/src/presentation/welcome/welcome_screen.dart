@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/core/routes/routes.gr.dart';
@@ -8,7 +9,6 @@ import 'package:customer_core/src/core/utils/ui_utils.dart';
 import 'package:provider/provider.dart';
 
 import '../../application/auth/auth_provider.dart';
-import '../../gen/assets.gen.dart';
 
 @RoutePage()
 class WelcomeScreen extends StatelessWidget {
@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
           image: DecorationImage(
         alignment: Alignment.topCenter,
         image: AssetImage(
-          Assets.images.bg01.path,
+          Assets.lib.assets.images.bg01.path,
         ),
         fit: BoxFit.cover,
       )),
@@ -34,7 +34,7 @@ class WelcomeScreen extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: context.screenHeight * 0.15),
-              Assets.images.appLogo01.image(height: 150.0),
+              Assets.lib.assets.images.appLogo01.image(height: 150.0),
               buildWelcomeText(context),
               verticalSpaceRegular,
               buildButtons(context, authProvider, authListener)

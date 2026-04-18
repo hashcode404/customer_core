@@ -1,3 +1,4 @@
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/rendering.dart';
 import 'package:customer_core/src/application/core/api_response.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
@@ -7,7 +8,6 @@ import 'package:customer_core/src/core/theme/app_colors.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
 import 'package:customer_core/src/domain/store/models/product_category_model.dart';
-import 'package:customer_core/src/gen/assets.gen.dart';
 import 'package:customer_core/src/presentation/widgets/product_details_tile.dart';
 import 'package:customer_core/src/presentation/widgets/shimmer_product_details_tile.dart';
 import 'package:auto_route/annotations.dart';
@@ -196,7 +196,9 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                                             errorWidget:
                                                 (context, url, error) => Image(
                                               image: AssetImage(
-                                                  Assets.images.noimage.path),
+                                                  Assets.lib.assets.images
+                                                      .noimage.path,
+                                                  package: 'customer_core'),
                                               height: 50,
                                             ),
                                           ))
@@ -206,7 +208,9 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                                             child: Center(
                                               child: Image(
                                                 image: AssetImage(
-                                                    Assets.images.noimage.path),
+                                                    Assets.lib.assets.images
+                                                        .noimage.path,
+                                                    package: 'customer_core'),
                                                 height: 50,
                                               ),
                                             ),
@@ -380,7 +384,8 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                                   child: Center(
                                     child: Padding(
                                       padding: const EdgeInsets.all(16.0),
-                                      child: Assets.lottie.infiniteLoading
+                                      child: Assets
+                                          .lib.assets.lottie.infiniteLoading
                                           .lottie(),
                                       // Or CircularProgressIndicator(color: AppColors.kPrimaryColor),
                                     ),

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:customer_core/src/application/shop/shop_provider.dart';
 import 'package:customer_core/src/application/theme/theme_provider.dart';
@@ -27,7 +28,6 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/date_utils.dart';
 import '../../../core/utils/ui_utils.dart';
 import '../../../core/utils/utils.dart';
-import '../../../gen/assets.gen.dart';
 import '../../widgets/bottom_sheet_drag_handler.dart';
 import '../../widgets/button_progress.dart';
 
@@ -653,7 +653,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                leading: Assets.icons.fastDelivery.image(
+                leading: Assets.lib.assets.icons.fastDelivery.image(
                     height: 34.0,
                     color: cartListener.selectedOrderType == OrderType.delivery
                         ? AppColors.kPrimaryColor
@@ -697,7 +697,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                leading: Assets.icons.takeAway.image(
+                leading: Assets.lib.assets.icons.takeAway.image(
                     height: 34.0,
                     color: cartListener.selectedOrderType == OrderType.takeaway
                         ? AppColors.kPrimaryColor
@@ -729,7 +729,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
       return ListTile(
         contentPadding: EdgeInsets.zero,
         minLeadingWidth: 5,
-        leading: Assets.icons.fastDelivery
+        leading: Assets.lib.assets.icons.fastDelivery
             .image(height: 25, color: isDark ? Colors.white : null),
         title: Text(
           "Home Delivery",
@@ -744,7 +744,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
       return ListTile(
         contentPadding: EdgeInsets.zero,
         minLeadingWidth: 5,
-        leading: Assets.icons.takeAway
+        leading: Assets.lib.assets.icons.takeAway
             .image(height: 23, color: isDark ? Colors.white : null),
         title: Text(
           "Takeaway",
@@ -1080,7 +1080,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                               prefixIcon: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 12.0),
-                                child: Assets.icons.searchNormal.svg(
+                                child: Assets.lib.assets.icons.searchNormal.svg(
                                   height: 16,
                                   width: 16,
                                   color: themeListener.isDarkMode
@@ -1209,7 +1209,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                                   ),
                                                 );
                                               },
-                                              icon: Assets.icons.editIcon.svg(
+                                              icon: Assets.lib.assets.icons.editIcon.svg(
                                                   color:
                                                       themeListener.isDarkMode
                                                           ? Colors.white

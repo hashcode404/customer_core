@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:dartx/dartx.dart';
 
 import 'package:dartx/dartx.dart';
@@ -25,7 +26,7 @@ import '../../../application/order/order_provider.dart';
 import '../../../core/routes/routes.gr.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/utils.dart';
-import '../../../gen/assets.gen.dart';
+
 import '../../widgets/button_progress.dart';
 import 'cart_items_screen.dart';
 import 'checkout_details.dart';
@@ -271,7 +272,7 @@ class _CartScreenState extends State<CartScreen>
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Assets.icons.emptyCart.image(
+          Assets.lib.assets.icons.emptyCart.image(
             width: 200.0,
           ),
           verticalSpaceRegular,
@@ -972,7 +973,7 @@ class _CartScreenState extends State<CartScreen>
                         decoration: InputDecoration(
                           prefixIcon: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 12.0),
-                            child: Assets.icons.searchNormal.svg(
+                            child: Assets.lib.assets.icons.searchNormal.svg(
                               height: 16,
                               width: 16,
                               fit: BoxFit.contain,
@@ -1085,7 +1086,7 @@ class _CartScreenState extends State<CartScreen>
                                               padding: const EdgeInsets.only(
                                                   right: 20.0),
                                               child:
-                                                  Assets.icons.editIcon.svg(),
+                                                  Assets.lib.assets.icons.editIcon.svg(),
                                             ),
                                           ),
                                         ],

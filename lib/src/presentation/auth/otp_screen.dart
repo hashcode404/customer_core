@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/auth/auth_provider.dart';
 import 'package:customer_core/src/core/routes/routes.gr.dart';
@@ -11,7 +12,6 @@ import 'package:provider/provider.dart';
 import '../../application/core/dependency_registrar.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/utils/alert_dialogs.dart';
-import '../../gen/assets.gen.dart';
 import '../widgets/button_progress.dart';
 
 @RoutePage()
@@ -44,7 +44,7 @@ class _OtpScreenState extends State<OtpScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 verticalSpaceMedium,
-                Assets.images.otpVerification.svg(),
+                Assets.lib.assets.images.otpVerification.svg(),
                 verticalSpaceMedium,
                 Center(
                   child: Text(

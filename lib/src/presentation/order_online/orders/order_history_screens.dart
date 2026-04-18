@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,6 @@ import 'package:customer_core/src/presentation/widgets/button_progress.dart';
 import 'package:customer_core/src/presentation/widgets/get_provider_view.dart';
 
 import '../../../core/routes/routes.gr.dart';
-import '../../../gen/assets.gen.dart';
 import '../../widgets/custom_back_button.dart';
 
 @RoutePage()
@@ -72,7 +72,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (!isLogged) ...[
-                    Assets.images.orderPage.image(height: 300),
+                    Assets.lib.assets.images.orderPage.image(height: 300),
                     Text(
                       !isLogged ? "Please log in to continue" : "No Orders",
                       style: context.customTextTheme.text16W400
@@ -119,7 +119,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Assets.images.noOrders.image(
+                          Assets.lib.assets.images.noOrders.image(
                             width: context.screenWidth * 0.4,
                             height: context.screenHeight * 0.2,
                           ),
@@ -682,7 +682,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Assets.icons.moneyBlack.image(
+        Assets.lib.assets.icons.moneyBlack.image(
             height: 24,
             width: 24,
             color: Theme.of(context).brightness == Brightness.dark
@@ -706,7 +706,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
       children: [
         Row(
           children: [
-            Assets.images.shopid.image(
+            Assets.lib.assets.images.shopid.image(
                 width: 20,
                 height: 20,
                 color: Theme.of(context).brightness == Brightness.dark
@@ -733,14 +733,14 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
           child: Row(
             children: [
               order.isTakeaway
-                  ? Assets.icons.takeAway.image(
+                  ? Assets.lib.assets.icons.takeAway.image(
                       height: 22,
                       width: 22,
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.white
                           : AppColors.kBlack,
                     )
-                  : Assets.icons.fastDelivery.image(
+                  : Assets.lib.assets.icons.fastDelivery.image(
                       height: 22,
                       width: 22,
                       color: Theme.of(context).brightness == Brightness.dark

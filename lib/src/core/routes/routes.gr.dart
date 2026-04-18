@@ -9,8 +9,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i27;
-import 'package:flutter/cupertino.dart' as _i30;
-import 'package:flutter/material.dart' as _i29;
 import 'package:customer_core/src/domain/user/models/user_address_list_data_model.dart'
     as _i28;
 import 'package:customer_core/src/presentation/auth/forgot_otp.dart' as _i7;
@@ -59,6 +57,8 @@ import 'package:customer_core/src/presentation/splash/splash_screen.dart'
 import 'package:customer_core/src/presentation/store/store_screen.dart' as _i20;
 import 'package:customer_core/src/presentation/welcome/welcome_screen.dart'
     as _i26;
+import 'package:flutter/cupertino.dart' as _i30;
+import 'package:flutter/material.dart' as _i29;
 
 /// generated route for
 /// [_i1.AddNewAddressScreen]

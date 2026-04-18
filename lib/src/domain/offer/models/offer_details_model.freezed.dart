@@ -31,8 +31,12 @@ mixin _$OfferDetailsModel {
   String? get coupenDetails => throw _privateConstructorUsedError;
   String? get coupenStatus => throw _privateConstructorUsedError;
 
+  /// Serializes this OfferDetailsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OfferDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OfferDetailsModelCopyWith<OfferDetailsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$OfferDetailsModelCopyWithImpl<$Res, $Val extends OfferDetailsModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OfferDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,6 +160,8 @@ class __$$OfferDetailsModelImplCopyWithImpl<$Res>
       $Res Function(_$OfferDetailsModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OfferDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -301,7 +309,7 @@ class _$OfferDetailsModelImpl
                 other.coupenStatus == coupenStatus));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -316,7 +324,9 @@ class _$OfferDetailsModelImpl
       coupenDetails,
       coupenStatus);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OfferDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OfferDetailsModelImplCopyWith<_$OfferDetailsModelImpl> get copyWith =>
@@ -367,8 +377,11 @@ abstract class _OfferDetailsModel implements OfferDetailsModel {
   String? get coupenDetails;
   @override
   String? get coupenStatus;
+
+  /// Create a copy of OfferDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfferDetailsModelImplCopyWith<_$OfferDetailsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

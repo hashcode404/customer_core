@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'dart:developer';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:customer_core/src/core/constants/app_identifiers.dart';
 import 'package:customer_core/src/core/utils/date_utils.dart';
 import 'package:customer_core/src/domain/checkout/models/calculated_delivery_charge_details_model.dart';
@@ -36,7 +35,7 @@ class CheckoutRepo implements ICheckoutRepo {
           "postCode": destinationPostCode,
         },
         needAuth: true,
-        additionalHeaders: {"x-secretkey": dotenv.env['FPSECRETKEY']},
+        additionalHeaders: {"x-secretkey": AppConfig.instance.fpSecretKey},
       );
       if (response == null) return Left(InternalServerErrorException());
       return Right(CalculatedDeliveryChargeDetailsModel.fromJson(response));
@@ -77,7 +76,7 @@ class CheckoutRepo implements ICheckoutRepo {
       final response = await APIManager.post(
         api: Endpoints.kTakeawayCalculator,
         additionalHeaders: {
-          "x-secretkey": dotenv.env['FPSECRETKEY'],
+          "x-secretkey": AppConfig.instance.fpSecretKey,
         },
         data: {
           "shopID": AppIdentifiers.kShopId,

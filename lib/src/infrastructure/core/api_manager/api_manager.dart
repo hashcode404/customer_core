@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:customer_core/src/core/constants/app_identifiers.dart';
 import 'package:customer_core/src/infrastructure/user/user_shared_prefs_repo.dart';
 
 import '../end_points/end_points.dart';
@@ -69,7 +68,7 @@ class APIManager {
         api: Endpoints.kUserLoginSecret,
         data: {
           "user": userData.user.userID,
-          "FPsecretkey": dotenv.env['FPSECRETKEY']
+          "FPsecretkey": AppConfig.instance.fpSecretKey,
         },
       );
 
@@ -192,7 +191,7 @@ class APIManager {
         api: Endpoints.kUserLoginSecret,
         data: {
           "user": auth.user.userID,
-          "FPsecretkey": dotenv.env['FPSECRETKEY']
+          "FPsecretkey": AppConfig.instance.fpSecretKey,
         },
       );
 

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:ui';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:auto_route/auto_route.dart';
@@ -24,7 +25,6 @@ import 'package:provider/provider.dart';
 
 import '../../application/core/dependency_registrar.dart';
 import '../../core/utils/alert_dialogs.dart';
-import '../../gen/assets.gen.dart';
 import '../widgets/button_progress.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-            image: Assets.images.urbanSpicebg.image().image, fit: BoxFit.cover),
+            image: AssetImage(AppConfig.instance.bgImage), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                         height: 45,
                         // width: 200,
-                        child: Assets.images.urbanspiceLogoWithoutBg.image()),
+                        child: Image.asset(AppConfig.instance.logo)),
                     // verticalSpaceSmall,
                     // Text(
                     //   "Welcome Back",
@@ -414,7 +414,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ? const SizedBox.shrink()
                     : SizedBox(
                         height: 45,
-                        child: Assets.images.urbanspiceLogoWithoutBg.image()),
+                        child: Image.asset(AppConfig.instance.logo)),
                 authListener.currentRegForm == 3
                     ? const SizedBox.shrink()
                     : const SizedBox.shrink(),
@@ -829,8 +829,7 @@ class _LoginScreenState extends State<LoginScreen> {
               authListener.currentForgotForm == 2
                   ? const SizedBox.shrink()
                   : SizedBox(
-                      height: 45,
-                      child: Assets.images.urbanspiceLogoWithoutBg.image()),
+                      height: 45, child: Image.asset(AppConfig.instance.logo)),
               verticalSpaceMedium,
 
               authListener.currentForgotForm == 0

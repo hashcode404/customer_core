@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/core/routes/routes.gr.dart';
@@ -10,7 +11,6 @@ import 'package:provider/provider.dart';
 
 import '../../application/auth/auth_provider.dart';
 import '../../core/theme/app_colors.dart';
-import '../../gen/assets.gen.dart';
 import '../widgets/button_progress.dart';
 
 @RoutePage()
@@ -41,7 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Assets.images.a1.image(),
+                Assets.lib.assets.images.a1.image(),
                 verticalSpaceLarge,
                 // Register Text
                 Center(

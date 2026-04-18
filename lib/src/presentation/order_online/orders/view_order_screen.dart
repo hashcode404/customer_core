@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/order/order_provider.dart';
 import 'package:customer_core/src/application/user/user_provider.dart';
@@ -11,7 +12,6 @@ import 'package:customer_core/src/presentation/widgets/get_provider_view.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/ui_utils.dart';
 import '../../../domain/user/models/order_history_raw_data_model.dart';
-import '../../../gen/assets.gen.dart';
 
 @RoutePage()
 class ViewOrderScreen extends GetProviderView<OrderProvider> {
@@ -96,7 +96,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
           children: <Widget>[
             Row(
               children: [
-                Assets.icons.deliveryAddress.svg(
+                Assets.lib.assets.icons.deliveryAddress.svg(
                   color: Theme.of(context).brightness == Brightness.dark
                       ? AppColors.kWhite
                       : null,
@@ -232,7 +232,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
                 }).toList() ??
                 [],
             verticalSpaceRegular,
-            Assets.icons.zigzag.svg(),
+            Assets.lib.assets.icons.zigzag.svg(),
             verticalSpaceLarge,
             _SummaryRow(
               label: "Order Type",

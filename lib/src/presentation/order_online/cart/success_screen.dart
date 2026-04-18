@@ -1,3 +1,4 @@
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:customer_core/src/application/order/order_provider.dart';
 import 'package:customer_core/src/core/theme/app_colors.dart';
@@ -10,7 +11,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/routes/routes.gr.dart';
-import '../../../gen/assets.gen.dart';
 
 @RoutePage()
 class SuccessScreen extends StatelessWidget {
@@ -26,7 +26,7 @@ class SuccessScreen extends StatelessWidget {
           Center(
             child: SizedBox(
               height: 250,
-              child: Assets.lottie.successCircleCheck.lottie(
+              child:  Assets.lib.assets.lottie.successCircleCheck.lottie(
                   delegates: LottieDelegates(values: [
                 ValueDelegate.color(
                   ['**'],
