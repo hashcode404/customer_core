@@ -97,84 +97,77 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
         builder: (_, provider, __) {
           // final extraHeight = Platform.isIOS ? 30 : 25;
           // final isDark = Theme.of(context).brightness == Brightness.dark;
-          return ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: AnimatedContainer(
-                color: Colors.transparent,
-                duration: const Duration(milliseconds: 300),
-                height: provider.isVisible ? null : 0,
-                child: Container(
-                  // margin: const EdgeInsets.only(top: 10),
-                  padding: const EdgeInsets.only(
-                    bottom: 25,
+          return AnimatedContainer(
+            color: Colors.transparent,
+            duration: const Duration(milliseconds: 300),
+            height: provider.isVisible ? null : 0,
+            child: Container(
+              // margin: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(
+                bottom: 25,
+              ),
+              // decoration: BoxDecoration(
+              //   color: Colors.white.withOpacity(0.1),
+              // ),
+              child: Row(
+                children: [
+                  CustomNavItem(
+                    selected: currentPage == 0,
+                    icon: Icons.home,
+                    label: "Home",
+                    activeColor: AppColors.kPrimaryColor,
+                    inactiveColor: Colors.grey,
+                    onTap: () => provider.onChangeCurrentPage(0),
                   ),
-                  // decoration: BoxDecoration(
-                  //   color: Colors.white.withOpacity(0.1),
-                  // ),
-                  child: Row(
-                    children: [
-                      CustomNavItem(
-                        selected: currentPage == 0,
-                        icon: Icons.home,
-                        label: "Home",
-                        activeColor: AppColors.kPrimaryColor,
-                        inactiveColor: Colors.grey,
-                        onTap: () => provider.onChangeCurrentPage(0),
-                      ),
-                      CustomNavItem(
-                        selected: currentPage == 1,
-                        icon: Icons.category,
-                        label: "Categories",
-                        activeColor: AppColors.kPrimaryColor,
-                        inactiveColor: Colors.grey,
-                        onTap: () async {
-                          provider.onChangeCurrentPage(1);
+                  CustomNavItem(
+                    selected: currentPage == 1,
+                    icon: Icons.category,
+                    label: "Categories",
+                    activeColor: AppColors.kPrimaryColor,
+                    inactiveColor: Colors.grey,
+                    onTap: () async {
+                      provider.onChangeCurrentPage(1);
 
-                          final selectedCategory =
-                              productListener.selectedCategory;
-                          final selectedIndex =
-                              productListener.selectedCategoryIndex;
+                      final selectedCategory = productListener.selectedCategory;
+                      final selectedIndex =
+                          productListener.selectedCategoryIndex;
 
-                          final category = selectedCategory ??
-                              productListener.categories.first;
+                      final category =
+                          selectedCategory ?? productListener.categories.first;
 
-                          final index = selectedIndex ??
-                              productListener.categories.indexOf(category);
+                      final index = selectedIndex ??
+                          productListener.categories.indexOf(category);
 
-                          if (category.cID != null) {
-                            productProvider.onChangeHasMoreProducts(true);
-                            productProvider.onChangeSelectedSubCategory(null);
-                            productProvider
-                                .onChangeSelectedCategoryIndex(index);
+                      if (category.cID != null) {
+                        productProvider.onChangeHasMoreProducts(true);
+                        productProvider.onChangeSelectedSubCategory(null);
+                        productProvider.onChangeSelectedCategoryIndex(index);
 
-                            await productProvider.getAllProductsByPagination(
-                              categoryID: category.cID!,
-                              isRandom: false,
-                              isRefresh: true,
-                            );
-                          }
-                        },
-                      ),
-                      CustomNavItem(
-                        selected: currentPage == 2,
-                        icon: Icons.history,
-                        label: "Orders",
-                        activeColor: AppColors.kPrimaryColor,
-                        inactiveColor: Colors.grey,
-                        onTap: () => provider.onChangeCurrentPage(2),
-                      ),
-                      CustomNavItem(
-                        selected: currentPage == 3,
-                        icon: Icons.person,
-                        label: "Profile",
-                        activeColor: AppColors.kPrimaryColor,
-                        inactiveColor: Colors.grey,
-                        onTap: () => provider.onChangeCurrentPage(3),
-                      ),
-                    ],
+                        await productProvider.getAllProductsByPagination(
+                          categoryID: category.cID!,
+                          isRandom: false,
+                          isRefresh: true,
+                        );
+                      }
+                    },
                   ),
-                ),
+                  CustomNavItem(
+                    selected: currentPage == 2,
+                    icon: Icons.history,
+                    label: "Orders",
+                    activeColor: AppColors.kPrimaryColor,
+                    inactiveColor: Colors.grey,
+                    onTap: () => provider.onChangeCurrentPage(2),
+                  ),
+                  CustomNavItem(
+                    selected: currentPage == 3,
+                    icon: Icons.person,
+                    label: "Profile",
+                    activeColor: AppColors.kPrimaryColor,
+                    inactiveColor: Colors.grey,
+                    onTap: () => provider.onChangeCurrentPage(3),
+                  ),
+                ],
               ),
             ),
           );

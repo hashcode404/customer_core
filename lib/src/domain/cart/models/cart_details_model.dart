@@ -400,7 +400,7 @@ class ChoosedModifierOption {
     return <String, dynamic>{
       'text': text,
       'price': price,
-      'price_single': priceSingle,
+      'itemPrice': priceSingle,
     };
   }
 
@@ -409,7 +409,7 @@ class ChoosedModifierOption {
       text: map['text'] != null ? map['text'] as String : null,
       price: map['price'] != null ? map['price'] as String : null,
       priceSingle:
-          map['price_single'] != null ? map['price_single'] as String : null,
+          map['itemPrice'] != null ? map['itemPrice'] as String : null,
     );
   }
 

@@ -376,114 +376,105 @@ class ProductsProvider extends ChangeNotifier with BaseController {
   }
 
   Future<bool> addFavourite(String productID) async {
+    // Optimistic Update
+    _updateFavouriteLocally(productID, true, "temp");
+    notifyListeners();
+
     try {
       final response = await storeRepo.addFavourite(productID: productID);
 
       return response.fold((error) {
+        // Revert on error
+        _updateFavouriteLocally(productID, false, "");
         AlertDialogs.showError(error.message);
+        notifyListeners();
         return false;
       }, (data) {
-        // AlertDialogs.showSuccess(data['message']);
-
-        // If API returns favourite ID, extract it here
         final favouriteId = data['favouriteID'] ?? "";
-
-        // Update local model instantly for UI
-        final index = productsListRandom.indexWhere((p) => p.pID == productID);
-        if (index != -1) {
-          productsListRandom[index] = productsListRandom[index].copyWith(
-            isFavourite: true,
-            favouriteID: favouriteId.toString(),
-          );
-        }
-
-        final productList = _productsListAPIResponse.data ?? [];
-
-        final index2 = productList.indexWhere((p) => p.pID == productID);
-        if (index2 != -1) {
-          productList[index2] = productList[index2].copyWith(
-            favouriteID: favouriteId.toString(),
-            isFavourite: true,
-          );
-        }
-
-        final popularProductsList =
-            _featuredPopularProductsAPIResponse.data?.featuredProducts ?? [];
-
-        final index3 =
-            popularProductsList.indexWhere((p) => p.pID == productID);
-        if (index3 != -1) {
-          popularProductsList[index3] = popularProductsList[index3].copyWith(
-            favouriteID: favouriteId.toString(),
-            isFavourite: true,
-          );
-        }
-
+        // Update with actual favouriteID
+        _updateFavouriteLocally(productID, true, favouriteId.toString());
+        notifyListeners();
         return true;
       });
-    } finally {
-      // Refresh from backend (not mandatory for UI)
-      // getFavouriteProductList();
+    } catch (e) {
+      // Revert on error
+      _updateFavouriteLocally(productID, false, "");
       notifyListeners();
+      return false;
     }
   }
 
   Future<bool> removeFavourite(String productID) async {
+    // Optimistic Update
+    _updateFavouriteLocally(productID, false, "", isByFavID: true);
+    notifyListeners();
+
     try {
       final response = await storeRepo.removeFavourite(productID: productID);
 
       return response.fold((error) {
         AlertDialogs.showError(error.message);
+        getFavouriteProductList(); // Revert by fetching correct state
         return false;
       }, (message) {
-        // AlertDialogs.showSuccess(message);
-
-        // update locally
-        final index =
-            productsListRandom.indexWhere((p) => p.favouriteID == productID);
-        if (index != -1) {
-          productsListRandom[index] = productsListRandom[index].copyWith(
-            isFavourite: false,
-            favouriteID: "",
-          );
-        }
-
-        final productList = _productsListAPIResponse.data ?? [];
-
-        final index2 =
-            productList.indexWhere((p) => p.favouriteID == productID);
-        if (index2 != -1) {
-          productList[index2] = productList[index2].copyWith(
-            favouriteID: "",
-            isFavourite: false,
-          );
-        }
-
-        final favouriteProductsList =
-            _favouriteProductResponse.data?.favouriteList?.productList ?? [];
-
-        final index3 =
-            favouriteProductsList.indexWhere((p) => p.favouriteID == productID);
-        if (index3 != -1) {
-          favouriteProductsList.removeAt(index3);
-
-          final popularProductsList =
-              _featuredPopularProductsAPIResponse.data?.featuredProducts ?? [];
-
-          final index4 =
-              popularProductsList.indexWhere((p) => p.favouriteID == productID);
-          if (index4 != -1) {
-            popularProductsList[index4] = popularProductsList[index4].copyWith(
-              favouriteID: "",
-              isFavourite: false,
-            );
-          }
-        }
-
         return true;
       });
-    } finally {
-      notifyListeners();
+    } catch (e) {
+      getFavouriteProductList(); // Revert by fetching correct state
+      return false;
+    }
+  }
+
+  void _updateFavouriteLocally(String productID, bool isFav, String favouriteId,
+      {bool isByFavID = false}) {
+    bool updateCondition(ProductDataModel p) =>
+        isByFavID ? p.favouriteID == productID : p.pID == productID;
+
+    final index = productsListRandom.indexWhere(updateCondition);
+    if (index != -1) {
+      productsListRandom[index] = productsListRandom[index].copyWith(
+        isFavourite: isFav,
+        favouriteID: favouriteId,
+      );
+    }
+
+    final productList = _productsListAPIResponse.data ?? [];
+    final index2 = productList.indexWhere(updateCondition);
+    if (index2 != -1) {
+      productList[index2] = productList[index2].copyWith(
+        favouriteID: favouriteId,
+        isFavourite: isFav,
+      );
+    }
+
+    final featuredList =
+        _featuredPopularProductsAPIResponse.data?.featuredProducts ?? [];
+    final index3 = featuredList.indexWhere(updateCondition);
+    if (index3 != -1) {
+      featuredList[index3] = featuredList[index3].copyWith(
+        favouriteID: favouriteId,
+        isFavourite: isFav,
+      );
+    }
+
+    final popularList =
+        _featuredPopularProductsAPIResponse.data?.popularProducts ?? [];
+    final index4 = popularList.indexWhere(updateCondition);
+    if (index4 != -1) {
+      popularList[index4] = popularList[index4].copyWith(
+        favouriteID: favouriteId,
+        isFavourite: isFav,
+      );
+    }
+
+    if (!isFav) {
+      final favouriteProductsList =
+          _favouriteProductResponse.data?.favouriteList?.productList ?? [];
+      final index5 =
+          favouriteProductsList.indexWhere((p) => p.favouriteID == productID);
+      if (index5 != -1) {
+        favouriteProductsList.removeAt(index5);
+      }
     }
   }
 
@@ -510,7 +501,7 @@ class ProductsProvider extends ChangeNotifier with BaseController {
             .toList();
         final modifiedFavouriteList = FavouriteProductRawDataModel(
           favouriteList: FavouriteProductDataModel(
-            productList: modifiedList ?? [],
+            productList: modifiedList,
           ),
         );
         _favouriteProductResponse =

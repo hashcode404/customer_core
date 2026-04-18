@@ -1,6 +1,8 @@
 import 'package:customer_core/customer_core.dart';
+import 'package:customer_core/src/application/theme/theme_provider.dart';
 import 'package:customer_core/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
@@ -21,6 +23,7 @@ class _CustomerAppState extends State<CustomerApp> {
     // initialize once
     AppConfig.instance = widget.config;
     AppEnvironment.current = widget.config.env;
+    Stripe.publishableKey = widget.config.stripeKey;
   }
 
   @override
@@ -38,6 +41,7 @@ class _CustomerAppState extends State<CustomerApp> {
   }
 
   Widget _buildMaterialApp(BuildContext context) {
+    // final currentTheme = context.watch<ThemeProvider>().currentTheme;
     final appRouter = AppRouter();
 
     return MaterialApp.router(
@@ -45,6 +49,7 @@ class _CustomerAppState extends State<CustomerApp> {
       debugShowCheckedModeBanner: false,
       theme: appLightTheme(context),
       darkTheme: appDarkTheme(context),
+      themeMode: ThemeMode.dark,
       routerConfig: appRouter.config(),
       builder: (context, child) {
         return MediaQuery(

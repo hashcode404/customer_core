@@ -748,12 +748,12 @@ class CartProvider extends ChangeNotifier with BaseController {
 
       return e.copyWith(choosedOption: updatedOptions);
     }).toList();
-    newCartItems[index] = item.copyWith(
-        master_addon_apllied: updatedAppliedMasterAddons,
-        addon_apllied: updatedAppliedAddons);
+    // newCartItems[index] = item.copyWith(
+    //     master_addon_apllied: updatedAppliedMasterAddons,
+    //     addon_apllied: updatedAppliedAddons);
     final itemProductPrice = item.product_price?.replaceAll("£", "") ?? "0.00";
     final itemProductPriceInPaisa = double.parse(itemProductPrice) * 100;
-    final itemModifiersTotal = item.getModifiersTotal * newQty;
+    final itemModifiersTotal = item.getModifiersTotal; //* newQty;
     final itemModifiersTotalInPaisa = itemModifiersTotal * 100;
     final totalItemPrice = newQty * itemProductPriceInPaisa;
     final productTotalPriceFormatted = (totalItemPrice) / 100;
@@ -761,8 +761,8 @@ class CartProvider extends ChangeNotifier with BaseController {
     newCartItems[index] = item.copyWith(
       cartID: locatedCartItem.cartID,
       quantity: newQty.toString(),
-      master_addon_apllied: updatedAppliedMasterAddons,
-      addon_apllied: updatedAppliedAddons,
+      // master_addon_apllied: updatedAppliedMasterAddons,
+      // addon_apllied: updatedAppliedAddons,
       total: (totalItemPrice + itemModifiersTotalInPaisa).toInt(),
       product_total_price: "£${productTotalPriceFormatted.toStringAsFixed(2)}",
     );
@@ -844,9 +844,9 @@ class CartProvider extends ChangeNotifier with BaseController {
       return e.copyWith(choosedOption: updatedOptions);
     }).toList();
 
-    newCartItems[index] = item.copyWith(
-        master_addon_apllied: updatedAppliedMasterAddons,
-        addon_apllied: updatedAppliedAddons);
+    // newCartItems[index] = item.copyWith(
+    //     master_addon_apllied: updatedAppliedMasterAddons,
+    //     addon_apllied: updatedAppliedAddons);
     final itemProductPrice = item.product_price?.replaceAll("£", "") ?? "0.00";
     final itemProductPriceInPaisa = double.parse(itemProductPrice) * 100;
     final itemModifiersTotal = item.getModifiersTotal * newQty;
@@ -857,8 +857,8 @@ class CartProvider extends ChangeNotifier with BaseController {
     newCartItems[index] = item.copyWith(
       cartID: locatedCartItem.cartID,
       quantity: newQty.toString(),
-      master_addon_apllied: updatedAppliedMasterAddons,
-      addon_apllied: updatedAppliedAddons,
+      // master_addon_apllied: updatedAppliedMasterAddons,
+      // addon_apllied: updatedAppliedAddons,
       total: (totalItemPrice + itemModifiersTotalInPaisa).toInt(),
       product_total_price: "£ ${productTotalPriceFormatted.toStringAsFixed(2)}",
     );

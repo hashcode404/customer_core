@@ -1,3 +1,4 @@
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/src/core/config/app_env.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,7 @@ class AppConfig {
   final String reservationSecretKey;
   final String stripeKey;
   final String bgImage;
+  final Country country;
 
   AppConfig({
     required this.applicationName,
@@ -35,7 +37,8 @@ class AppConfig {
     required this.shopInfoPhone,
     required this.shopInfoAddress,
     required this.buildIdentifier,
-     this.fcmTopicId,
+    required this.country,
+    this.fcmTopicId,
     required this.fireBaseProjectId,
     required this.themeData,
     required this.logo,

@@ -15,6 +15,7 @@ void main() async {
         applicationName: 'Le Arabia Customer',
         shopName: 'Le Arabia',
         shopId: '1',
+        country: Country.uk,
         shopIdentifier: 'le-arabia',
         shopInfoEmail: 'info@learabia.co.uk',
         shopInfoPhone: ['+44 01245939257'],
@@ -28,7 +29,7 @@ void main() async {
         reservationSecretKey: dotenv.env['RESERVATIONSECRETKEY'] ?? '',
         stripeKey: dotenv.env['STRIPEKEY'] ?? '',
         logo: 'assets/images/freshden logo v3.png',
-        bgImage: 'assets/images/freshden logo v3.png',
+        bgImage: 'assets/images/urban spicebg.png',
         bannerImages: [
           "assets/images/freshden banner.png",
           "assets/images/freshden banner (1).png",

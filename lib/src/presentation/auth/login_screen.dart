@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:ui';
 
 import 'package:customer_core/customer_core.dart';
+import 'package:customer_core/gen/assets.gen.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:auto_route/auto_route.dart';
@@ -118,7 +119,11 @@ class _LoginScreenState extends State<LoginScreen> {
       HomeProvider homeProvider,
       HomeProvider homeListener) {
     return Center(
-        child: ClipRRect(
+        child: ListView(
+      children: [
+        Image.asset(AppConfig.instance.logo, height: 125),
+        verticalSpaceMedium,
+        ClipRRect(
             borderRadius: BorderRadius.circular(12.0),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
@@ -139,7 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         : _forgotWidgetParent(
                             authProvider, context, authListener),
               ),
-            )));
+            )),
+      ],
+    ));
   }
 
   Widget _loginForm(
@@ -163,16 +170,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
-                        height: 45,
-                        // width: 200,
-                        child: Image.asset(AppConfig.instance.logo)),
-                    // verticalSpaceSmall,
-                    // Text(
-                    //   "Welcome Back",
-                    //   style: context.customTextTheme.text24W600
-                    //       .copyWith(color: AppColors.kBlack),
-                    // ),
+                    verticalSpaceSmall,
+                    Text(
+                      "Welcome Back",
+                      style: context.customTextTheme.text24W600
+                          .copyWith(color: AppColors.kWhite),
+                    ),
                     verticalSpaceSmall,
                     Text(
                       "Enter your email and password to log in",
@@ -412,11 +415,6 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 authListener.currentRegForm == 3
                     ? const SizedBox.shrink()
-                    : SizedBox(
-                        height: 45,
-                        child: Image.asset(AppConfig.instance.logo)),
-                authListener.currentRegForm == 3
-                    ? const SizedBox.shrink()
                     : const SizedBox.shrink(),
                 verticalSpaceSmall,
                 authListener.currentRegForm == 3
@@ -594,9 +592,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                             ? "Confirm"
                                             : "Go To Login Page",
                                 style: context.customTextTheme.text16W400
-                                    .copyWith(color: AppColors.kBlack),
+                                    .copyWith(color: AppColors.kWhite),
                               )
-                            : showButtonProgress(Colors.black)),
+                            : showButtonProgress(Colors.white)),
                   ),
                 ),
                 verticalSpaceLarge,
@@ -772,8 +770,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide.none),
             hintText: "Email",
-            hintStyle: TextStyle(
-                color: themeListener.isDarkMode ? Colors.grey : null)),
+            hintStyle: TextStyle(color: Colors.grey)),
         name: 'email-address',
       ),
     );
@@ -825,12 +822,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // SizedBox(
               //     height: 200,
               //     child: Image(image: AssetImage(Assets.images.loginImage.path))),
-              // verticalSpaceSmall,
-              authListener.currentForgotForm == 2
-                  ? const SizedBox.shrink()
-                  : SizedBox(
-                      height: 45, child: Image.asset(AppConfig.instance.logo)),
-              verticalSpaceMedium,
+              verticalSpaceSmall,
 
               authListener.currentForgotForm == 0
                   ? Text('Reset Password',
@@ -921,7 +913,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: CircularProgressIndicator.adaptive(
                                 strokeWidth: 2,
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                    AppColors.kBlack),
+                                    AppColors.kWhite),
                               ))
                           : Text(
                               authListener.currentForgotForm == 0
@@ -930,7 +922,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ? 'Submit'
                                       : 'Done',
                               style: context.customTextTheme.text16W400
-                                  .copyWith(color: AppColors.kBlack),
+                                  .copyWith(color: AppColors.kWhite),
                             )),
                 ),
               ),
@@ -976,9 +968,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide.none),
                 hintText: "OTP",
-                hintStyle: TextStyle(
-                  color: themeListener.isDarkMode ? Colors.grey : null,
-                )),
+                hintStyle: TextStyle(color: Colors.grey)),
           ),
           verticalSpaceRegular,
           FormBuilderTextField(
@@ -1016,9 +1006,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide.none),
                 hintText: "New Password",
-                hintStyle: TextStyle(
-                  color: themeListener.isDarkMode ? Colors.grey : null,
-                )),
+                hintStyle: TextStyle(color: Colors.grey)),
             name: 'new-password',
           ),
           verticalSpaceRegular,
@@ -1049,9 +1037,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () {
                       authProvider.toggleResetPassword();
                     },
-                    child: Icon(authListener.resetPasswordHide
-                        ? FluentIcons.eye_24_regular
-                        : FluentIcons.eye_off_24_regular)),
+                    child: Icon(
+                        authListener.resetPasswordHide
+                            ? FluentIcons.eye_24_regular
+                            : FluentIcons.eye_off_24_regular,
+                        color: AppColors.kGray3)),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide.none),
@@ -1068,9 +1058,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide.none),
                 hintText: "Confirm Password",
-                hintStyle: TextStyle(
-                  color: themeListener.isDarkMode ? Colors.grey : null,
-                )),
+                hintStyle: TextStyle(color: Colors.grey)),
             name: 'confirm-password',
           ),
           verticalSpaceSmall,
@@ -1082,7 +1070,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 return Text(
                   "Resend OTP in ${snapshot.data} seconds",
                   style: context.customTextTheme.text14W700
-                      .copyWith(color: AppColors.kBlack3),
+                      .copyWith(color: AppColors.kWhite),
                 );
               } else {
                 return TextButton.icon(
@@ -1165,12 +1153,30 @@ class _LoginScreenState extends State<LoginScreen> {
                 FilteringTextInputFormatter.digitsOnly,
               ],
               textInputAction: TextInputAction.next,
-              prefixIcon: const Icon(FluentIcons.call_24_regular,
-                  color: AppColors.kGray3),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(FluentIcons.call_24_regular,
+                        color: AppColors.kGray3),
+                    const SizedBox(width: 8),
+                    Text(
+                      "+973",
+                      style: context.customTextTheme.text14W400
+                          .copyWith(color: AppColors.kWhite),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(height: 20, width: 1, color: AppColors.kGray3),
+                    const SizedBox(width: 8),
+                  ],
+                ),
+              ),
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(),
-                FormBuilderValidators.phoneNumber(
-                  regex: RegExp(r'^[0-9]{10,15}$'),
+                FormBuilderValidators.match(
+                  RegExp(r'^[0-9]{8}$'),
+                  errorText: 'Enter valid Bahrain number',
                 ),
               ]),
             ),
