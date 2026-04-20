@@ -400,11 +400,11 @@ class OrderDetailsModel {
     for (var i = 0; i < orderDishes!.length; i++) {
       for (var j = 0; j < orderDishes![i].addons!.length; j++) {
         var addonPrice = double.parse(orderDishes![i].addons![j].price);
-        var parsedAddonPrice = addonPrice / 100;
+        var parsedAddonPrice = addonPrice /  AppConfig.instance.country.currencyDivisor;
         addonSubTotal = addonSubTotal + parsedAddonPrice;
       }
       var val = double.parse(orderDishes![i].price!);
-      var parsedVal = val / 100;
+      var parsedVal = val /  AppConfig.instance.country.currencyDivisor;
       var qty = double.parse(orderDishes![i].quantity!);
       var finalVal = parsedVal * qty;
       itemSubTotal = itemSubTotal + finalVal;
@@ -666,7 +666,7 @@ class OrderHistoryDishesDataModel {
       : addons!
           .map((aPrice) {
             final itemPrice = double.parse(aPrice.price);
-            final parsedItemPrice = itemPrice / 100;
+            final parsedItemPrice = itemPrice /  AppConfig.instance.country.currencyDivisor;
             return parsedItemPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces);
           })
           .toList()
@@ -674,7 +674,7 @@ class OrderHistoryDishesDataModel {
 
   double get formatItemTotal {
     final itemPrice = double.parse(price!);
-    final parsedItemPrice = itemPrice / 100;
+    final parsedItemPrice = itemPrice / AppConfig.instance.country.currencyDivisor;
     final itemQuantity = double.parse(quantity!);
     final itemTotal = parsedItemPrice * itemQuantity;
     return itemTotal;

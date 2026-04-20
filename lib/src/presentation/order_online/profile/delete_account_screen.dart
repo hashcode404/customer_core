@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/auth/auth_provider.dart';
 import 'package:customer_core/src/core/routes/routes.gr.dart';
@@ -74,7 +75,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
           WebViewWidget(controller: controller),
           if (loadingPercentage < 100)
             LinearProgressIndicator(
-              value: loadingPercentage / 100,
+              value: loadingPercentage /  AppConfig.instance.country.currencyDivisor,
               backgroundColor: Colors.grey[200],
               color: Theme.of(context).colorScheme.primary,
               minHeight: 3,

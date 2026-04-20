@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:flutter/foundation.dart';
 
 import 'add_product_cart_request_model.dart';
@@ -107,7 +108,7 @@ class CartDetailsModel {
         total += discount.toDouble();
       }
     }
-    final double totalDiscount = total / 100;
+    final double totalDiscount = total /  AppConfig.instance.country.currencyDivisor;
     return totalDiscount;
   }
 }

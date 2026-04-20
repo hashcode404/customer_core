@@ -80,7 +80,7 @@ class CartProvider extends ChangeNotifier with BaseController {
 
   double? get cartTotalPrice =>
       cartDetailsModel?.cartTotal?.cartTotalPrice != null
-          ? cartDetailsModel!.cartTotal!.cartTotalPrice! / 100
+          ? cartDetailsModel!.cartTotal!.cartTotalPrice! / AppConfig.instance.country.currencyDivisor
           : null;
 
   int get totalCartItems => cartItems.length;
@@ -757,7 +757,7 @@ class CartProvider extends ChangeNotifier with BaseController {
     final itemModifiersTotal = item.getModifiersTotal; //* newQty;
     final itemModifiersTotalInPaisa = itemModifiersTotal * 100;
     final totalItemPrice = newQty * itemProductPriceInPaisa;
-    final productTotalPriceFormatted = (totalItemPrice) / 100;
+    final productTotalPriceFormatted = (totalItemPrice) /  AppConfig.instance.country.currencyDivisor;
 
     newCartItems[index] = item.copyWith(
       cartID: locatedCartItem.cartID,
@@ -779,7 +779,7 @@ class CartProvider extends ChangeNotifier with BaseController {
     _cartDetailsModel = _cartDetailsModel!.copyWith(
       cartItems: newCartItems,
       cartTotal: _cartDetailsModel!.cartTotal!.copyWith(
-        cartTotalPriceDisplay: Utils.format(totalAmountInPaisa / 100),
+        cartTotalPriceDisplay: Utils.format(totalAmountInPaisa /  AppConfig.instance.country.currencyDivisor),
         cartTotalPrice: totalAmountInPaisa,
       ),
     );
@@ -853,7 +853,7 @@ class CartProvider extends ChangeNotifier with BaseController {
     final itemModifiersTotal = item.getModifiersTotal * newQty;
     final itemModifiersTotalInPaisa = itemModifiersTotal * 100;
     final totalItemPrice = newQty * itemProductPriceInPaisa;
-    final productTotalPriceFormatted = (totalItemPrice) / 100;
+    final productTotalPriceFormatted = (totalItemPrice) /  AppConfig.instance.country.currencyDivisor;
 
     newCartItems[index] = item.copyWith(
       cartID: locatedCartItem.cartID,
@@ -872,11 +872,11 @@ class CartProvider extends ChangeNotifier with BaseController {
     _cartDetailsModel = _cartDetailsModel!.copyWith(
       cartItems: newCartItems,
       cartTotal: _cartDetailsModel!.cartTotal!.copyWith(
-        cartTotalPriceDisplay: Utils.format(totalAmountInPaisa / 100),
+        cartTotalPriceDisplay: Utils.format(totalAmountInPaisa /  AppConfig.instance.country.currencyDivisor),
         cartTotalPrice: totalAmountInPaisa,
       ),
     );
-    //new cart value => totalAmountInPaisa / 100
+    //new cart value => totalAmountInPaisa /  AppConfig.instance.country.currencyDivisor
 
     //validatedCouponDetails => minSpend
 

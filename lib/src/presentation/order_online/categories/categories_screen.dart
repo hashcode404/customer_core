@@ -116,7 +116,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
   }
 
   // void _scrollToIndex(int index) {
-  //   double itemWidth = 110; // 100 width + 10 margin
+  //   double itemWidth = 110; / width + 10 margin
   //   double position = index * itemWidth;
 
   //   _categoryTabController.animateTo(
@@ -572,7 +572,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                 color: AppColors.kGray2,
               ),
               horizontalSpaceSmall,
-               Icon(Icons.tune_rounded,
+              Icon(Icons.tune_rounded,
                   color: Theme.of(context).colorScheme.primary),
             ],
           ),
