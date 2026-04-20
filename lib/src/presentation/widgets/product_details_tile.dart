@@ -294,8 +294,8 @@ class ProductDetailsTile extends StatelessWidget {
                           style: context.customTextTheme.text14W700.copyWith(
                             fontWeight: FontWeight.bold,
                             color: product.isAvailable == true
-                                ? AppColors.kBlack
-                                : Colors.grey,
+                                ? Theme.of(context).colorScheme.onSurface
+                                : Theme.of(context).disabledColor,
                           ),
                         ),
                       ),
@@ -419,7 +419,7 @@ class ProductDetailsTile extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5.0)),
                                 fixedSize: const Size(double.infinity, 30),
-                                side:  BorderSide(
+                                side: BorderSide(
                                     color:
                                         Theme.of(context).colorScheme.primary),
                               ),

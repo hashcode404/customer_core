@@ -9,9 +9,15 @@ import 'package:toastification/toastification.dart';
 
 class CustomerApp extends StatefulWidget {
   final AppConfig config;
-  final CustomerThemeOverride? themeOverride;
+  final CustomerLightThemeOverride? lightThemeOverride;
+  final CustomerDarkThemeOverride? darkThemeOverride;
 
-  const CustomerApp({super.key, required this.config, this.themeOverride});
+  const CustomerApp({
+    super.key,
+    required this.config,
+    this.lightThemeOverride,
+    this.darkThemeOverride,
+  });
 
   @override
   State<CustomerApp> createState() => _CustomerAppState();
@@ -51,19 +57,27 @@ class _CustomerAppState extends State<CustomerApp> {
     ThemeData finalLight = baseLight;
     ThemeData finalDark = baseDark;
 
-    if (widget.themeOverride != null) {
-      final override = widget.themeOverride!;
+    if (widget.lightThemeOverride != null) {
+      final override = widget.lightThemeOverride!;
 
       finalLight = baseLight.copyWith(
         colorScheme: baseLight.colorScheme.copyWith(
           primary: override.primary ?? baseLight.colorScheme.primary,
+          onSurface: override.onSurface ?? baseLight.colorScheme.onSurface,
         ),
+        disabledColor: override.disabledColor ?? baseLight.disabledColor,
       );
+    }
+
+    if (widget.darkThemeOverride != null) {
+      final override = widget.darkThemeOverride!;
 
       finalDark = baseDark.copyWith(
         colorScheme: baseDark.colorScheme.copyWith(
           primary: override.primary ?? baseDark.colorScheme.primary,
+          onSurface: override.onSurface ?? baseDark.colorScheme.onSurface,
         ),
+        disabledColor: override.disabledColor ?? baseDark.disabledColor,
       );
     }
 
@@ -72,7 +86,7 @@ class _CustomerAppState extends State<CustomerApp> {
       debugShowCheckedModeBanner: false,
       theme: finalLight,
       darkTheme: finalDark,
-      themeMode: ThemeMode.system, // change this 👈
+      themeMode: ThemeMode.dark, // change this 👈
       routerConfig: appRouter.config(),
       builder: (context, child) {
         return MediaQuery(

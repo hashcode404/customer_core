@@ -273,8 +273,12 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                                     .read<CartProvider>()
                                     .listCartItems();
                               },
-                              child: const Text("View Cart",
-                                  style: TextStyle(color: Colors.black)),
+                              child: Text(
+                                "View Cart",
+                                style: TextStyle(
+                                  color: Theme.of(context).colorScheme.onSurface,
+                                ),
+                              ),
                             ),
                             const SizedBox(width: 6),
                             IconButton(

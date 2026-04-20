@@ -14,7 +14,14 @@ void main() async {
   runApp(
     CustomerApp(
       config: config,
-      themeOverride: const CustomerThemeOverride(primary: Colors.red),
+      lightThemeOverride: const CustomerLightThemeOverride(
+          primary: Color(0xFFf0a70a),
+          onSurface: Colors.white,
+          disabledColor: Colors.grey),
+      darkThemeOverride: const CustomerDarkThemeOverride(
+          primary: Color(0xFFf0a70a),
+          onSurface: Colors.black,
+          disabledColor: Colors.grey),
     ),
   );
 }

@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
 
-class CustomerThemeOverride {
+class CustomerDarkThemeOverride {
   final Color? primary;
+  final Color? onSurface;
+  final Color? disabledColor;
 
-  const CustomerThemeOverride({this.primary});
+  const CustomerDarkThemeOverride({
+    this.primary,
+    this.onSurface,
+    this.disabledColor,
+  });
+}
+
+class CustomerLightThemeOverride {
+  final Color? primary;
+  final Color? onSurface;
+  final Color? disabledColor;
+
+  const CustomerLightThemeOverride({
+    this.primary,
+    this.onSurface,
+    this.disabledColor,
+  });
 }

@@ -190,9 +190,9 @@ class _QtyCounterButton2State extends State<QtyCounterButton2> {
                   border: Border.all(
                     color: AppColors.kGray.withOpacity(0.15),
                   )),
-              child: const Icon(
+              child: Icon(
                 Icons.remove_rounded,
-                color: AppColors.kBlack,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ),
@@ -213,9 +213,9 @@ class _QtyCounterButton2State extends State<QtyCounterButton2> {
                 color: Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.add_rounded,
-                color: AppColors.kBlack,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           )

@@ -105,7 +105,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                         },
                         style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                            side:  BorderSide(
+                            side: BorderSide(
                                 color: Theme.of(context).colorScheme.primary),
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -172,12 +172,15 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                     child: Padding(
                         padding: const EdgeInsets.only(bottom: 0),
                         child: Column(children: [
-                          const TabBar(
-                            tabs: [
+                          TabBar(
+                            tabs: const [
                               Tab(text: "Active Orders"),
                               Tab(text: "History"),
                             ],
                             dividerColor: Colors.transparent,
+                            labelColor: Theme.of(context).colorScheme.primary,
+                            unselectedLabelColor:
+                                Theme.of(context).disabledColor,
                           ),
                           Expanded(
                               child: TabBarView(

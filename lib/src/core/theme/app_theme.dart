@@ -91,17 +91,18 @@ ThemeData appLightTheme(BuildContext context) {
       iconTheme: IconThemeData(color: AppColors.kBlack2),
     ),
     drawerTheme: DrawerThemeData(
-        backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1)),
+        backgroundColor:
+            Theme.of(context).colorScheme.primary.withOpacity(0.1)),
     iconTheme: const IconThemeData(
       color: AppColors.kBlack, // light mode
     ),
-    colorScheme:  ColorScheme.light(
+    colorScheme: ColorScheme.light(
       primary: Theme.of(context).colorScheme.primary,
       secondary: AppColors.kBlack2,
       surface: AppColors.kWhite,
       background: AppColors.kLightWhite,
       onPrimary: AppColors.kWhite,
-      onSurface: AppColors.kBlack2,
+      onSurface: Theme.of(context).colorScheme.onSurface,
       onBackground: AppColors.kBlack2,
     ),
     textTheme: textTheme,
@@ -115,9 +116,11 @@ ThemeData appLightTheme(BuildContext context) {
         side: const BorderSide(color: AppColors.kLightGray),
       ),
     ),
-    filledButtonTheme:  FilledButtonThemeData(
+    disabledColor: Theme.of(context).disabledColor,
+    filledButtonTheme: FilledButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
+        backgroundColor:
+            WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
         foregroundColor: const WidgetStatePropertyAll(AppColors.kWhite),
       ),
     ),
@@ -153,13 +156,13 @@ ThemeData appDarkTheme(BuildContext context) {
     iconTheme: const IconThemeData(
       color: AppColors.kBlack, // light mode
     ),
-    colorScheme:  ColorScheme.dark(
+    colorScheme: ColorScheme.dark(
       primary: Theme.of(context).colorScheme.primary,
       secondary: AppColors.kLightGray,
       surface: const Color(0xFF1E1E1E),
       background: AppColors.kDarkBg,
       onPrimary: AppColors.kWhite,
-      onSurface: AppColors.kWhite,
+      onSurface: Theme.of(context).colorScheme.onSurface,
       onBackground: AppColors.kWhite,
     ),
     textTheme: textTheme,
@@ -173,9 +176,11 @@ ThemeData appDarkTheme(BuildContext context) {
         side: const BorderSide(color: Colors.grey),
       ),
     ),
-    filledButtonTheme:  FilledButtonThemeData(
+    disabledColor: Theme.of(context).disabledColor,
+    filledButtonTheme: FilledButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
+        backgroundColor:
+            WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
         foregroundColor: const WidgetStatePropertyAll(AppColors.kWhite),
       ),
     ),

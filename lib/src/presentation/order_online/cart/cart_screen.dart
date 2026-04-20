@@ -495,7 +495,10 @@ class _CartScreenState extends State<CartScreen>
                                         Text("Checkout",
                                             style: context
                                                 .customTextTheme.text14W700
-                                                .copyWith(color: Colors.black)),
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .onSurface)),
                                       ],
                                     )),
                               ),
@@ -592,16 +595,20 @@ class _CartScreenState extends State<CartScreen>
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            const Icon(
+                                            Icon(
                                               FluentIcons.check_24_regular,
-                                              color: Colors.black,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSurface,
                                             ),
                                             horizontalSpaceSmall,
                                             Text("Confirm",
                                                 style: context
                                                     .customTextTheme.text14W700
                                                     .copyWith(
-                                                        color: Colors.black)),
+                                                        color: Theme.of(context)
+                                                            .colorScheme
+                                                            .onSurface)),
                                           ],
                                         )),
                                   ),
@@ -728,9 +735,11 @@ class _CartScreenState extends State<CartScreen>
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   FluentIcons.check_24_regular,
-                                                  color: Colors.black,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onSurface,
                                                 ),
                                                 horizontalSpaceSmall,
                                                 Text("Pay",
@@ -738,8 +747,10 @@ class _CartScreenState extends State<CartScreen>
                                                         .customTextTheme
                                                         .text14W700
                                                         .copyWith(
-                                                            color:
-                                                                Colors.black)),
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .colorScheme
+                                                                .onSurface)),
                                               ],
                                             ),
                                     ),
@@ -759,7 +770,7 @@ class _CartScreenState extends State<CartScreen>
       visible: false,
       child: Container(
         height: 82.0,
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary,
         ),
         child: Padding(

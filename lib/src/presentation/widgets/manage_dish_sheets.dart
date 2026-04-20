@@ -519,6 +519,13 @@ class _FoodVariationSection extends GetProviderView<CartProvider> {
             //         themeListener.isDarkMode ? Colors.white : AppColors.kBlack,
             //   ),
             // ),
+            fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+              if (states.contains(WidgetState.selected)) {
+                return Theme.of(context).colorScheme.primary; // selected color
+              }
+              return Colors.grey; // 👈 unselected color
+            }),
+
             controlAffinity: ListTileControlAffinity.trailing,
             onChanged: (_) => cartProvider.onChangeVariation(variation),
             visualDensity: VisualDensity.compact,
@@ -615,6 +622,7 @@ class _FoodAddonsSection extends GetProviderView<CartProvider> {
                             : AppColors.kBlack,
                       ),
                     ),
+                    side: const BorderSide(color: Colors.grey),
                     controlAffinity: ListTileControlAffinity.trailing,
                     onChanged: (_) =>
                         cartProvider.onSelectMasterAddon(modifier, option),
@@ -654,6 +662,8 @@ class _FoodAddonsSection extends GetProviderView<CartProvider> {
                             : AppColors.kBlack,
                       ),
                     ),
+                    side: const BorderSide(color: Colors.grey),
+
                     controlAffinity: ListTileControlAffinity.trailing,
                     onChanged: (_) =>
                         cartProvider.onSelectAddon(modifier, option),
@@ -684,6 +694,7 @@ class AddToCartButton extends GetProviderView<CartProvider> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       onPressed: product.isAvailable == false
           ? null
@@ -711,13 +722,16 @@ class AddToCartButton extends GetProviderView<CartProvider> {
             },
       icon: cartListener.addItemLoading
           ? null
-          : const Icon(FluentIcons.cart_24_regular, color: AppColors.kBlack),
+          : Icon(
+              FluentIcons.cart_24_regular,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
       label: !cartListener.addItemLoading
           ? Text(
               product.isAvailable == false ? 'Not Available' : 'Add To Cart',
-              style: TextStyle(color: AppColors.kBlack),
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
             )
-          : showButtonProgress(Colors.black),
+          : showButtonProgress(Theme.of(context).colorScheme.onSurface),
     );
     // return SwipeButton(
     //   thumb: const Icon(
