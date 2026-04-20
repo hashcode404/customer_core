@@ -40,8 +40,8 @@ class PaymentProvider extends ChangeNotifier with BaseController {
       notifyListeners();
 
       final response = await checkoutRepo.createPaymentIntent(
-        discountAmount: (discountAmount * 100).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
-        deliveryCharges: (deliveryCharges * 100).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
+        discountAmount: (discountAmount *  AppConfig.instance.country.currencyDivisor).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
+        deliveryCharges: (deliveryCharges * AppConfig.instance.country.currencyDivisor).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
       );
 
       response.fold((exception) {

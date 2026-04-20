@@ -753,9 +753,9 @@ class CartProvider extends ChangeNotifier with BaseController {
     //     master_addon_apllied: updatedAppliedMasterAddons,
     //     addon_apllied: updatedAppliedAddons);
     final itemProductPrice = item.product_price?.replaceAll("£", "") ?? "0.00";
-    final itemProductPriceInPaisa = double.parse(itemProductPrice) * 100;
+    final itemProductPriceInPaisa = double.parse(itemProductPrice) * AppConfig.instance.country.currencyDivisor;
     final itemModifiersTotal = item.getModifiersTotal; //* newQty;
-    final itemModifiersTotalInPaisa = itemModifiersTotal * 100;
+    final itemModifiersTotalInPaisa = itemModifiersTotal *  AppConfig.instance.country.currencyDivisor;
     final totalItemPrice = newQty * itemProductPriceInPaisa;
     final productTotalPriceFormatted = (totalItemPrice) /  AppConfig.instance.country.currencyDivisor;
 
@@ -849,9 +849,9 @@ class CartProvider extends ChangeNotifier with BaseController {
     //     master_addon_apllied: updatedAppliedMasterAddons,
     //     addon_apllied: updatedAppliedAddons);
     final itemProductPrice = item.product_price?.replaceAll("£", "") ?? "0.00";
-    final itemProductPriceInPaisa = double.parse(itemProductPrice) * 100;
+    final itemProductPriceInPaisa = double.parse(itemProductPrice) *  AppConfig.instance.country.currencyDivisor;
     final itemModifiersTotal = item.getModifiersTotal * newQty;
-    final itemModifiersTotalInPaisa = itemModifiersTotal * 100;
+    final itemModifiersTotalInPaisa = itemModifiersTotal * AppConfig.instance.country.currencyDivisor;
     final totalItemPrice = newQty * itemProductPriceInPaisa;
     final productTotalPriceFormatted = (totalItemPrice) /  AppConfig.instance.country.currencyDivisor;
 
@@ -1097,7 +1097,7 @@ class CartProvider extends ChangeNotifier with BaseController {
       final data = CheckOutDataModel(
         shopID: AppIdentifiers.kShopId,
         discount: totalCalculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces),
-        amount: (totalAmount * 100).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
+        amount: (totalAmount *  AppConfig.instance.country.currencyDivisor).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
         couponAmount: validatedCouponDetails?.coupenData == null
             ? ''
             : offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces),
@@ -1110,7 +1110,7 @@ class CartProvider extends ChangeNotifier with BaseController {
             : 'store_pickup',
         approxDeliveryTime: minWaitingTime ?? '',
         deliveryCharge: selectedOrderType == OrderType.delivery
-            ? (calculatedDeliveryFee * 100).toStringAsFixed(AppConfig.instance.country.decimalPlaces)
+            ? (calculatedDeliveryFee *  AppConfig.instance.country.currencyDivisor).toStringAsFixed(AppConfig.instance.country.decimalPlaces)
             : '',
         takeawayTime: selectedOrderType == OrderType.takeaway
             ? DateTimeUtils.convertDateTime12HrTo24Hr(selectedPickUpTime!)
