@@ -13,32 +13,70 @@ import 'package:flutter/material.dart';
 import '../../../core/routes/routes.gr.dart';
 
 @RoutePage()
-class SuccessScreen extends StatelessWidget {
+class SuccessScreen extends StatefulWidget {
   const SuccessScreen({super.key});
+
+  @override
+  State<SuccessScreen> createState() => _SuccessScreenState();
+}
+
+class _SuccessScreenState extends State<SuccessScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _opacityAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat(reverse: true);
+
+    _scaleAnimation = Tween<double>(begin: 0.9, end: 1.1).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+
+    _opacityAnimation = Tween<double>(begin: 0.7, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  Widget _buildAnimatedIcon() {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return Transform.scale(
+          scale: _scaleAnimation.value,
+          child: Opacity(
+            opacity: _opacityAnimation.value,
+            child: child,
+          ),
+        );
+      },
+      child: const Icon(
+        Icons.check_circle,
+        size: 150,
+        color: Colors.green,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: SizedBox(
-              height: 250,
-              child: Assets.lib.assets.lottie.successCircleCheck.lottie(
-                  delegates: LottieDelegates(values: [
-                ValueDelegate.color(
-                  ['**'],
-                  value: Theme.of(context).colorScheme.primary,
-                ),
-                ValueDelegate.strokeColor(
-                  ['**'],
-                  value: AppColors.kWhite,
-                ),
-              ])),
-            ),
-          ),
+          Center(child: _buildAnimatedIcon()),
           verticalSpaceRegular,
           Text(
             'Order Created Successfully',
@@ -57,28 +95,10 @@ class SuccessScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                    style: ButtonStyle(
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      side:  WidgetStatePropertyAll(
-                        BorderSide(
-                            color: Theme.of(context).colorScheme.primary),
-                      ),
-                      foregroundColor:  WidgetStatePropertyAll(
-                        Theme.of(context).colorScheme.primary,
-                      ),
-                      padding: const WidgetStatePropertyAll(
-                        EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                      ),
-                    ),
                     onPressed: () {
                       context.router.replaceAll([
                         const OrderOnlineScreenRoute(),
@@ -96,23 +116,6 @@ class SuccessScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: FilledButton(
-                    style: ButtonStyle(
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      side:  WidgetStatePropertyAll(
-                        BorderSide(
-                            color: Theme.of(context).colorScheme.primary),
-                      ),
-                      foregroundColor: const WidgetStatePropertyAll(
-                        AppColors.kBlack,
-                      ),
-                      padding: const WidgetStatePropertyAll(
-                        EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                      ),
-                    ),
                     onPressed: () {
                       context.router.replaceAll([
                         const OrderOnlineScreenRoute(),

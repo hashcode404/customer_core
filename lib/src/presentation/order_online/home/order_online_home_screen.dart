@@ -144,10 +144,12 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: RefreshIndicator.adaptive(
             onRefresh: () async {
-              productProvider.onChangeHasMoreProducts(true);
+              // productProvider.onChangeHasMoreProducts(true);
 
-              await productProvider.getFeaturedPopularProducts();
-              await cartProvider.listCartItems();
+              Future.wait([
+                productProvider.getFeaturedPopularProducts(),
+                cartProvider.listCartItems(),
+              ]);
             },
             child: SafeArea(
               child: CustomScrollView(
@@ -186,7 +188,8 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
                     actions: [
                       InkWell(
                         onTap: () {
-                          context.router.push(const NotificationScreenRoute());
+                          // context.router.push(const NotificationScreenRoute());
+                          context.router.push(const SuccessScreenRoute());
                         },
                         child: Badge.count(
                           count: notificationCount,
@@ -1286,7 +1289,7 @@ class __SearchResultsState extends State<_SearchResults> {
     return Consumer<SearchProvider>(
       builder: (context, value, child) {
         if (value.isSearchLoading) {
-          return  Center(
+          return Center(
               child: CircularProgressIndicator(
             color: Theme.of(context).colorScheme.primary,
           ));
