@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:customer_core/src/application/shop/shop_provider.dart';
@@ -580,7 +581,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                             label: "Delivery Charge",
                             value: cartListener.calculatedDeliveryFee == 0.00
                                 ? 'Free'
-                                : "£${cartListener.calculatedDeliveryFee.toStringAsFixed(2)}",
+                                : "£${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                             style: context.customTextTheme.text16W600
                                 .copyWith(color: context.customTextTheme.color))
                         : const SizedBox.shrink(),
@@ -588,20 +589,20 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                     _SummaryRow(
                         label: "Offer Discount",
                         value:
-                            "-£${cartListener.cartDetailsModel?.getOfferDiscount.toStringAsFixed(2)}",
+                            "-£${cartListener.cartDetailsModel?.getOfferDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                         style: context.customTextTheme.text16W600
                             .copyWith(color: context.customTextTheme.color)),
                     verticalSpaceTiny,
                     _SummaryRow(
                         label: "Discount",
                         value:
-                            "-£${cartListener.calculatedDiscount.toStringAsFixed(2)}",
+                            "-£${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                         style: context.customTextTheme.text16W600
                             .copyWith(color: context.customTextTheme.color)),
                     verticalSpaceTiny,
                     // _SummaryRow(
                     //   label: "Coupon Discount",
-                    //   value: "-£${cartListener.offerDiscount.toStringAsFixed(2)}",
+                    //   value: "-£${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                     // ),
                     // const Divider(height: 20.0),
                     // _SummaryRow(

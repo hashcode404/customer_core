@@ -1,4 +1,5 @@
 import 'package:async/async.dart' show AsyncMemoizer;
+import 'package:customer_core/customer_core.dart';
 import 'package:dartx/dartx.dart';
 import 'dart:developer';
 
@@ -144,7 +145,7 @@ class CartProvider extends ChangeNotifier with BaseController {
               (selectedVariationPrice +
                   totalAddonsPrice +
                   totalMasterAddonsPrice))
-          .toStringAsFixed(2),
+          .toStringAsFixed(AppConfig.instance.country.decimalPlaces),
     );
   }
 
@@ -725,7 +726,7 @@ class CartProvider extends ChangeNotifier with BaseController {
         final updatedPrice = price * newQty;
 
         return option.copyWith(
-          price: "£ ${updatedPrice.toStringAsFixed(2)}",
+          price: "£ ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
         );
       }).toList();
 
@@ -742,7 +743,7 @@ class CartProvider extends ChangeNotifier with BaseController {
         final updatedPrice = price * newQty;
 
         return option.copyWith(
-          price: "£ ${updatedPrice.toStringAsFixed(2)}",
+          price: "£ ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
         );
       }).toList();
 
@@ -764,7 +765,7 @@ class CartProvider extends ChangeNotifier with BaseController {
       // master_addon_apllied: updatedAppliedMasterAddons,
       // addon_apllied: updatedAppliedAddons,
       total: (totalItemPrice + itemModifiersTotalInPaisa).toInt(),
-      product_total_price: "£${productTotalPriceFormatted.toStringAsFixed(2)}",
+      product_total_price: "£${productTotalPriceFormatted.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
     );
 
     final totalAmountInPaisa = newCartItems.fold<int>(
@@ -820,7 +821,7 @@ class CartProvider extends ChangeNotifier with BaseController {
         final updatedPrice = price * newQty;
 
         return option.copyWith(
-          price: "£ ${updatedPrice.toStringAsFixed(2)}",
+          price: "£ ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
         );
       }).toList();
 
@@ -837,7 +838,7 @@ class CartProvider extends ChangeNotifier with BaseController {
         final updatedPrice = price * newQty;
 
         return option.copyWith(
-          price: "£ ${updatedPrice.toStringAsFixed(2)}",
+          price: "£ ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
         );
       }).toList();
 
@@ -860,7 +861,7 @@ class CartProvider extends ChangeNotifier with BaseController {
       // master_addon_apllied: updatedAppliedMasterAddons,
       // addon_apllied: updatedAppliedAddons,
       total: (totalItemPrice + itemModifiersTotalInPaisa).toInt(),
-      product_total_price: "£ ${productTotalPriceFormatted.toStringAsFixed(2)}",
+      product_total_price: "£ ${productTotalPriceFormatted.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
     );
 
     final totalAmountInPaisa = newCartItems.fold<int>(
@@ -1095,11 +1096,11 @@ class CartProvider extends ChangeNotifier with BaseController {
 
       final data = CheckOutDataModel(
         shopID: AppIdentifiers.kShopId,
-        discount: totalCalculatedDiscount.toStringAsFixed(2),
-        amount: (totalAmount * 100).toStringAsFixed(0),
+        discount: totalCalculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces),
+        amount: (totalAmount * 100).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
         couponAmount: validatedCouponDetails?.coupenData == null
             ? ''
-            : offerDiscount.toStringAsFixed(2),
+            : offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces),
         couponCode: validatedCouponDetails?.coupenCode ?? '',
         couponType: validatedCouponDetails?.coupenData?.coupenType ?? '',
         couponValue: validatedCouponDetails?.coupenData?.coupenAmount ?? '',
@@ -1109,7 +1110,7 @@ class CartProvider extends ChangeNotifier with BaseController {
             : 'store_pickup',
         approxDeliveryTime: minWaitingTime ?? '',
         deliveryCharge: selectedOrderType == OrderType.delivery
-            ? (calculatedDeliveryFee * 100).toStringAsFixed(0)
+            ? (calculatedDeliveryFee * 100).toStringAsFixed(AppConfig.instance.country.decimalPlaces)
             : '',
         takeawayTime: selectedOrderType == OrderType.takeaway
             ? DateTimeUtils.convertDateTime12HrTo24Hr(selectedPickUpTime!)

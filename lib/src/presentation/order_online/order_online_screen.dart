@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:flutter/services.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:customer_core/src/application/products/products_provider.dart';
@@ -243,7 +244,7 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                                         )),
                                 Text(
                                   cartListener.totalCartItems > 0
-                                      ? '£${cartListener.cartTotalPrice!.toStringAsFixed(2)} | ${cartListener.totalCartItems} item(s)'
+                                      ? '£${cartListener.cartTotalPrice!.toStringAsFixed(AppConfig.instance.country.decimalPlaces)} | ${cartListener.totalCartItems} item(s)'
                                       : '£0.00',
                                   style: Theme.of(context)
                                       .textTheme

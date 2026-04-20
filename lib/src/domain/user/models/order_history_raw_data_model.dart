@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:flutter/foundation.dart';
 
 class OrderHistoryDataModel {
@@ -386,7 +387,7 @@ class OrderDetailsModel {
       var val = double.parse(discount!);
       var couponAmountVal = double.parse(couponAmount!);
       var result = val - couponAmountVal;
-      return result.toStringAsFixed(2);
+      return result.toStringAsFixed(AppConfig.instance.country.decimalPlaces);
     }
     return "0.00";
   }
@@ -666,7 +667,7 @@ class OrderHistoryDishesDataModel {
           .map((aPrice) {
             final itemPrice = double.parse(aPrice.price);
             final parsedItemPrice = itemPrice / 100;
-            return parsedItemPrice.toStringAsFixed(2);
+            return parsedItemPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces);
           })
           .toList()
           .join('\n+ £ ');

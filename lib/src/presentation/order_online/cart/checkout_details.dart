@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:dartx/dartx.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -462,7 +463,7 @@ class CheckoutDetailsScreen extends StatelessWidget {
                         ),
                         value: cartListener.calculatedDeliveryFee == 0.00
                             ? 'Free'
-                            : "£${cartListener.calculatedDeliveryFee.toStringAsFixed(2)}",
+                            : "£${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                       ),
                 verticalSpaceTiny,
                 _SummaryRow(
@@ -471,13 +472,13 @@ class CheckoutDetailsScreen extends StatelessWidget {
                     color: isDark ? Colors.white : null,
                   ),
                   value:
-                      "-£${cartListener.calculatedDiscount.toStringAsFixed(2)}",
+                      "-£${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                 ),
 
                 verticalSpaceTiny,
                 // _SummaryRow(
                 //   label: "Coupon Discount",
-                //   value: "-£${cartListener.offerDiscount.toStringAsFixed(2)}",
+                //   value: "-£${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                 // ),
               ],
             ),

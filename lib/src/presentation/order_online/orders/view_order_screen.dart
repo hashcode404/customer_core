@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/order/order_provider.dart';
@@ -200,7 +201,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
                                   maxLines: 1,
                                   softWrap: true,
                                   overflow: TextOverflow.ellipsis,
-                                  "£${dish.formatItemTotal.toStringAsFixed(2)}",
+                                  "£${dish.formatItemTotal.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                                   style: context.customTextTheme.text16W700
                                       .copyWith(
                                     color: context.customTextTheme.color,
@@ -266,7 +267,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
             verticalSpaceSmall,
             _SummaryRow(
               label: "Sub Total",
-              value: "£${orderDetails.formatSubTotal.toStringAsFixed(2)}",
+              value: "£${orderDetails.formatSubTotal.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
               style: context.customTextTheme.text16W600
                   .copyWith(color: context.customTextTheme.color),
             ),

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:customer_core/src/application/core/base_controller.dart';
@@ -39,8 +40,8 @@ class PaymentProvider extends ChangeNotifier with BaseController {
       notifyListeners();
 
       final response = await checkoutRepo.createPaymentIntent(
-        discountAmount: (discountAmount * 100).toStringAsFixed(0),
-        deliveryCharges: (deliveryCharges * 100).toStringAsFixed(0),
+        discountAmount: (discountAmount * 100).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
+        deliveryCharges: (deliveryCharges * 100).toStringAsFixed(AppConfig.instance.country.decimalPlaces),
       );
 
       response.fold((exception) {

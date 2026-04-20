@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:dartx/dartx.dart';
 
@@ -525,7 +526,7 @@ class _CartScreenState extends State<CartScreen>
                                                     : null),
                                       ),
                                       Text(
-                                        "£ ${cartListener.totalAmount.toStringAsFixed(2)}",
+                                        "£ ${cartListener.totalAmount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                                         style: context
                                             .customTextTheme.text20W400
                                             .copyWith(
@@ -635,7 +636,7 @@ class _CartScreenState extends State<CartScreen>
                                       ),
                                       Text(
                                         cartListener.totalAmount
-                                            .toStringAsFixed(2),
+                                            .toStringAsFixed(AppConfig.instance.country.decimalPlaces),
                                         style: context
                                             .customTextTheme.text20W400
                                             .copyWith(

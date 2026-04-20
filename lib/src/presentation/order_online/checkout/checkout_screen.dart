@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:customer_core/src/application/shop/shop_provider.dart';
 import 'package:dartx/dartx.dart';
@@ -372,25 +373,25 @@ class CheckoutScreen extends GetProviderView<CartProvider> {
                                 ? "Takeaway Charge"
                                 : "Delivery Charge",
                         value:
-                            "£${cartListener.calculatedDeliveryFee.toStringAsFixed(2)}",
+                            "£${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                       ),
                       verticalSpaceTiny,
                       _SummaryRow(
                         label: "Discount",
                         value:
-                            "-£${cartListener.calculatedDiscount.toStringAsFixed(2)}",
+                            "-£${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                       ),
                       verticalSpaceTiny,
                       _SummaryRow(
                         label: "Coupon Discount",
                         value:
-                            "-£${cartListener.offerDiscount.toStringAsFixed(2)}",
+                            "-£${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                       ),
                       const Divider(height: 20.0),
                       _SummaryRow(
                         label: "To Pay",
                         value:
-                            "£${cartListener.totalAmount.toStringAsFixed(2)}",
+                            "£${cartListener.totalAmount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                         style: context.customTextTheme.text18W600,
                       ),
                     ],
