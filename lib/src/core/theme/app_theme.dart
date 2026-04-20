@@ -89,6 +89,11 @@ ThemeData appLightTheme(BuildContext context) {
       surfaceTintColor: AppColors.kLightWhite,
       elevation: 0,
       iconTheme: IconThemeData(color: AppColors.kBlack2),
+      titleTextStyle: TextStyle(
+        color: AppColors.kBlack2,
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+      ),
     ),
     drawerTheme: DrawerThemeData(
         backgroundColor:
@@ -117,6 +122,14 @@ ThemeData appLightTheme(BuildContext context) {
       ),
     ),
     disabledColor: Theme.of(context).disabledColor,
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return Theme.of(context).colorScheme.primary; // selected color
+        }
+        return Colors.grey; // 👈 unselected color
+      }),
+    ),
     filledButtonTheme: FilledButtonThemeData(
       style: ButtonStyle(
         backgroundColor:
@@ -151,6 +164,11 @@ ThemeData appDarkTheme(BuildContext context) {
       surfaceTintColor: AppColors.kDarkBg,
       elevation: 0,
       iconTheme: IconThemeData(color: AppColors.kWhite),
+      titleTextStyle: TextStyle(
+        color: AppColors.kWhite,
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+      ),
     ),
     drawerTheme: const DrawerThemeData(backgroundColor: AppColors.kDarkBg),
     iconTheme: const IconThemeData(
@@ -167,6 +185,14 @@ ThemeData appDarkTheme(BuildContext context) {
     ),
     textTheme: textTheme,
     inputDecorationTheme: inputTheme,
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return Theme.of(context).colorScheme.primary; // selected color
+        }
+        return Colors.grey; // 👈 unselected color
+      }),
+    ),
     cardTheme: CardTheme(
       color: const Color(0xFF1E1E1E),
       elevation: 0,

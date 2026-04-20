@@ -398,7 +398,8 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                             errorBorder: outlinedBorder,
                             focusedErrorBorder: outlinedBorder,
                             hintText: "Write your notes here",
-                            hintStyle: context.customTextTheme.text16W400,
+                            hintStyle: context.customTextTheme.text16W400
+                                .copyWith(color: Colors.grey),
                           ),
                         ),
                       ),
@@ -904,7 +905,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                             return AppColors.kWhite;
                           },
                         ),
-                        backgroundColor: !themeListener.isDarkMode
+                        backgroundColor: themeListener.isDarkMode
                             ? AppColors.kCardBackground2
                             : AppColors.kLightWhite2,
                         dialBackgroundColor: AppColors.kBlack,
@@ -1180,7 +1181,13 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                                     address.userFullname,
                                                     style: context
                                                         .customTextTheme
-                                                        .text18W600,
+                                                        .text18W600
+                                                        .copyWith(
+                                                      color: themeListener
+                                                              .isDarkMode
+                                                          ? Colors.white
+                                                          : Colors.black,
+                                                    ),
                                                   ),
                                                   subtitle: Text(
                                                     Utils.removeExtraSpaces(
@@ -1190,8 +1197,11 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                                         .customTextTheme
                                                         .text16W400
                                                         .copyWith(
-                                                            color: AppColors
-                                                                .kGray),
+                                                      color: themeListener
+                                                              .isDarkMode
+                                                          ? Colors.white
+                                                          : Colors.black,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -1285,7 +1295,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                                                                       Navigator.of(context).pop();
                                                                                     },
                                                                               style: OutlinedButton.styleFrom(
-                                                                                side:  BorderSide(
+                                                                                side: BorderSide(
                                                                                   color: Theme.of(context).colorScheme.primary,
                                                                                 ),
                                                                               ),
@@ -1293,7 +1303,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                                                             ),
                                                                             const SizedBox(width: 10),
                                                                             ElevatedButton(
-                                                                              style:  ButtonStyle(
+                                                                              style: ButtonStyle(
                                                                                 backgroundColor: WidgetStatePropertyAll(
                                                                                   Theme.of(context).colorScheme.primary,
                                                                                 ),
@@ -1398,7 +1408,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
 
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
-                                      side:  BorderSide(
+                                      side: BorderSide(
                                           color: Theme.of(context)
                                               .colorScheme
                                               .primary)),
@@ -1418,6 +1428,10 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                     userListener.userAddressList.isNotEmpty,
                                 child: Expanded(
                                   child: FilledButton(
+                                    style: FilledButton.styleFrom(
+                                      backgroundColor:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
                                     onPressed: cartListener
                                             .deliveryOrTakeAwayChargeCalculating
                                         ? null
@@ -1438,7 +1452,10 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                         : Text('Apply',
                                             style: context
                                                 .customTextTheme.text14W600
-                                                .copyWith(color: Colors.black)),
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .onSurface)),
                                   ),
                                 ),
                               ),

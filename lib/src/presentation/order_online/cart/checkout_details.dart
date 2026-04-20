@@ -35,9 +35,12 @@ class CheckoutDetailsScreen extends StatelessWidget {
                 verticalSpaceRegular,
                 ListTile(
                   tileColor: isDark ? AppColors.kCardBackground2 : Colors.white,
-                  leading: const Icon(FluentIcons.cart_24_regular),
-                  trailing: const Icon(FluentIcons.chevron_right_24_regular),
+                  leading: Icon(FluentIcons.cart_24_regular,
+                      color: isDark ? Colors.white : Colors.black),
+                  trailing: Icon(FluentIcons.chevron_right_24_regular,
+                      color: isDark ? Colors.white : Colors.black),
                   title: Text("${cartListener.cartItems.length} Item(s)"),
+                  textColor: isDark ? Colors.white : Colors.black,
                   // subtitle: const Text("**** **** **** 4242"),
                   shape: RoundedRectangleBorder(
                       side: BorderSide(

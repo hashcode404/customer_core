@@ -25,40 +25,36 @@ class NotificationPreferenceScreen extends GetProviderView<UserProvider> {
           : Column(
               children: [
                 verticalSpaceSmall,
-                _buildTile(
-                  userLisenter.transactionalUserConsent,
-                  value: userLisenter.isTransactionalConsentChanged,
-                  onChanged: (val) {
-                    if (!val) {
-                      AlertDialogs.showInfo(
-                          'Needed for order updates and account-related messages');
-                      return;
-                    }
-                    userProvider.onChangeTransactionalConsentChanged();
-                  },
-                  context: context
-                ),
+                _buildTile(userLisenter.transactionalUserConsent,
+                    value: userLisenter.isTransactionalConsentChanged,
+                    onChanged: (val) {
+                  if (!val) {
+                    AlertDialogs.showInfo(
+                        'Needed for order updates and account-related messages');
+                    return;
+                  }
+                  userProvider.onChangeTransactionalConsentChanged();
+                }, context: context),
                 verticalSpaceRegular,
-                _buildTile(
-                  userLisenter.promotionalUserConsent,
-                  value: userLisenter.isPromotionalConsentChanged,
-                  onChanged: (_) =>
-                      userProvider.onChangePromotionalConsentChanged(),
-                      context: context
-                ),
+                _buildTile(userLisenter.promotionalUserConsent,
+                    value: userLisenter.isPromotionalConsentChanged,
+                    onChanged: (_) =>
+                        userProvider.onChangePromotionalConsentChanged(),
+                    context: context),
                 verticalSpaceRegular,
-                _buildTile(
-                
-                  userLisenter.newsLetterUserConsent,
-                  value: userLisenter.isNewsletterConsentChanged,
-                  onChanged: (_) =>
-                      userProvider.onChangeNewsLetterConsentChanged(),
-                      context: context
-                ),
+                _buildTile(userLisenter.newsLetterUserConsent,
+                    value: userLisenter.isNewsletterConsentChanged,
+                    onChanged: (_) =>
+                        userProvider.onChangeNewsLetterConsentChanged(),
+                    context: context),
                 verticalSpaceRegular,
                 SizedBox(
                   width: context.screenWidth * 0.3,
                   child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Theme.of(context).colorScheme.onSurface,
+                    ),
                     onPressed: () async {
                       await userProvider.saveUserConsent().then(
                         (value) {
@@ -79,7 +75,9 @@ class NotificationPreferenceScreen extends GetProviderView<UserProvider> {
   }
 
   Widget _buildTile(UserConsentSubDataModel? consent,
-      {required bool value, required void Function(bool)? onChanged, required BuildContext context}) {
+      {required bool value,
+      required void Function(bool)? onChanged,
+      required BuildContext context}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Column(

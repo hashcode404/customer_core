@@ -284,7 +284,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
   }
 
   Widget _buildDeleteAccount(BuildContext context) {
-    context.read<AuthProvider>();
+    final themeListener = context.watch<ThemeProvider>();
 
     return ListTile(
       dense: true,
@@ -299,7 +299,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
       ),
       title: Text(
         'Delete Account',
-        style: context.customTextTheme.text14W500,
+        style: context.customTextTheme.text14W500.copyWith(
+          color: themeListener.isDarkMode ? Colors.white : Colors.black,
+        ),
       ),
     );
   }
@@ -343,7 +345,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
       ),
       title: Text(
         'Active Orders',
-        style: context.customTextTheme.text14W500,
+        style: context.customTextTheme.text14W500.copyWith(
+          color: themeListener.isDarkMode ? Colors.white : Colors.black,
+        ),
       ),
     );
   }
@@ -484,6 +488,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
   }
 
   Widget _buildUpdateAddress(BuildContext context) {
+    final themeListener = context.watch<ThemeProvider>();
     return ListTile(
       dense: true,
       onTap: () async {
@@ -496,7 +501,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
       ),
       title: Text(
         'Update Address',
-        style: context.customTextTheme.text14W500,
+        style: context.customTextTheme.text14W500.copyWith(
+          color: themeListener.isDarkMode ? Colors.white : Colors.black,
+        ),
       ),
     );
   }
@@ -523,7 +530,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
   }
 
   Widget _buildNotificationsPreference(BuildContext context) {
-    final themeProvider = context.read<ThemeProvider>();
+    final themeListener = context.watch<ThemeProvider>();
 
     return ListTile(
       dense: true,
@@ -537,13 +544,15 @@ class ProfileScreen extends GetProviderView<UserProvider> {
       ),
       title: Text(
         'Notification Preferences',
-        style: context.customTextTheme.text14W500,
+        style: context.customTextTheme.text14W500.copyWith(
+          color: themeListener.isDarkMode ? Colors.white : Colors.black,
+        ),
       ),
     );
   }
 
   Widget _buildFavouriteProducts(BuildContext context) {
-    context.read<AuthProvider>();
+    final themeListener = context.watch<ThemeProvider>();
 
     return ListTile(
       dense: true,
@@ -558,7 +567,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
       ),
       title: Text(
         'Favourite Products',
-        style: context.customTextTheme.text14W500,
+        style: context.customTextTheme.text14W500.copyWith(
+          color: themeListener.isDarkMode ? Colors.white : Colors.black,
+        ),
       ),
     );
   }
@@ -630,6 +641,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
 
   Widget _buildSettingOptions(BuildContext context) {
     final authProvider = context.read<AuthProvider>();
+    final themeListener = context.watch<ThemeProvider>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -646,7 +658,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
           ),
           title: Text(
             'Change Password',
-            style: context.customTextTheme.text14W500,
+            style: context.customTextTheme.text14W500.copyWith(
+          color: themeListener.isDarkMode ? Colors.white : Colors.black,
+        ),
           ),
         ),
         Divider(

@@ -29,12 +29,14 @@ class CheckoutRepo implements ICheckoutRepo {
   }) async {
     try {
       final response = await APIManager.post(
-        api: Endpoints.kDeliveryCalculator,
+        api: Endpoints.kGuestDeliveryCalculator,
         data: {
           "shopID": shopID,
           "postCode": destinationPostCode,
         },
         needAuth: true,
+        authDataKey: "user",
+        dataKeyChecking: true,
         additionalHeaders: {"x-secretkey": AppConfig.instance.fpSecretKey},
       );
       if (response == null) return Left(InternalServerErrorException());
@@ -74,10 +76,12 @@ class CheckoutRepo implements ICheckoutRepo {
       DateTime pickupTime) async {
     try {
       final response = await APIManager.post(
-        api: Endpoints.kTakeawayCalculator,
+        api: Endpoints.kGuestTakeawayCalculator,
         additionalHeaders: {
           "x-secretkey": AppConfig.instance.fpSecretKey,
         },
+        authDataKey: "user",
+        dataKeyChecking: true,
         data: {
           "shopID": AppIdentifiers.kShopId,
           "pickupTime": DateTimeUtils.format(pickupTime)

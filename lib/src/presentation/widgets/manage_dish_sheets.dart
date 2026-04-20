@@ -663,7 +663,7 @@ class _FoodAddonsSection extends GetProviderView<CartProvider> {
                       ),
                     ),
                     side: const BorderSide(color: Colors.grey),
-
+                    checkColor: Theme.of(context).colorScheme.onSurface,
                     controlAffinity: ListTileControlAffinity.trailing,
                     onChanged: (_) =>
                         cartProvider.onSelectAddon(modifier, option),

@@ -71,6 +71,7 @@ class APIManager {
           "FPsecretkey": AppConfig.instance.fpSecretKey,
         },
       );
+      log(response.toString());
 
       if (response == null) {
         return handler.reject(DioException(
@@ -82,8 +83,9 @@ class APIManager {
       }
 
       final accessToken = jsonDecode(response)["token"];
+      final expireAt = jsonDecode(response)["expireAt"];
       await UserSharedPrefsRepo()
-          .saveUserData(userData.copyWith(token: accessToken));
+          .saveUserData(userData.copyWith(token: accessToken, expireAt: expireAt));
       auth = accessToken;
     }
 

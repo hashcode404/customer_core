@@ -84,7 +84,8 @@ class UserSharedPrefsRepo implements IUserSharedPrefsRepo {
     if (token.isEmpty) return null;
     final expireAt = userData.expireAt;
     if (expireAt == null) return null;
-    if (DateTime.now().isAfter(DateTime.fromMillisecondsSinceEpoch(expireAt))) {
+    if (DateTime.now()
+        .isAfter(DateTime.fromMillisecondsSinceEpoch(expireAt * 1000))) {
       return "Token Expired";
     }
 
