@@ -6,11 +6,11 @@ import 'package:customer_core/src/infrastructure/theme/theme_shared_prefs_repo.d
 
 @LazySingleton()
 class ThemeProvider extends ChangeNotifier with BaseController {
-  bool _isDarkMode = true;
+  bool _isDarkMode = false;
 
   bool get isDarkMode => _isDarkMode;
 
-  ThemeMode get currentTheme => _isDarkMode ? ThemeMode.dark : ThemeMode.dark;
+  ThemeMode get currentTheme => _isDarkMode ? ThemeMode.dark : ThemeMode.light;
 
   void toggleTheme() {
     _isDarkMode = !_isDarkMode;

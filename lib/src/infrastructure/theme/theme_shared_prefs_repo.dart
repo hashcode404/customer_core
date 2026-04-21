@@ -2,8 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:customer_core/src/core/constants/app_identifiers.dart';
 
 class AppThemeSharedPrefs {
-  static  String kUserPrefsKey =
-      "${AppIdentifiers.kBuildIdentifier}/app_theme";
+  static String kUserPrefsKey = "${AppIdentifiers.kBuildIdentifier}/app_theme";
 
   static Future<bool> clearAppTheme() async {
     final prefs = await SharedPreferences.getInstance();
@@ -18,7 +17,7 @@ class AppThemeSharedPrefs {
       final prefs = await SharedPreferences.getInstance();
       bool? value = prefs.getBool(kUserPrefsKey);
 
-      if (value == null) return true;
+      if (value == null) return false;
 
       return value;
     } catch (_) {

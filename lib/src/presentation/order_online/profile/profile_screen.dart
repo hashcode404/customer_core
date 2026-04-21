@@ -72,7 +72,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                     // verticalSpaceSmall,
                     // _buildAppAppearance(context),
                     Visibility(
-                      visible: false,
+                      visible: true,
                       child: Card(
                           child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -183,7 +183,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                             },
                             style: TextButton.styleFrom(
                               shape: RoundedRectangleBorder(
-                                side:  BorderSide(
+                                side: BorderSide(
                                     color:
                                         Theme.of(context).colorScheme.primary),
                                 borderRadius: BorderRadius.circular(10),
@@ -462,6 +462,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
   }
 
   Widget _buildAppAppearance(BuildContext context) {
+    final themeListener = context.watch<ThemeProvider>();
     return ListTile(
       dense: true,
       leading: const Icon(
@@ -470,7 +471,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
       ),
       title: Text(
         'Dark Mode',
-        style: context.customTextTheme.text14W500,
+        style: context.customTextTheme.text14W500.copyWith(
+          color: themeListener.isDarkMode ? Colors.white : Colors.black,
+        ),
       ),
       trailing: CupertinoSwitch(
         activeColor: Theme.of(context).colorScheme.primary,
@@ -659,8 +662,8 @@ class ProfileScreen extends GetProviderView<UserProvider> {
           title: Text(
             'Change Password',
             style: context.customTextTheme.text14W500.copyWith(
-          color: themeListener.isDarkMode ? Colors.white : Colors.black,
-        ),
+              color: themeListener.isDarkMode ? Colors.white : Colors.black,
+            ),
           ),
         ),
         Divider(
@@ -725,7 +728,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                                   .withOpacity(0.1),
                               borderRadius: BorderRadius.circular(25),
                             ),
-                            child:  Icon(
+                            child: Icon(
                               Icons.logout_rounded,
                               color: Theme.of(context).colorScheme.primary,
                               size: 50,
@@ -922,7 +925,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                 },
               ),
               side: WidgetStateProperty.all(
-                 BorderSide(color: Theme.of(context).colorScheme.primary),
+                BorderSide(color: Theme.of(context).colorScheme.primary),
               ),
               padding: WidgetStateProperty.all(
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -956,7 +959,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
 
           Container(
             padding: const EdgeInsets.all(14.0),
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Theme.of(context).colorScheme.primary),
             child: Icon(

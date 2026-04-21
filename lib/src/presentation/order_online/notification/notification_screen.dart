@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/src/application/theme/theme_provider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
 import 'package:customer_core/src/domain/notification/models/notification_model.dart';
 import 'package:customer_core/src/infrastructure/notification/notification_shared_prefs_repo.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class NotificationScreen extends StatefulWidget {
@@ -31,6 +33,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeListener = context.watch<ThemeProvider>();
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 70,
@@ -48,15 +51,35 @@ class _NotificationScreenState extends State<NotificationScreen> {
               itemBuilder: (context, index) {
                 final notification = notifications.elementAt(index);
                 return ListTile(
-                  leading: const Icon(FluentIcons.alert_20_regular),
+                  leading: Icon(
+                    FluentIcons.alert_20_regular,
+                    color:
+                        themeListener.isDarkMode ? Colors.white : Colors.black,
+                  ),
                   title: Text(notification.title ?? ''),
+                  titleTextStyle: TextStyle(
+                      color: themeListener.isDarkMode
+                          ? Colors.white
+                          : Colors.black),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(notification.body ?? ''),
+                      Text(
+                        notification.body ?? '',
+                        style: TextStyle(
+                            color: themeListener.isDarkMode
+                                ? Colors.white
+                                : Colors.black),
+                      ),
                       notification.dateTime != null
-                          ? Text(checkTimeDifference(
-                              notification.dateTime ?? DateTime.now()))
+                          ? Text(
+                              checkTimeDifference(
+                                  notification.dateTime ?? DateTime.now()),
+                              style: TextStyle(
+                                  color: themeListener.isDarkMode
+                                      ? Colors.grey
+                                      : Colors.grey),
+                            )
                           : const SizedBox.shrink(),
                     ],
                   ),

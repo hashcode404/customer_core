@@ -265,7 +265,7 @@ packages:
     source: hosted
     version: "3.8.20"
   firebase_messaging:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_messaging
       sha256: e5c93e8e7a9b0513f94bb684d2cf100e32e7dcdf2949574386b1955fc9a9b96a

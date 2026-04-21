@@ -1,3 +1,8 @@
+import 'dart:developer';
+
+import 'package:customer_core/src/domain/notification/models/notification_model.dart';
+import 'package:customer_core/src/infrastructure/notification/notification_shared_prefs_repo.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -6,8 +11,8 @@ import 'domain/dependency_injection/injection_config.dart';
 
 class CustomerInitializer {
   static Future<void> init(
-    // {required String env}
-    ) async {
+      // {required String env}
+      ) async {
     // WidgetsFlutterBinding.ensureInitialized();
 
     // Firebase
@@ -24,6 +29,27 @@ class CustomerInitializer {
 
     // Notifications
     await NotificationProvider().init();
+    final token = await FirebaseMessaging.instance.getToken();
+    log(token ?? 'NULL', name: 'FCM');
+
+    FirebaseMessaging.onMessage.listen((message) async {
+      if (message.data["title"] != null || message.data["body"] != null) {
+        NotificationProvider().showNotification(
+          message.data["title"],
+          message.data["body"],
+        );
+
+        final notification = NotificationModel(
+          title: message.data["title"],
+          body: message.data["body"],
+          dateTime: DateTime.now(),
+          customerOrderID: '',
+          orderID: '',
+        );
+
+        await NotificationSharedPrefs.saveNotification(notification);
+      }
+    });
 
     // Orientation
     await SystemChrome.setPreferredOrientations([
