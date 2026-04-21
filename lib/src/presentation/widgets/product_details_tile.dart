@@ -276,7 +276,10 @@ class ProductDetailsTile extends StatelessWidget {
                     ? SizedBox(
                         height: 50, child: Center(child: secondaryWidget))
                     : FilledButton(
+                      
                         style: FilledButton.styleFrom(
+                          disabledBackgroundColor: Colors.transparent,
+                          disabledForegroundColor:Theme.of(context).disabledColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0)),
                             fixedSize: const Size(double.infinity, 30),
