@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:dartx/dartx.dart';
 
 import 'package:dartx/dartx.dart';
@@ -615,7 +616,7 @@ class _FoodAddonsSection extends GetProviderView<CartProvider> {
                       ),
                     ),
                     subtitle: Text(
-                      '£ ${option.price}',
+                      '${AppConfig.instance.country.symbol} ${option.price}',
                       style: context.customTextTheme.text14W500.copyWith(
                         color: themeListener.isDarkMode
                             ? Colors.white
@@ -655,7 +656,7 @@ class _FoodAddonsSection extends GetProviderView<CartProvider> {
                       ),
                     ),
                     subtitle: Text(
-                      '£ ${option.price}',
+                      '${AppConfig.instance.country.symbol} ${option.price}',
                       style: context.customTextTheme.text14W500.copyWith(
                         color: themeListener.isDarkMode
                             ? Colors.white
@@ -770,7 +771,7 @@ class AddToCartButton extends GetProviderView<CartProvider> {
     //             mainAxisSize: MainAxisSize.min,
     //             children: <Widget>[
     //               Text(
-    //                 "£${cartListener.selectedItemPrice}",
+    //                 "${AppConfig.instance.country.symbol}${cartListener.selectedItemPrice}",
     //                 style: context.customTextTheme.text20W600
     //                     .copyWith(color: AppColors.kWhite),
     //               ),

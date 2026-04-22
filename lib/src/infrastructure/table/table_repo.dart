@@ -45,7 +45,7 @@ class TableRepo implements ITableRepo {
         api: Endpoints.kDiningTableReservationNew,
         data: payload.toJson(),
         additionalHeaders: {
-          "x-secretkey": AppConfig.instance.reservationSecretKey,
+          "x-secretkey": KeyConfig.instance.reservationSecretKey,
         },
       );
       if (response == null) return Option.of(InternalServerErrorException());

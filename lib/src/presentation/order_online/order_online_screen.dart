@@ -244,8 +244,8 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                                         )),
                                 Text(
                                   cartListener.totalCartItems > 0
-                                      ? '£${cartListener.cartTotalPrice!.toStringAsFixed(AppConfig.instance.country.decimalPlaces)} | ${cartListener.totalCartItems} item(s)'
-                                      : '£0.00',
+                                      ? '${AppConfig.instance.country.symbol} ${cartListener.cartTotalPrice!.toStringAsFixed(AppConfig.instance.country.decimalPlaces)} | ${cartListener.totalCartItems} item(s)'
+                                      : '${AppConfig.instance.country.symbol} 0.00',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyLarge
@@ -277,7 +277,8 @@ class _OrderOnlineScreenState extends State<OrderOnlineScreen> {
                               child: Text(
                                 "View Cart",
                                 style: TextStyle(
-                                  color: Theme.of(context).colorScheme.onSurface,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
                                 ),
                               ),
                             ),

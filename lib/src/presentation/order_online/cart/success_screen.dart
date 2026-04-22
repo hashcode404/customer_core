@@ -116,6 +116,10 @@ class _SuccessScreenState extends State<SuccessScreen>
                 SizedBox(
                   width: double.infinity,
                   child: FilledButton(
+                    style: FilledButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor:
+                            Theme.of(context).colorScheme.onSurface),
                     onPressed: () {
                       context.router.replaceAll([
                         const OrderOnlineScreenRoute(),

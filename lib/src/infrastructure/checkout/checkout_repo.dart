@@ -37,7 +37,7 @@ class CheckoutRepo implements ICheckoutRepo {
         needAuth: true,
         authDataKey: "user",
         dataKeyChecking: true,
-        additionalHeaders: {"x-secretkey": AppConfig.instance.fpSecretKey},
+        additionalHeaders: {"x-secretkey": KeyConfig.instance.fpSecretKey},
       );
       if (response == null) return Left(InternalServerErrorException());
       return Right(CalculatedDeliveryChargeDetailsModel.fromJson(response));
@@ -78,7 +78,7 @@ class CheckoutRepo implements ICheckoutRepo {
       final response = await APIManager.post(
         api: Endpoints.kGuestTakeawayCalculator,
         additionalHeaders: {
-          "x-secretkey": AppConfig.instance.fpSecretKey,
+          "x-secretkey": KeyConfig.instance.fpSecretKey,
         },
         authDataKey: "user",
         dataKeyChecking: true,

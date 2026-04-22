@@ -363,7 +363,8 @@ class CheckoutScreen extends GetProviderView<CartProvider> {
                     children: <Widget>[
                       _SummaryRow(
                         label: "Sub Total",
-                        value: cartListener.cartTotalPriceDisplay ?? "£0.00",
+                        value: cartListener.cartTotalPriceDisplay ??
+                            "${AppConfig.instance.country.symbol} 0.00",
                         style: context.customTextTheme.text16W600,
                       ),
                       verticalSpaceTiny,
@@ -373,25 +374,25 @@ class CheckoutScreen extends GetProviderView<CartProvider> {
                                 ? "Takeaway Charge"
                                 : "Delivery Charge",
                         value:
-                            "£${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                            "${AppConfig.instance.country.symbol} ${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                       ),
                       verticalSpaceTiny,
                       _SummaryRow(
                         label: "Discount",
                         value:
-                            "-£${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                            "-${AppConfig.instance.country.symbol} ${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                       ),
                       verticalSpaceTiny,
                       _SummaryRow(
                         label: "Coupon Discount",
                         value:
-                            "-£${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                            "-${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                       ),
                       const Divider(height: 20.0),
                       _SummaryRow(
                         label: "To Pay",
                         value:
-                            "£${cartListener.totalAmount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                            "${AppConfig.instance.country.symbol} ${cartListener.totalAmount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                         style: context.customTextTheme.text18W600,
                       ),
                     ],

@@ -571,7 +571,8 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                     verticalSpaceSmall,
                     _SummaryRow(
                       label: "Sub Total",
-                      value: cartListener.cartTotalPriceDisplay ?? "£0.00",
+                      value: cartListener.cartTotalPriceDisplay ??
+                          "${AppConfig.instance.country.symbol}0.00",
                       style: context.customTextTheme.text16W600
                           .copyWith(color: context.customTextTheme.color),
                     ),
@@ -581,7 +582,7 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                             label: "Delivery Charge",
                             value: cartListener.calculatedDeliveryFee == 0.00
                                 ? 'Free'
-                                : "£${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                                : "${AppConfig.instance.country.symbol} ${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                             style: context.customTextTheme.text16W600
                                 .copyWith(color: context.customTextTheme.color))
                         : const SizedBox.shrink(),
@@ -589,20 +590,20 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                     _SummaryRow(
                         label: "Offer Discount",
                         value:
-                            "-£${cartListener.cartDetailsModel?.getOfferDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                            "-${AppConfig.instance.country.symbol} ${cartListener.cartDetailsModel?.getOfferDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                         style: context.customTextTheme.text16W600
                             .copyWith(color: context.customTextTheme.color)),
                     verticalSpaceTiny,
                     _SummaryRow(
                         label: "Discount",
                         value:
-                            "-£${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                            "-${AppConfig.instance.country.symbol} ${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                         style: context.customTextTheme.text16W600
                             .copyWith(color: context.customTextTheme.color)),
                     verticalSpaceTiny,
                     // _SummaryRow(
                     //   label: "Coupon Discount",
-                    //   value: "-£${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                    //   value: "-${AppConfig.instance.country.symbol}${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                     // ),
                     // const Divider(height: 20.0),
                     // _SummaryRow(

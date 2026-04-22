@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
@@ -134,7 +135,7 @@ class _CouponDetailsTile extends StatelessWidget {
                                   .copyWith(color: AppColors.kGray),
                             ),
                       Text(
-                        'Min order £${detailsModel.minSpend ?? ''}',
+                        'Min order ${AppConfig.instance.country.symbol}${detailsModel.minSpend ?? ''}',
                         style: context.customTextTheme.text14W500
                             .copyWith(color: AppColors.kGray),
                       ),
@@ -205,7 +206,7 @@ class _CouponDetailsTile extends StatelessWidget {
           children: <Widget>[
             Text(
               detailsModel.coupenAmount != null
-                  ? "${detailsModel.coupenType == "percentage" ? "%" : "£"} ${detailsModel.coupenAmount!.replaceAll(".00", "")}"
+                  ? "${detailsModel.coupenType == "percentage" ? "%" : AppConfig.instance.country.symbol} ${detailsModel.coupenAmount!.replaceAll(".00", "")}"
                   : "",
               style: context.customTextTheme.text20W600.copyWith(
                 color: AppColors.kWhite,

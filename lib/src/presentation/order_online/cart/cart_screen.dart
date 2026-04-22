@@ -388,7 +388,7 @@ class _CartScreenState extends State<CartScreen>
                                   ),
                                   Text(
                                     cartListener.cartTotalPriceDisplay ??
-                                        "£ 00.00",
+                                        "${AppConfig.instance.country.symbol} 00.00",
                                     style: context.customTextTheme.text20W400
                                         .copyWith(
                                             fontWeight: FontWeight.bold,
@@ -526,7 +526,7 @@ class _CartScreenState extends State<CartScreen>
                                                     : null),
                                       ),
                                       Text(
-                                        "£ ${cartListener.totalAmount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                                        "${AppConfig.instance.country.symbol} ${cartListener.totalAmount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                                         style: context
                                             .customTextTheme.text20W400
                                             .copyWith(

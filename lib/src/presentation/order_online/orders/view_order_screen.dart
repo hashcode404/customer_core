@@ -201,7 +201,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
                                   maxLines: 1,
                                   softWrap: true,
                                   overflow: TextOverflow.ellipsis,
-                                  "£${dish.formatItemTotal.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                                  "${AppConfig.instance.country.symbol}${dish.formatItemTotal.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                                   style: context.customTextTheme.text16W700
                                       .copyWith(
                                     color: context.customTextTheme.color,
@@ -267,7 +267,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
             verticalSpaceSmall,
             _SummaryRow(
               label: "Sub Total",
-              value: "£${orderDetails.formatSubTotal.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+              value: "${AppConfig.instance.country.symbol}${orderDetails.formatSubTotal.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
               style: context.customTextTheme.text16W600
                   .copyWith(color: context.customTextTheme.color),
             ),
@@ -286,7 +286,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
             verticalSpaceTiny,
             _SummaryRow(
               label: "Discount",
-              value: "£ ${orderDetails.formattedDiscount}",
+              value: "${AppConfig.instance.country.symbol} ${orderDetails.formattedDiscount}",
               style: context.customTextTheme.text14W600
                   .copyWith(color: context.customTextTheme.color),
             ),
@@ -294,7 +294,7 @@ class ViewOrderScreen extends GetProviderView<OrderProvider> {
             const Divider(height: 20.0),
             _SummaryRow(
               label: "Total",
-              value: orderDetails.formattedAmount ?? "£0.00",
+              value: orderDetails.formattedAmount ?? "${AppConfig.instance.country.symbol}0.00",
               style: context.customTextTheme.text18W600
                   .copyWith(color: context.customTextTheme.color),
             ),

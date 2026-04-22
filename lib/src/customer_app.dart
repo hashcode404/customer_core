@@ -8,15 +8,17 @@ import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
 class CustomerApp extends StatefulWidget {
-  final AppConfig config;
+  final UiConfig uiConfig;
+  final AppConfig appConfig;
+  final KeyConfig keyConfig;
   final CustomerLightThemeOverride? lightThemeOverride;
   final CustomerDarkThemeOverride? darkThemeOverride;
 
   const CustomerApp({
     super.key,
-    required this.config,
+  
     this.lightThemeOverride,
-    this.darkThemeOverride,
+    this.darkThemeOverride, required this.uiConfig, required this.appConfig, required this.keyConfig
   });
 
   @override
@@ -29,9 +31,11 @@ class _CustomerAppState extends State<CustomerApp> {
     super.initState();
 
     // initialize once
-    AppConfig.instance = widget.config;
-    AppEnvironment.current = widget.config.env;
-    Stripe.publishableKey = widget.config.stripeKey;
+    AppConfig.instance = widget.appConfig;
+    UiConfig.instance = widget.uiConfig;
+    KeyConfig.instance = widget.keyConfig;
+    AppEnvironment.current = widget.appConfig.env;
+    Stripe.publishableKey = widget.keyConfig.stripeKey;
   }
 
   @override
@@ -96,14 +100,14 @@ class _CustomerAppState extends State<CustomerApp> {
         selector: (_, provider) => provider.currentTheme,
         builder: (context, themeMode, _) {
           return MaterialApp.router(
-            title: widget.config.applicationName,
+            title: widget.appConfig.applicationName,
             debugShowCheckedModeBanner: false,
             theme: finalLight,
             darkTheme: finalDark,
             themeMode:
-                _mapThemeMode(widget.config.themeMode) == ThemeMode.system
+                _mapThemeMode(widget.appConfig.themeMode) == ThemeMode.system
                     ? themeMode
-                    : _mapThemeMode(widget.config.themeMode),
+                    : _mapThemeMode(widget.appConfig.themeMode),
             // themeMode: _mapThemeMode(widget.config.themeMode) == ThemeMode.system
             //     ? Provider.of<ThemeProvider>(context, listen: false).currentTheme
             //     : _mapThemeMode(widget.config.themeMode), // change this 👈

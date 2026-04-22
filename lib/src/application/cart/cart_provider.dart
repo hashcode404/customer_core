@@ -266,6 +266,8 @@ class CartProvider extends ChangeNotifier with BaseController {
   bool _isUserLoggedIn = false;
   bool get isUserLoggedIn => _isUserLoggedIn;
 
+  final _currencySymbol = AppConfig.instance.country.symbol;
+
   @override
   Future<void> init() async {
     await getSavedGuestID();
@@ -719,14 +721,14 @@ class CartProvider extends ChangeNotifier with BaseController {
     final updatedAppliedAddons = appliedAddons.map((e) {
       final updatedOptions = e.choosedOption.map((option) {
         final rawPrice =
-            option.priceSingle?.replaceAll("£", "").trim() ?? "0.00";
+            option.priceSingle?.replaceAll(_currencySymbol, "").trim() ?? "0.00";
 
         final price = double.tryParse(rawPrice) ?? 0.0;
 
         final updatedPrice = price * newQty;
 
         return option.copyWith(
-          price: "£ ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+          price: "$_currencySymbol ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
         );
       }).toList();
 
@@ -736,14 +738,14 @@ class CartProvider extends ChangeNotifier with BaseController {
     final updatedAppliedMasterAddons = appliedMasterAddons.map((e) {
       final updatedOptions = e.choosedOption.map((option) {
         final rawPrice =
-            option.priceSingle?.replaceAll("£", "").trim() ?? "0.00";
+            option.priceSingle?.replaceAll(_currencySymbol, "").trim() ?? "0.00";
 
         final price = double.tryParse(rawPrice) ?? 0.0;
 
         final updatedPrice = price * newQty;
 
         return option.copyWith(
-          price: "£ ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+          price: "$_currencySymbol ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
         );
       }).toList();
 
@@ -752,7 +754,7 @@ class CartProvider extends ChangeNotifier with BaseController {
     // newCartItems[index] = item.copyWith(
     //     master_addon_apllied: updatedAppliedMasterAddons,
     //     addon_apllied: updatedAppliedAddons);
-    final itemProductPrice = item.product_price?.replaceAll("£", "") ?? "0.00";
+    final itemProductPrice = item.product_price?.replaceAll(_currencySymbol, "") ?? "0.00";
     final itemProductPriceInPaisa = double.parse(itemProductPrice) * AppConfig.instance.country.currencyDivisor;
     final itemModifiersTotal = item.getModifiersTotal; //* newQty;
     final itemModifiersTotalInPaisa = itemModifiersTotal *  AppConfig.instance.country.currencyDivisor;
@@ -765,7 +767,7 @@ class CartProvider extends ChangeNotifier with BaseController {
       // master_addon_apllied: updatedAppliedMasterAddons,
       // addon_apllied: updatedAppliedAddons,
       total: (totalItemPrice + itemModifiersTotalInPaisa).toInt(),
-      product_total_price: "£${productTotalPriceFormatted.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+      product_total_price: "$_currencySymbol${productTotalPriceFormatted.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
     );
 
     final totalAmountInPaisa = newCartItems.fold<int>(
@@ -814,14 +816,14 @@ class CartProvider extends ChangeNotifier with BaseController {
     final updatedAppliedAddons = appliedAddons.map((e) {
       final updatedOptions = e.choosedOption.map((option) {
         final rawPrice =
-            option.priceSingle?.replaceAll("£", "").trim() ?? "0.00";
+            option.priceSingle?.replaceAll(_currencySymbol, "").trim() ?? "0.00";
 
         final price = double.tryParse(rawPrice) ?? 0.0;
 
         final updatedPrice = price * newQty;
 
         return option.copyWith(
-          price: "£ ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+          price: "$_currencySymbol ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
         );
       }).toList();
 
@@ -831,14 +833,14 @@ class CartProvider extends ChangeNotifier with BaseController {
     final updatedAppliedMasterAddons = appliedMasterAddons.map((e) {
       final updatedOptions = e.choosedOption.map((option) {
         final rawPrice =
-            option.priceSingle?.replaceAll("£", "").trim() ?? "0.00";
+            option.priceSingle?.replaceAll(_currencySymbol, "").trim() ?? "0.00";
 
         final price = double.tryParse(rawPrice) ?? 0.0;
 
         final updatedPrice = price * newQty;
 
         return option.copyWith(
-          price: "£ ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+          price: "$_currencySymbol ${updatedPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
         );
       }).toList();
 
@@ -848,7 +850,7 @@ class CartProvider extends ChangeNotifier with BaseController {
     // newCartItems[index] = item.copyWith(
     //     master_addon_apllied: updatedAppliedMasterAddons,
     //     addon_apllied: updatedAppliedAddons);
-    final itemProductPrice = item.product_price?.replaceAll("£", "") ?? "0.00";
+    final itemProductPrice = item.product_price?.replaceAll(_currencySymbol, "") ?? "0.00";
     final itemProductPriceInPaisa = double.parse(itemProductPrice) *  AppConfig.instance.country.currencyDivisor;
     final itemModifiersTotal = item.getModifiersTotal * newQty;
     final itemModifiersTotalInPaisa = itemModifiersTotal * AppConfig.instance.country.currencyDivisor;
@@ -861,7 +863,7 @@ class CartProvider extends ChangeNotifier with BaseController {
       // master_addon_apllied: updatedAppliedMasterAddons,
       // addon_apllied: updatedAppliedAddons,
       total: (totalItemPrice + itemModifiersTotalInPaisa).toInt(),
-      product_total_price: "£ ${productTotalPriceFormatted.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+      product_total_price: "$_currencySymbol ${productTotalPriceFormatted.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
     );
 
     final totalAmountInPaisa = newCartItems.fold<int>(

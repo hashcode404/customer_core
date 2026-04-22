@@ -68,7 +68,7 @@ class APIManager {
         api: Endpoints.kUserLoginSecret,
         data: {
           "user": userData.user.userID,
-          "FPsecretkey": AppConfig.instance.fpSecretKey,
+          "FPsecretkey": KeyConfig.instance.fpSecretKey,
         },
       );
       log(response.toString());
@@ -193,7 +193,7 @@ class APIManager {
         api: Endpoints.kUserLoginSecret,
         data: {
           "user": auth.user.userID,
-          "FPsecretkey": AppConfig.instance.fpSecretKey,
+          "FPsecretkey": KeyConfig.instance.fpSecretKey,
         },
       );
 

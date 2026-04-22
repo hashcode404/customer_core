@@ -129,7 +129,7 @@ class UserRepo implements IUserRepo {
         api: Endpoints.kUserLogin,
         data: json.encode({
           "user": userId,
-          "FPsecretkey": AppConfig.instance.fpSecretKey,
+          "FPsecretkey": KeyConfig.instance.fpSecretKey,
         }),
       );
       if (response == null) return Left(InternalServerErrorException());
@@ -170,7 +170,7 @@ class UserRepo implements IUserRepo {
       final data = {
         "shopID": AppIdentifiers.kShopId,
         "useremailid": userEmail,
-        "FPsecretkey": AppConfig.instance.fpSecretKey,
+        "FPsecretkey": KeyConfig.instance.fpSecretKey,
       };
       final response = await APIManager.post(
         api: Endpoints.kPasswordResetOtp,
@@ -244,7 +244,7 @@ class UserRepo implements IUserRepo {
         "useremailid": userEmail,
         "otp": otp,
         "password": password,
-        "FPsecretkey": AppConfig.instance.fpSecretKey,
+        "FPsecretkey": KeyConfig.instance.fpSecretKey,
       };
       final response = await APIManager.post(
           api: Endpoints.kResetPassword, data: data, dataKeyChecking: false);
@@ -269,7 +269,7 @@ class UserRepo implements IUserRepo {
     try {
       final data = {
         "shopName": AppIdentifiers.kShopName,
-        "FPsecretkey": AppConfig.instance.fpSecretKey,
+        "FPsecretkey": KeyConfig.instance.fpSecretKey,
         "customerName": customerName,
         "subject": "Verify your account",
         "useremailid": userEmail,
@@ -302,7 +302,7 @@ class UserRepo implements IUserRepo {
         "shopID": shopID,
         "userEmail": userEmail,
         "userMobile": userMobile,
-        "FPsecretkey": AppConfig.instance.fpSecretKey,
+        "FPsecretkey": KeyConfig.instance.fpSecretKey,
       };
 
       final response = await APIManager.post(
@@ -326,7 +326,7 @@ class UserRepo implements IUserRepo {
       {required String shopID, required String userID}) async {
     try {
       final data = {
-        "x-secretkey": AppConfig.instance.fpSecretKey,
+        "x-secretkey": KeyConfig.instance.fpSecretKey,
       };
 
       final response = await APIManager.get(

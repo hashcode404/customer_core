@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-            image: AssetImage(AppConfig.instance.bgImage), fit: BoxFit.cover),
+            image: AssetImage(UiConfig.instance.bgImage), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -121,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Center(
         child: ListView(
       children: [
-        Image.asset(AppConfig.instance.logo, height: 125),
+        Image.asset(UiConfig.instance.logo, height: 125),
         verticalSpaceMedium,
         ClipRRect(
             borderRadius: BorderRadius.circular(12.0),

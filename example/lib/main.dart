@@ -15,7 +15,9 @@ void main() async {
 
   runApp(
     CustomerApp(
-      config: config,
+      appConfig: appConfig,
+      uiConfig: uiConfig,
+      keyConfig: keyConfig,
       lightThemeOverride: const CustomerLightThemeOverride(
           primary: Color(0xFFf0a70a),
           onSurface: Colors.black,

@@ -59,7 +59,7 @@ class CoupenData with _$CoupenData {
 //       "maxSpend": "0.00",
 //       "limitPerCoupen": "0",
 //       "limitPerUser": "0",
-//       "coupenDetails": "£100 off for new users",
+//       "coupenDetails": "${AppConfig.instance.country.symbol}100 off for new users",
 //       "coupenStatus": "Active",
 //       "addedTime": "2024-11-20 09:27:09",
 //       "lastUpdate": "2024-11-20 09:27:09"

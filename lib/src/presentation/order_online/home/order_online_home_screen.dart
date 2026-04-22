@@ -52,7 +52,7 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
   int notificationCount = 0;
 
   // final isNewView = true;
-  final List<String> imageUrlsForBanner = AppConfig.instance.bannerImages;
+  final List<String> imageUrlsForBanner = UiConfig.instance.bannerImages;
 
   @override
   void initState() {
@@ -163,12 +163,12 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
                       children: [
                         isDark
                             ? Image.asset(
-                                AppConfig.instance.logo,
+                                UiConfig.instance.logo,
                                 height: 45,
                                 fit: BoxFit.cover,
                               )
                             : Image.asset(
-                                AppConfig.instance.logo,
+                                UiConfig.instance.logo,
                                 height: 45,
                                 fit: BoxFit.cover,
                               ),
@@ -338,7 +338,7 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
           height: 100,
           // width: 110,
           child: Image(
-            image: AssetImage(AppConfig.instance.logo),
+            image: AssetImage(UiConfig.instance.logo),
             // height: MediaQuery.of(context).size.height * 0.1,
             fit: BoxFit.cover,
           ),

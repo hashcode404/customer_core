@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: AppColors.kWhite,
                   radius: 20.0,
-                  backgroundImage: AssetImage(AppConfig.instance.logo),
+                  backgroundImage: AssetImage(UiConfig.instance.logo),
                 ),
               ),
             ],

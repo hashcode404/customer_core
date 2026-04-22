@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
         child: Center(
           child: Image.asset(
-            AppConfig.instance.logo,
+            UiConfig.instance.logo,
             width: MediaQuery.of(context).size.width * 0.5,
           ),
         ),

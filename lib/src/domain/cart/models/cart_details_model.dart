@@ -256,14 +256,14 @@ class CartItemDataModel {
     final total = addon_apllied.isNotEmpty
         ? addon_apllied
             .expand((e) => e.choosedOption.map((e) =>
-                double.parse((e.priceSingle ?? "0.00").replaceAll("£", ""))))
+                double.parse((e.priceSingle ?? "0.00").replaceAll(AppConfig.instance.country.symbol, ""))))
             .reduce((a, b) => a + b)
         : 0.0;
 
     final totalMasterAddons = master_addon_apllied.isNotEmpty
         ? master_addon_apllied
             .expand((e) => e.choosedOption.map((e) =>
-                double.parse((e.priceSingle ?? "0.00").replaceAll("£", ""))))
+                double.parse((e.priceSingle ?? "0.00").replaceAll(AppConfig.instance.country.symbol, ""))))
             .reduce((a, b) => a + b)
         : 0.0;
 

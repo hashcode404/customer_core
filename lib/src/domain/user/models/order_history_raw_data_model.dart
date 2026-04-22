@@ -362,7 +362,7 @@ class OrderDetailsModel {
   double get formatDeliveryChargeToDouble {
     var deliveryCharge = formattedDeliveryCharge;
     if (deliveryCharge == null || deliveryCharge.isEmpty) return 0.00;
-    final amtFormatted = deliveryCharge.replaceAll('£', '');
+    final amtFormatted = deliveryCharge.replaceAll(AppConfig.instance.country.symbol, '');
     final amt = double.parse(amtFormatted);
     return amt;
   }
@@ -380,7 +380,7 @@ class OrderDetailsModel {
 
   String get shopFullAddress => '$shopAddress1, $shopAddress2';
 
-  String get formatDiscount => discount != null ? '-£$discount' : '-£0.00';
+  String get formatDiscount => discount != null ? '${AppConfig.instance.country.symbol}$discount' : '${AppConfig.instance.country.symbol}0.00';
 
   String get formattedDiscount {
     if (discount != null) {
@@ -670,7 +670,7 @@ class OrderHistoryDishesDataModel {
             return parsedItemPrice.toStringAsFixed(AppConfig.instance.country.decimalPlaces);
           })
           .toList()
-          .join('\n+ £ ');
+          .join('\n+ ${AppConfig.instance.country.symbol} ');
 
   double get formatItemTotal {
     final itemPrice = double.parse(price!);

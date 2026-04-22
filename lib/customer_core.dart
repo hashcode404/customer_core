@@ -2,6 +2,8 @@ library customer_core;
 
 export 'src/customer_app.dart';
 export 'src/core/config/app_config.dart';
+export 'src/core/config/ui_config.dart';
+export 'src/core/config/key_config.dart';
 export 'src/core/config/app_env.dart';
 export 'src/core/constants/enums.dart';
 export 'src/application/core/dependency_registrar.dart';

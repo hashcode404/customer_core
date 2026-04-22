@@ -448,7 +448,8 @@ class CheckoutDetailsScreen extends StatelessWidget {
                 verticalSpaceSmall,
                 _SummaryRow(
                   label: "Sub Total",
-                  value: cartListener.cartTotalPriceDisplay ?? "£0.00",
+                  value: cartListener.cartTotalPriceDisplay ??
+                      "${AppConfig.instance.country.symbol}0.00",
                   style: context.customTextTheme.text16W600.copyWith(
                     color: isDark ? Colors.white : null,
                   ),
@@ -463,7 +464,7 @@ class CheckoutDetailsScreen extends StatelessWidget {
                         ),
                         value: cartListener.calculatedDeliveryFee == 0.00
                             ? 'Free'
-                            : "£${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                            : "${AppConfig.instance.country.symbol} ${cartListener.calculatedDeliveryFee.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                       ),
                 verticalSpaceTiny,
                 _SummaryRow(
@@ -472,13 +473,13 @@ class CheckoutDetailsScreen extends StatelessWidget {
                     color: isDark ? Colors.white : null,
                   ),
                   value:
-                      "-£${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                      "-${AppConfig.instance.country.symbol} ${cartListener.calculatedDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                 ),
 
                 verticalSpaceTiny,
                 // _SummaryRow(
                 //   label: "Coupon Discount",
-                //   value: "-£${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
+                //   value: "-${AppConfig.instance.country.symbol}${cartListener.offerDiscount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
                 // ),
               ],
             ),

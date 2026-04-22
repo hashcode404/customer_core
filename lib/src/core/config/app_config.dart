@@ -13,19 +13,10 @@ class AppConfig {
   final List<String> shopInfoPhone;
   final String shopInfoAddress;
   final String buildIdentifier;
-
   final String? fcmTopicId;
   final String fireBaseProjectId;
-
-  final ThemeData themeData;
-  final String logo;
   final AppEnv env;
-  final List<String> bannerImages;
-  final String secretKey;
-  final String fpSecretKey;
-  final String reservationSecretKey;
-  final String stripeKey;
-  final String bgImage;
+
   final Country country;
   final AppThemeMode themeMode;
 
@@ -41,15 +32,10 @@ class AppConfig {
     required this.country,
     this.fcmTopicId,
     required this.fireBaseProjectId,
-    required this.themeData,
-    required this.logo,
+
+  
     required this.env,
-    required this.bannerImages,
-    required this.secretKey,
-    required this.fpSecretKey,
-    required this.reservationSecretKey,
-    required this.stripeKey,
-    required this.bgImage,
+  
     this.themeMode = AppThemeMode.system,
   });
 }

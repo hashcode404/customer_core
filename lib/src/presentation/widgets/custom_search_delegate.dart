@@ -1,3 +1,4 @@
+import 'package:customer_core/customer_core.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/products/products_provider.dart';
 import 'package:customer_core/src/domain/store/models/product_details_model.dart';
@@ -51,7 +52,7 @@ class CustomSearchDelegate extends SearchDelegate {
             final item = results[index];
             return ListTile(
               title: Text(item.name!),
-              subtitle: Text('£${item.price.toString()}'),
+              subtitle: Text('${AppConfig.instance.country.symbol}${item.price.toString()}'),
             );
           },
         );
