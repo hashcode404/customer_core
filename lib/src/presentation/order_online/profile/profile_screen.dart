@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
@@ -463,29 +464,33 @@ class ProfileScreen extends GetProviderView<UserProvider> {
 
   Widget _buildAppAppearance(BuildContext context) {
     final themeListener = context.watch<ThemeProvider>();
-    return ListTile(
-      dense: true,
-      leading: const Icon(
-        FluentIcons.dark_theme_24_regular,
-        color: AppColors.kGray,
-      ),
-      title: Text(
-        'Dark Mode',
-        style: context.customTextTheme.text14W500.copyWith(
-          color: themeListener.isDarkMode ? Colors.white : Colors.black,
+    return Visibility(
+      visible:
+          AppConfig.instance.themeMode == AppThemeMode.system ? true : false,
+      child: ListTile(
+        dense: true,
+        leading: const Icon(
+          FluentIcons.dark_theme_24_regular,
+          color: AppColors.kGray,
         ),
-      ),
-      trailing: CupertinoSwitch(
-        activeColor: Theme.of(context).colorScheme.primary,
-        value: context.watch<ThemeProvider>().isDarkMode,
-        onChanged: (val) {
-          context.read<ThemeProvider>().toggleTheme();
-          if (val) {
-            AppThemeSharedPrefs.saveAppTheme(true);
-          } else {
-            AppThemeSharedPrefs.saveAppTheme(false);
-          }
-        },
+        title: Text(
+          'Dark Mode',
+          style: context.customTextTheme.text14W500.copyWith(
+            color: themeListener.isDarkMode ? Colors.white : Colors.black,
+          ),
+        ),
+        trailing: CupertinoSwitch(
+          activeColor: Theme.of(context).colorScheme.primary,
+          value: context.watch<ThemeProvider>().isDarkMode,
+          onChanged: (val) {
+            context.read<ThemeProvider>().toggleTheme();
+            if (val) {
+              AppThemeSharedPrefs.saveAppTheme(true);
+            } else {
+              AppThemeSharedPrefs.saveAppTheme(false);
+            }
+          },
+        ),
       ),
     );
   }
