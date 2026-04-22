@@ -221,7 +221,10 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                                     maxLines: 1,
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
-                                    style: context.customTextTheme.text12W500,
+                                    style: context.customTextTheme.text12W500
+                                        .copyWith(
+                                      color: context.customTextTheme.color,
+                                    ),
                                   ),
                                   verticalSpaceSmall,
                                 ],
