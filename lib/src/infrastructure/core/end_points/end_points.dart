@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:customer_core/src/core/config/app_env.dart';
 
 class Endpoints {
+  static const String _kDemoBaseUrl = 'https://demo.foodpage.co.uk/v2/';
   static const String _kDevBaseUrl = 'https://development.foodpage.co.uk/v2/';
   static const String _kBaseUrl = 'https://foodpage.co.uk/v2/';
   static const String kTableReservationBaseUrl =
@@ -10,7 +11,11 @@ class Endpoints {
   static const String kPromotionsBaseUrl = 'https://shopadmin.vgrex.com/';
 
   static String get baseUrl {
-    return AppEnvironment.current == AppEnv.dev ? _kDevBaseUrl : _kBaseUrl;
+    return AppEnvironment.current == AppEnv.dev
+        ? _kDevBaseUrl
+        : AppEnvironment.current == AppEnv.demo
+            ? _kDemoBaseUrl
+            : _kBaseUrl;
   }
 
   // User endpoints

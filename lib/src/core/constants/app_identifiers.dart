@@ -12,21 +12,10 @@ class AppIdentifiers {
 
   static   String kProdShopId = AppConfig.instance.shopId;
 
-  static const String kDevShopId = '1';
+  static String kShopIdentifier = AppConfig.instance.shopIdentifier;
 
-  static String kDevShopIdentifier = 'le-arabia';
 
-  static String kProdShopIdentifier = AppConfig.instance.shopIdentifier;
-
-  static String get kShopIdentifier {
-    return AppEnvironment.current == AppEnv.dev
-        ? kDevShopIdentifier
-        : kProdShopIdentifier;
-  }
-
-  static String get kShopId {
-    return AppEnvironment.current == AppEnv.dev ? kDevShopId : kProdShopId;
-  }
+  static String  kShopId = AppConfig.instance.shopId;
 
   static String kShopInfoEmail = AppConfig.instance.shopInfoEmail;
 
