@@ -1,3 +1,5 @@
+import 'package:customer_core/customer_core.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:customer_core/src/core/constants/app_identifiers.dart';
 
@@ -12,24 +14,22 @@ class AppThemeSharedPrefs {
         .catchError((_) => false);
   }
 
-  static Future<bool> getAppTheme() async {
+  static Future<ThemeMode?> getAppTheme() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      bool? value = prefs.getBool(kUserPrefsKey);
+      String? value = prefs.getString(kUserPrefsKey);
 
-      if (value == null) return false;
-
-      return value;
+      return value != null ? ThemeMode.values.byName(value) : null;
     } catch (_) {
-      return false;
+      return null;
     }
   }
 
-  static Future<bool> saveAppTheme(bool value) async {
+  static Future<bool> saveAppTheme(ThemeMode value) async {
     try {
       final prefs = await SharedPreferences.getInstance();
 
-      await prefs.setBool(kUserPrefsKey, value);
+      await prefs.setString(kUserPrefsKey, value.name);
 
       return true;
     } catch (_) {

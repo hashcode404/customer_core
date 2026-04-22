@@ -332,8 +332,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                                 context.router
                                     .push(const ViewOrderScreenRoute());
                               },
-                              child:
-                                  historyOrderCard2(e, context, themeListener)))
+                              child: historyOrderCard2(e, context)))
                           .toList(),
                     ),
                   );
@@ -353,8 +352,11 @@ class ProfileScreen extends GetProviderView<UserProvider> {
     );
   }
 
-  Widget historyOrderCard2(OrderDetailsModel order, BuildContext context,
-      ThemeProvider themeListener) {
+  Widget historyOrderCard2(
+    OrderDetailsModel order,
+    BuildContext context,
+  ) {
+    final themeListener = context.watch<ThemeProvider>();
     final listOfProducts = order.orderDishes ?? [];
     final isMoreThanThreeItems = listOfProducts.length > 3;
     return Container(
@@ -483,12 +485,9 @@ class ProfileScreen extends GetProviderView<UserProvider> {
           activeColor: Theme.of(context).colorScheme.primary,
           value: context.watch<ThemeProvider>().isDarkMode,
           onChanged: (val) {
-            context.read<ThemeProvider>().toggleTheme();
-            if (val) {
-              AppThemeSharedPrefs.saveAppTheme(true);
-            } else {
-              AppThemeSharedPrefs.saveAppTheme(false);
-            }
+            context
+                .read<ThemeProvider>()
+                .toggleTheme(val ? ThemeMode.dark : ThemeMode.light);
           },
         ),
       ),

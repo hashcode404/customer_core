@@ -97,7 +97,7 @@ class _CustomerAppState extends State<CustomerApp> {
     }
 
     return Selector<ThemeProvider, ThemeMode>(
-        selector: (_, provider) => provider.currentTheme,
+        selector: (_, provider) => provider.themeMode,
         builder: (context, themeMode, _) {
           return MaterialApp.router(
             title: widget.appConfig.applicationName,

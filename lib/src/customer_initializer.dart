@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:customer_core/src/domain/notification/models/notification_model.dart';
 import 'package:customer_core/src/infrastructure/notification/notification_shared_prefs_repo.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -50,10 +51,31 @@ class CustomerInitializer {
         await NotificationSharedPrefs.saveNotification(notification);
       }
     });
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
     // Orientation
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+  }
+
+  @pragma('vm:entry-point')
+  static Future<void> _firebaseMessagingBackgroundHandler(
+      RemoteMessage message) async {
+    await Firebase.initializeApp();
+    if (message.data["title"] != null || message.data["body"] != null) {
+      NotificationProvider().showNotification(
+        message.data["title"],
+        message.data["body"],
+      );
+      final notification = NotificationModel(
+        title: message.data["title"],
+        body: message.data["body"],
+        dateTime: DateTime.now(),
+        customerOrderID: '',
+        orderID: '',
+      );
+      await NotificationSharedPrefs.saveNotification(notification);
+    }
   }
 }

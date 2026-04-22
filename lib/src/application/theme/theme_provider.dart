@@ -1,3 +1,4 @@
+import 'package:customer_core/customer_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -6,27 +7,49 @@ import 'package:customer_core/src/infrastructure/theme/theme_shared_prefs_repo.d
 
 @LazySingleton()
 class ThemeProvider extends ChangeNotifier with BaseController {
-  bool _isDarkMode = false;
 
-  bool get isDarkMode => _isDarkMode;
+var themeMode = ThemeMode.system;
 
-  ThemeMode get currentTheme => _isDarkMode ? ThemeMode.dark : ThemeMode.light;
+bool get isDarkMode => themeMode == ThemeMode.dark;
 
-  void toggleTheme() {
-    _isDarkMode = !_isDarkMode;
-    notifyListeners();
-  }
+
+  AppThemeMode? _tMode;
+
+  void toggleTheme(ThemeMode mode) {
+   themeMode = mode;
+  AppThemeSharedPrefs.saveAppTheme(mode);
+  notifyListeners();
+}
 
   @override
   Future<void> init() {
     loadAppTheme();
+
     return super.init();
   }
 
-  Future<bool> loadAppTheme() async {
-    final val = await AppThemeSharedPrefs.getAppTheme();
-    _isDarkMode = val;
-    notifyListeners();
-    return val;
+Future<void> loadAppTheme() async {
+  final saved = await AppThemeSharedPrefs.getAppTheme(); 
+  final configMode = _mapThemeMode(AppConfig.instance.themeMode);
+
+  if (saved == null) {
+    // No saved preference → fallback to config
+    themeMode = configMode;
+  } else {
+    themeMode = saved;
+  }
+
+  notifyListeners();
+}
+
+   ThemeMode _mapThemeMode(AppThemeMode mode) {
+    switch (mode) {
+      case AppThemeMode.light:
+        return ThemeMode.light;
+      case AppThemeMode.dark:
+        return ThemeMode.dark;
+      case AppThemeMode.system:
+        return ThemeMode.system;
+    }
   }
 }

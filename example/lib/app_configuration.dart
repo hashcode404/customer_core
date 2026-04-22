@@ -5,6 +5,7 @@ final appConfig = AppConfig(
   applicationName: 'Le Arabia Customer',
   shopName: 'Le Arabia',
   shopId: '1',
+  themeMode: AppThemeMode.dark,
   country: Country.uk,
   shopIdentifier: 'le-arabia',
   shopInfoEmail: 'info@learabia.co.uk',
