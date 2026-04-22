@@ -13,13 +13,12 @@ void main() async {
   await CustomerInitializer.init();
   await dotenv.load(fileName: ".env.prod");
 
-  
   runApp(
     CustomerApp(
       config: config,
       lightThemeOverride: const CustomerLightThemeOverride(
           primary: Color(0xFFf0a70a),
-          onSurface: Colors.white,
+          onSurface: Colors.black,
           disabledColor: Colors.grey),
       darkThemeOverride: const CustomerDarkThemeOverride(
           primary: Color(0xFFf0a70a),

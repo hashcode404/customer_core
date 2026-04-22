@@ -35,3 +35,5 @@ enum Country {
     required this.countryName,
   });
 }
+
+enum AppThemeMode {light, dark, system}

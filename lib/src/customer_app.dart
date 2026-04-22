@@ -48,6 +48,17 @@ class _CustomerAppState extends State<CustomerApp> {
     );
   }
 
+  ThemeMode _mapThemeMode(AppThemeMode mode) {
+    switch (mode) {
+      case AppThemeMode.light:
+        return ThemeMode.light;
+      case AppThemeMode.dark:
+        return ThemeMode.dark;
+      case AppThemeMode.system:
+        return ThemeMode.system;
+    }
+  }
+
   Widget _buildMaterialApp(BuildContext context) {
     final appRouter = AppRouter();
 
@@ -81,20 +92,30 @@ class _CustomerAppState extends State<CustomerApp> {
       );
     }
 
-    return MaterialApp.router(
-      title: widget.config.applicationName,
-      debugShowCheckedModeBanner: false,
-      theme: finalLight,
-      darkTheme: finalDark,
-      themeMode: ThemeMode.dark, // change this 👈
-      routerConfig: appRouter.config(),
-      builder: (context, child) {
-        return MediaQuery(
-          data: MediaQuery.of(context)
-              .copyWith(textScaler: const TextScaler.linear(0.95)),
-          child: ToastificationWrapper(child: child!),
-        );
-      },
-    );
+    return Selector<ThemeProvider, ThemeMode>(
+        selector: (_, provider) => provider.currentTheme,
+        builder: (context, themeMode, _) {
+          return MaterialApp.router(
+            title: widget.config.applicationName,
+            debugShowCheckedModeBanner: false,
+            theme: finalLight,
+            darkTheme: finalDark,
+            themeMode:
+                _mapThemeMode(widget.config.themeMode) == ThemeMode.system
+                    ? themeMode
+                    : _mapThemeMode(widget.config.themeMode),
+            // themeMode: _mapThemeMode(widget.config.themeMode) == ThemeMode.system
+            //     ? Provider.of<ThemeProvider>(context, listen: false).currentTheme
+            //     : _mapThemeMode(widget.config.themeMode), // change this 👈
+            routerConfig: appRouter.config(),
+            builder: (context, child) {
+              return MediaQuery(
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: const TextScaler.linear(0.95)),
+                child: ToastificationWrapper(child: child!),
+              );
+            },
+          );
+        });
   }
 }

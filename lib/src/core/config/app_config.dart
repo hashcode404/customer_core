@@ -27,6 +27,7 @@ class AppConfig {
   final String stripeKey;
   final String bgImage;
   final Country country;
+  final AppThemeMode themeMode;
 
   AppConfig({
     required this.applicationName,
@@ -49,5 +50,6 @@ class AppConfig {
     required this.reservationSecretKey,
     required this.stripeKey,
     required this.bgImage,
+    this.themeMode = AppThemeMode.system,
   });
 }
