@@ -155,7 +155,7 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Assets.lib.assets.images.loginpage.image(height: 300),
+                          Assets.lib.assets.images.userpassword.image(height: 300),
                           Text(
                             !isLogged ? "Please log in to continue" : "",
                             style: context.customTextTheme.text16W400

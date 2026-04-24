@@ -72,7 +72,7 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (!isLogged) ...[
-                    Assets.lib.assets.images.orderPage.image(height: 300),
+                    Assets.lib.assets.images.userlogin.image(height: 300),
                     Text(
                       !isLogged ? "Please log in to continue" : "No Orders",
                       style: context.customTextTheme.text16W400

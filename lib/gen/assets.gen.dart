@@ -352,6 +352,14 @@ class $LibAssetsImagesGen {
   /// File path: lib/assets/images/user.png
   AssetGenImage get user => const AssetGenImage('lib/assets/images/user.png');
 
+  /// File path: lib/assets/images/userlogin.png
+  AssetGenImage get userlogin =>
+      const AssetGenImage('lib/assets/images/userlogin.png');
+
+  /// File path: lib/assets/images/userpassword.png
+  AssetGenImage get userpassword =>
+      const AssetGenImage('lib/assets/images/userpassword.png');
+
   /// File path: lib/assets/images/welcome.png
   AssetGenImage get welcome =>
       const AssetGenImage('lib/assets/images/welcome.png');
@@ -411,6 +419,8 @@ class $LibAssetsImagesGen {
         urbanSpicebg,
         urbanspiceLogoWithoutBg,
         user,
+        userlogin,
+        userpassword,
         welcome
       ];
 }
