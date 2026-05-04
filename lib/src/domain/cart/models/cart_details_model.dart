@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:customer_core/customer_core.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:customer_core/customer_core.dart';
 
 import 'add_product_cart_request_model.dart';
 
@@ -12,6 +13,9 @@ class CartDetailsModel {
   final List<CartItemDataModel> cartItems;
   final CartItemTotalSummary? cartTotal;
   final CartItemPaymentDetails? paymentOptions;
+  final String? shopCurrency;
+  final String? shopCurrencyIcon;
+  final String? shopPhone;
 
   CartDetailsModel({
     this.restaurantID,
@@ -19,6 +23,9 @@ class CartDetailsModel {
     this.cartItems = const [],
     this.cartTotal,
     this.paymentOptions,
+    this.shopCurrency,
+    this.shopCurrencyIcon,
+    this.shopPhone,
   });
 
   CartDetailsModel copyWith({
@@ -27,6 +34,9 @@ class CartDetailsModel {
     List<CartItemDataModel>? cartItems,
     CartItemTotalSummary? cartTotal,
     CartItemPaymentDetails? paymentOptions,
+    String? shopCurrency,
+    String? shopCurrencyIcon,
+    String? shopPhone,
   }) {
     return CartDetailsModel(
       restaurantID: restaurantID ?? this.restaurantID,
@@ -34,6 +44,9 @@ class CartDetailsModel {
       cartItems: cartItems ?? this.cartItems,
       cartTotal: cartTotal ?? this.cartTotal,
       paymentOptions: paymentOptions ?? this.paymentOptions,
+      shopCurrency: shopCurrency ?? this.shopCurrency,
+      shopCurrencyIcon: shopCurrencyIcon ?? this.shopCurrencyIcon,
+      shopPhone: shopPhone ?? this.shopPhone,
     );
   }
 
@@ -44,6 +57,9 @@ class CartDetailsModel {
       'cartItems': cartItems.map((x) => x.toMap()).toList(),
       'cartTotal': cartTotal?.toMap(),
       'paymentOptions': paymentOptions?.toMap(),
+      'shopCurrency': shopCurrency,
+      'shopCurrencyIcon': shopCurrencyIcon,
+      'shopPhone': shopPhone,
     };
   }
 
@@ -67,6 +83,13 @@ class CartDetailsModel {
           ? CartItemPaymentDetails.fromMap(
               map['paymentOptions'] as Map<String, dynamic>)
           : null,
+      shopCurrency: map['shopCurrency'] != null
+          ? map['shopCurrency'] as String
+          : null,
+      shopCurrencyIcon: map['shopCurrencyIcon'] != null
+          ? map['shopCurrencyIcon'] as String
+          : null,
+      shopPhone: map['shopPhone'] != null ? map['shopPhone'] as String : null,
     );
   }
 
@@ -77,7 +100,7 @@ class CartDetailsModel {
 
   @override
   String toString() {
-    return 'CartSummarySubDataModel(restaurantID: $restaurantID, restaurantName: $restaurantName, cartItems: $cartItems, cartTotal: $cartTotal, paymentOptions: $paymentOptions)';
+    return 'CartSummarySubDataModel(restaurantID: $restaurantID, restaurantName: $restaurantName, cartItems: $cartItems, cartTotal: $cartTotal, paymentOptions: $paymentOptions,shopCurrency: $shopCurrency,shopCurrencyIcon: $shopCurrencyIcon,shopPhone: $shopPhone)';
   }
 
   @override
@@ -88,7 +111,10 @@ class CartDetailsModel {
         other.restaurantName == restaurantName &&
         listEquals(other.cartItems, cartItems) &&
         other.cartTotal == cartTotal &&
-        other.paymentOptions == paymentOptions;
+        other.paymentOptions == paymentOptions &&
+        other.shopCurrency == shopCurrency &&
+        other.shopCurrencyIcon == shopCurrencyIcon &&
+        other.shopPhone == shopPhone;
   }
 
   @override
@@ -97,7 +123,10 @@ class CartDetailsModel {
         restaurantName.hashCode ^
         cartItems.hashCode ^
         cartTotal.hashCode ^
-        paymentOptions.hashCode;
+        paymentOptions.hashCode ^
+        shopCurrency.hashCode ^
+        shopCurrencyIcon.hashCode ^
+        shopPhone.hashCode;
   }
 
   double get getOfferDiscount {
@@ -116,7 +145,7 @@ class CartDetailsModel {
 class CartItemDataModel {
   final String? pID;
   final String? productName;
-  final String? quantity;
+  final int? quantity;
   final String? cartID;
   final String? product_price;
   final String? product_total_price;
@@ -129,6 +158,11 @@ class CartItemDataModel {
   final CartCOptionsDataModel? cOption;
   final String? productPhoto;
   final CartAmountDetailsDataModel? amountDetails;
+
+  final String? type;
+  final String? identifierName;
+  final String? description;
+  final String? ingredients;
 
   CartItemDataModel({
     this.pID,
@@ -146,12 +180,16 @@ class CartItemDataModel {
     this.cOption,
     this.productPhoto,
     this.amountDetails,
+    this.type,
+    this.identifierName,
+    this.description,
+    this.ingredients,
   });
 
   CartItemDataModel copyWith({
     String? pID,
     String? productName,
-    String? quantity,
+    int? quantity,
     String? cartID,
     String? product_price,
     String? product_total_price,
@@ -164,6 +202,10 @@ class CartItemDataModel {
     CartCOptionsDataModel? cOption,
     String? productPhoto,
     CartAmountDetailsDataModel? amountDetails,
+    String? type,
+    String? identifierName,
+    String? description,
+    String? ingredients,
   }) {
     return CartItemDataModel(
       pID: pID ?? this.pID,
@@ -181,6 +223,11 @@ class CartItemDataModel {
       cOption: cOption ?? this.cOption,
       productPhoto: productPhoto ?? this.productPhoto,
       amountDetails: amountDetails ?? this.amountDetails,
+
+      type: type ?? this.type,
+      identifierName: identifierName ?? this.identifierName,
+      description: description ?? this.description,
+      ingredients: ingredients ?? this.ingredients,
     );
   }
 
@@ -202,6 +249,10 @@ class CartItemDataModel {
       'cOption': cOption?.toMap(),
       'productPhoto': productPhoto,
       'amountDetails': amountDetails?.toMap(),
+      'type': type,
+      'identifierName': identifierName,
+      'description': description,
+      'ingredients': ingredients,
     };
   }
 
@@ -210,7 +261,7 @@ class CartItemDataModel {
       pID: map['pID'] != null ? map['pID'] as String : null,
       productName:
           map['productName'] != null ? map['productName'] as String : null,
-      quantity: map['quantity'] != null ? map['quantity'] as String : null,
+      quantity: map['quantity'] != null ? map['quantity'] as int : null,
       cartID: map['cartID'] != null ? map['cartID'] as String : null,
       product_price:
           map['product_price'] != null ? map['product_price'] as String : null,
@@ -244,6 +295,14 @@ class CartItemDataModel {
           ? CartAmountDetailsDataModel.fromMap(
               map['amountDetails'] as Map<String, dynamic>)
           : null,
+      type: map['type'] != null ? map['type'] as String : null,
+      identifierName: map['identifierName'] != null
+          ? map['identifierName'] as String
+          : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
+      ingredients:
+          map['ingredients'] != null ? map['ingredients'] as String : null,
     );
   }
 
@@ -272,7 +331,7 @@ class CartItemDataModel {
 
   @override
   String toString() {
-    return 'CartItemDataModel(pID: $pID, productName: $productName, quantity: $quantity, cartID: $cartID, product_price: $product_price, product_total_price: $product_total_price, product_normal_price: $product_normal_price,total: $total, display_total: $display_total, variation: $variation, addon_apllied: $addon_apllied, master_addon_apllied: $master_addon_apllied, cOption: $cOption, productPhoto: $productPhoto, amountDetails: $amountDetails)';
+    return 'CartItemDataModel(pID: $pID, productName: $productName, quantity: $quantity, cartID: $cartID, product_price: $product_price, product_total_price: $product_total_price, product_normal_price: $product_normal_price,total: $total, display_total: $display_total, variation: $variation, addon_apllied: $addon_apllied, master_addon_apllied: $master_addon_apllied, cOption: $cOption, productPhoto: $productPhoto, amountDetails: $amountDetails, type: $type, identifierName: $identifierName, description: $description, ingredients: $ingredients)';
   }
 
   @override
@@ -293,7 +352,11 @@ class CartItemDataModel {
         listEquals(other.master_addon_apllied, master_addon_apllied) &&
         other.cOption == cOption &&
         other.productPhoto == productPhoto &&
-        other.amountDetails == amountDetails;
+        other.amountDetails == amountDetails &&
+        other.type == type &&
+        other.identifierName == identifierName &&
+        other.description == description &&
+        other.ingredients == ingredients;
   }
 
   @override
@@ -312,7 +375,11 @@ class CartItemDataModel {
         master_addon_apllied.hashCode ^
         cOption.hashCode ^
         productPhoto.hashCode ^
-        amountDetails.hashCode;
+        amountDetails.hashCode ^
+        type.hashCode ^
+        identifierName.hashCode ^
+        description.hashCode ^
+        ingredients.hashCode;
   }
 }
 
@@ -440,20 +507,30 @@ class ChoosedModifierOption {
 class CartItemTotalSummary {
   final int? cartTotalPrice;
   final String? cartTotalPriceDisplay;
+  final int? cartDiscountTotal;
+  final String? cartDiscountTotalDisplay;
 
   CartItemTotalSummary({
     this.cartTotalPrice,
     this.cartTotalPriceDisplay,
+    this.cartDiscountTotal,
+    this.cartDiscountTotalDisplay,
+   
   });
 
   CartItemTotalSummary copyWith({
     int? cartTotalPrice,
     String? cartTotalPriceDisplay,
+    int? cartDiscountTotal,
+    String? cartDiscountTotalDisplay,
   }) {
     return CartItemTotalSummary(
       cartTotalPrice: cartTotalPrice ?? this.cartTotalPrice,
       cartTotalPriceDisplay:
           cartTotalPriceDisplay ?? this.cartTotalPriceDisplay,
+      cartDiscountTotal: cartDiscountTotal ?? this.cartDiscountTotal,
+      cartDiscountTotalDisplay:
+          cartDiscountTotalDisplay ?? this.cartDiscountTotalDisplay,
     );
   }
 
@@ -461,6 +538,8 @@ class CartItemTotalSummary {
     return <String, dynamic>{
       'cartTotalPrice': cartTotalPrice,
       'cartTotalPriceDisplay': cartTotalPriceDisplay,
+      'cartDiscountTotal': cartDiscountTotal,
+      'cartDiscountTotalDisplay': cartDiscountTotalDisplay,
     };
   }
 
@@ -470,6 +549,12 @@ class CartItemTotalSummary {
           map['cartTotalPrice'] != null ? map['cartTotalPrice'] as int : null,
       cartTotalPriceDisplay: map['cartTotalPriceDisplay'] != null
           ? map['cartTotalPriceDisplay'] as String
+          : null,
+      cartDiscountTotal:
+          map['cartDiscountTotal'] != null ? map['cartDiscountTotal'] as int : null,
+      cartDiscountTotalDisplay:
+          map['cartDiscountTotalDisplay'] != null
+          ? map['cartDiscountTotalDisplay'] as String
           : null,
     );
   }
@@ -481,40 +566,49 @@ class CartItemTotalSummary {
 
   @override
   String toString() =>
-      'CartItemTotalSummary(cartTotalPrice: $cartTotalPrice, cartTotalPriceDisplay: $cartTotalPriceDisplay)';
+      'CartItemTotalSummary(cartTotalPrice: $cartTotalPrice, cartTotalPriceDisplay: $cartTotalPriceDisplay, cartDiscountTotal: $cartDiscountTotal, cartDiscountTotalDisplay: $cartDiscountTotalDisplay)';
 
   @override
   bool operator ==(covariant CartItemTotalSummary other) {
     if (identical(this, other)) return true;
 
     return other.cartTotalPrice == cartTotalPrice &&
-        other.cartTotalPriceDisplay == cartTotalPriceDisplay;
+        other.cartTotalPriceDisplay == cartTotalPriceDisplay&&other.cartDiscountTotal==cartDiscountTotal&&other.cartDiscountTotalDisplay==cartDiscountTotalDisplay;
   }
 
   @override
-  int get hashCode => cartTotalPrice.hashCode ^ cartTotalPriceDisplay.hashCode;
+  int get hashCode => cartTotalPrice.hashCode ^ cartTotalPriceDisplay.hashCode^cartDiscountTotal.hashCode^cartDiscountTotalDisplay.hashCode;
 }
 
 class CartItemPaymentDetails {
   final String? cod;
   final String? stripe;
   final String? shopStatus;
+  final String? QrUPI;
+  final String? QrUPI_Image;
+
 
   CartItemPaymentDetails({
     this.cod,
     this.stripe,
     this.shopStatus,
+    this.QrUPI,
+    this.QrUPI_Image,
   });
 
   CartItemPaymentDetails copyWith({
     String? cod,
     String? stripe,
     String? shopStatus,
+    String? QrUPI,
+    String? QrUPI_Image,
   }) {
     return CartItemPaymentDetails(
       cod: cod ?? this.cod,
       stripe: stripe ?? this.stripe,
       shopStatus: shopStatus ?? this.shopStatus,
+      QrUPI: QrUPI ?? this.QrUPI,
+      QrUPI_Image: QrUPI_Image ?? this.QrUPI_Image,
     );
   }
 
@@ -523,6 +617,8 @@ class CartItemPaymentDetails {
       'cod': cod,
       'stripe': stripe,
       'shopStatus': shopStatus,
+      'QrUPI': QrUPI,
+      'QrUPI_Image': QrUPI_Image,
     };
   }
 
@@ -532,6 +628,8 @@ class CartItemPaymentDetails {
       stripe: map['stripe'] != null ? map['stripe'] as String : null,
       shopStatus:
           map['shopStatus'] != null ? map['shopStatus'] as String : null,
+      QrUPI: map['QrUPI'] != null ? map['QrUPI'] as String : null,
+      QrUPI_Image: map['QrUPI_Image'] != null ? map['QrUPI_Image'] as String : null,
     );
   }
 
@@ -543,7 +641,7 @@ class CartItemPaymentDetails {
 
   @override
   String toString() =>
-      'CartItemPaymentDetails(cod: $cod, stripe: $stripe, shopStatus: $shopStatus)';
+      'CartItemPaymentDetails(cod: $cod, stripe: $stripe, shopStatus: $shopStatus, QrUPI: $QrUPI, QrUPI_Image: $QrUPI_Image)';
 
   @override
   bool operator ==(covariant CartItemPaymentDetails other) {
@@ -551,57 +649,75 @@ class CartItemPaymentDetails {
 
     return other.cod == cod &&
         other.stripe == stripe &&
-        other.shopStatus == shopStatus;
+        other.shopStatus == shopStatus &&
+        other.QrUPI == QrUPI &&
+        other.QrUPI_Image == QrUPI_Image;
   }
 
   @override
-  int get hashCode => cod.hashCode ^ stripe.hashCode ^ shopStatus.hashCode;
+  int get hashCode => cod.hashCode ^ stripe.hashCode ^ shopStatus.hashCode ^ QrUPI.hashCode ^ QrUPI_Image.hashCode;
 }
 
 class CartAmountDetailsDataModel {
   final bool? isOfferApplied;
+  final bool? isTaxApplied;
   final int? totalAmountWithAddon;
+  final int? totalAmountWithAddonExcTax;
   final int? totalAmountWithAddonNormal;
   final int? totalDiscount;
   final CartAmountDetailsDisplayDataModel? display;
   final CartAmountItemDetailsDataModel? itemDetails;
+  final CartAmountTaxConfigDataModel? taxConfig;
 
   CartAmountDetailsDataModel({
     this.isOfferApplied,
+    this.isTaxApplied,
     this.totalAmountWithAddon,
+    this.totalAmountWithAddonExcTax,
     this.totalAmountWithAddonNormal,
     this.totalDiscount,
     this.display,
     this.itemDetails,
+    this.taxConfig,
   });
 
   CartAmountDetailsDataModel copyWith({
     bool? isOfferApplied,
+    bool? isTaxApplied,
     int? totalAmountWithAddon,
+    int? totalAmountWithAddonExcTax,
     int? totalAmountWithAddonNormal,
     int? totalDiscount,
     CartAmountDetailsDisplayDataModel? display,
     CartAmountItemDetailsDataModel? itemDetails,
+    CartAmountTaxConfigDataModel? taxConfig,
   }) {
     return CartAmountDetailsDataModel(
       isOfferApplied: isOfferApplied ?? this.isOfferApplied,
+      isTaxApplied: isTaxApplied ?? this.isTaxApplied,
       totalAmountWithAddon: totalAmountWithAddon ?? this.totalAmountWithAddon,
+      totalAmountWithAddonExcTax:
+          totalAmountWithAddonExcTax ?? this.totalAmountWithAddonExcTax,
       totalAmountWithAddonNormal:
           totalAmountWithAddonNormal ?? this.totalAmountWithAddonNormal,
       totalDiscount: totalDiscount ?? this.totalDiscount,
       display: display ?? this.display,
       itemDetails: itemDetails ?? this.itemDetails,
+      taxConfig: taxConfig ?? this.taxConfig,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'isOfferApplied': isOfferApplied,
+      'isTaxApplied': isTaxApplied,
       'totalAmountWithAddon': totalAmountWithAddon,
+      'totalAmountWithAddonExcTax': totalAmountWithAddonExcTax,
       'totalAmountWithAddon_Normal': totalAmountWithAddonNormal,
       'totalDiscount': totalDiscount,
       'display': display?.toMap(),
       'itemDetails': itemDetails?.toMap(),
+      'taxConfig': taxConfig?.toMap(),
     };
   }
 
@@ -609,8 +725,13 @@ class CartAmountDetailsDataModel {
     return CartAmountDetailsDataModel(
       isOfferApplied:
           map['isOfferApplied'] != null ? map['isOfferApplied'] as bool : null,
+      isTaxApplied:
+          map['isTaxApplied'] != null ? map['isTaxApplied'] as bool : null,
       totalAmountWithAddon: map['totalAmountWithAddon'] != null
           ? map['totalAmountWithAddon'] as int
+          : null,
+      totalAmountWithAddonExcTax: map['totalAmountWithAddonExcTax'] != null
+          ? map['totalAmountWithAddonExcTax'] as int
           : null,
       totalAmountWithAddonNormal: map['totalAmountWithAddon_Normal'] != null
           ? map['totalAmountWithAddon_Normal'] as int
@@ -625,6 +746,10 @@ class CartAmountDetailsDataModel {
           ? CartAmountItemDetailsDataModel.fromMap(
               map['ItemDetails'] as Map<String, dynamic>)
           : null,
+      taxConfig: map['TaxConfig'] != null
+          ? CartAmountTaxConfigDataModel.fromMap(
+              map['TaxConfig'] as Map<String, dynamic>)
+          : null,
     );
   }
 
@@ -636,28 +761,34 @@ class CartAmountDetailsDataModel {
 
   @override
   String toString() =>
-      'CartAmountDetailsDataModel(isOfferApplied: $isOfferApplied, totalAmountWithAddon: $totalAmountWithAddon, totalAmountWithAddonNormal: $totalAmountWithAddonNormal, totalDiscount: $totalDiscount, display: $display, itemDetails: $itemDetails)';
+      'CartAmountDetailsDataModel(isOfferApplied: $isOfferApplied, isTaxApplied: $isTaxApplied, totalAmountWithAddon: $totalAmountWithAddon, totalAmountWithAddonExcTax: $totalAmountWithAddonExcTax, totalAmountWithAddonNormal: $totalAmountWithAddonNormal, totalDiscount: $totalDiscount, display: $display, itemDetails: $itemDetails, taxConfig: $taxConfig)';
 
   @override
   bool operator ==(covariant CartAmountDetailsDataModel other) {
     if (identical(this, other)) return true;
 
     return other.isOfferApplied == isOfferApplied &&
+        other.isTaxApplied == isTaxApplied &&
         other.totalAmountWithAddon == totalAmountWithAddon &&
+        other.totalAmountWithAddonExcTax == totalAmountWithAddonExcTax &&
         other.totalAmountWithAddonNormal == totalAmountWithAddonNormal &&
         other.totalDiscount == totalDiscount &&
         other.display == display &&
-        other.itemDetails == itemDetails;
+        other.itemDetails == itemDetails &&
+        other.taxConfig == taxConfig;
   }
 
   @override
   int get hashCode =>
       isOfferApplied.hashCode ^
+      isTaxApplied.hashCode ^
       totalAmountWithAddon.hashCode ^
+      totalAmountWithAddonExcTax.hashCode ^
       totalAmountWithAddonNormal.hashCode ^
       totalDiscount.hashCode ^
       display.hashCode ^
-      itemDetails.hashCode;
+      itemDetails.hashCode ^
+      taxConfig.hashCode;
 }
 
 class CartAmountDetailsDisplayDataModel {
@@ -930,4 +1061,56 @@ class CartAmountItemDetailsDisplayDataModel {
       totalAmountNormal.hashCode ^
       discount.hashCode ^
       totalDiscount.hashCode;
+}
+
+class CartAmountTaxConfigDataModel {
+  final String? appliedSlab;
+  final String? appliedSlabLabel; 
+  CartAmountTaxConfigDataModel({
+    this.appliedSlab,
+    this.appliedSlabLabel,
+  });
+
+  CartAmountTaxConfigDataModel copyWith({
+    String? appliedSlab,
+    String? appliedSlabLabel,
+  }) {
+    return CartAmountTaxConfigDataModel(
+      appliedSlab: appliedSlab ?? this.appliedSlab,
+      appliedSlabLabel: appliedSlabLabel ?? this.appliedSlabLabel,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'appliedSlab': appliedSlab,
+      'appliedSlabLabel': appliedSlabLabel,
+    };
+  }
+
+  factory CartAmountTaxConfigDataModel.fromMap(Map<String, dynamic> map) {
+    return CartAmountTaxConfigDataModel(
+      appliedSlab: map['appliedSlab'] != null ? map['appliedSlab'] as String : null,
+      appliedSlabLabel: map['appliedSlabLabel'] != null ? map['appliedSlabLabel'] as String : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory CartAmountTaxConfigDataModel.fromJson(String source) => CartAmountTaxConfigDataModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'CartAmountTaxConfigDataModel(appliedSlab: $appliedSlab, appliedSlabLabel: $appliedSlabLabel)';
+
+  @override
+  bool operator ==(covariant CartAmountTaxConfigDataModel other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.appliedSlab == appliedSlab &&
+      other.appliedSlabLabel == appliedSlabLabel;
+  }
+
+  @override
+  int get hashCode => appliedSlab.hashCode ^ appliedSlabLabel.hashCode;
 }

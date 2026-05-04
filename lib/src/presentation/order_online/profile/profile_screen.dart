@@ -75,10 +75,14 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                     Visibility(
                       visible: true,
                       child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Colors.white.withOpacity(0.2)),
+                              borderRadius: BorderRadius.circular(10)),
                           child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: _buildAppAppearance(context),
-                      )),
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: _buildAppAppearance(context),
+                          )),
                     ),
 
                     if (isLogged) ...[
@@ -155,7 +159,8 @@ class ProfileScreen extends GetProviderView<UserProvider> {
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Assets.lib.assets.images.userpassword.image(height: 300),
+                          Assets.lib.assets.images.userpassword
+                              .image(height: 300),
                           Text(
                             !isLogged ? "Please log in to continue" : "",
                             style: context.customTextTheme.text16W400

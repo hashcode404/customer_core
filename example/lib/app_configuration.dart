@@ -5,7 +5,7 @@ final appConfig = AppConfig(
   applicationName: 'Le Arabia Customer',
   shopName: 'Le Arabia',
   shopId: '1',
-  themeMode: AppThemeMode.dark,
+  themeMode: AppThemeMode.system,
   country: Country.uk,
   shopIdentifier: 'le-arabia',
   shopInfoEmail: 'info@learabia.co.uk',
@@ -13,7 +13,7 @@ final appConfig = AppConfig(
   shopInfoAddress: '63 New Writtle Street, Chelmsford, CM2 0LF',
   buildIdentifier: 'co.uk.learabia.app',
   fireBaseProjectId: 'customerapp-6d5f7',
-  env: AppEnv.prod,
+  env: AppEnv.dev,
 );
 final uiConfig = UiConfig(
   logo: 'assets/images/freshden logo v3.png',

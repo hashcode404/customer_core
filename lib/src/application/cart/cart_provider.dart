@@ -316,9 +316,9 @@ class CartProvider extends ChangeNotifier with BaseController {
 
     final result = product?.quantity;
 
-    final qty = int.parse(result ?? '0');
+    // final qty = int.tryParse(result ?? '0') ?? 0;
 
-    return qty;
+    return result ?? 0;
   }
 
   //clear selected Address
@@ -703,7 +703,7 @@ class CartProvider extends ChangeNotifier with BaseController {
   Future<bool> incrementCartItemQty(int index) async {
     if (_cartDetailsModel == null || _cartDeleteLoading == true) return false;
     final locatedCartItem = cartItems.elementAt(index);
-    final newQty = int.parse(locatedCartItem.quantity ?? "0") + 1;
+    final newQty = locatedCartItem.quantity ?? 0 + 1;
 
     // _debounceTimer?.cancel();
     // _debounceTimer = Timer(
@@ -763,7 +763,7 @@ class CartProvider extends ChangeNotifier with BaseController {
 
     newCartItems[index] = item.copyWith(
       cartID: locatedCartItem.cartID,
-      quantity: newQty.toString(),
+      quantity: newQty,
       // master_addon_apllied: updatedAppliedMasterAddons,
       // addon_apllied: updatedAppliedAddons,
       total: (totalItemPrice + itemModifiersTotalInPaisa).toInt(),
@@ -794,7 +794,7 @@ class CartProvider extends ChangeNotifier with BaseController {
   Future<bool> decrementCartItemQty(int index) async {
     if (_cartDetailsModel == null || _cartDeleteLoading == true) return false;
     final locatedCartItem = cartItems.elementAt(index);
-    final prevQty = int.parse(locatedCartItem.quantity ?? "0");
+    final prevQty = locatedCartItem.quantity ?? 0;
     if (prevQty == 1) {
       return removeCartItem(locatedCartItem.cartID);
     }
@@ -859,7 +859,7 @@ class CartProvider extends ChangeNotifier with BaseController {
 
     newCartItems[index] = item.copyWith(
       cartID: locatedCartItem.cartID,
-      quantity: newQty.toString(),
+      quantity: newQty,
       // master_addon_apllied: updatedAppliedMasterAddons,
       // addon_apllied: updatedAppliedAddons,
       total: (totalItemPrice + itemModifiersTotalInPaisa).toInt(),

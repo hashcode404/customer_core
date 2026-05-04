@@ -397,7 +397,7 @@ class _CartItemsScreenState extends State<CartItemsScreen> {
                               await cartProvider.decrementCartItemQty(index);
                             },
                             previousQty: 0,
-                            qty: (product.quantity ?? '0').toInt(),
+                            qty: product.quantity ?? 0,
                             onIncrementQty: () async {
                               cartProvider.clearSelectedAddressSecondary();
                               cartProvider.clearSelectedAddress();

@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await CustomerInitializer.init();
-  await dotenv.load(fileName: ".env.prod");
+  await dotenv.load(fileName: ".env.dev");
 
   runApp(
     CustomerApp(
@@ -20,11 +20,11 @@ void main() async {
       keyConfig: keyConfig,
       lightThemeOverride: const CustomerLightThemeOverride(
           primary: Colors.red,
-          onSurface: Colors.black,
+          onSurface: Colors.white,
           disabledColor: Colors.grey),
       darkThemeOverride: const CustomerDarkThemeOverride(
           primary: Colors.red,
-        onSurface: Colors.white,
+          onSurface: Colors.white,
           disabledColor: Colors.grey),
     ),
   );

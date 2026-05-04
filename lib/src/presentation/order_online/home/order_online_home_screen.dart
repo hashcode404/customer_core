@@ -188,8 +188,8 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
                     actions: [
                       InkWell(
                         onTap: () {
-                          context.router.push(const NotificationScreenRoute());
-                          // context.router.push(const SuccessScreenRoute());
+                          // context.router.push(const NotificationScreenRoute());
+                          cartProvider.listCartItems();
                         },
                         child: Badge.count(
                           count: notificationCount,
