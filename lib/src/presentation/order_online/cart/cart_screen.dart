@@ -90,14 +90,7 @@ class _CartScreenState extends State<CartScreen>
           appBar: _buildAppBar(context, cartListener, cartProvider),
           bottomSheet: _buildBottomSheet(
               cartListener, context, cartProvider, shopProvider),
-          floatingActionButton: _buildFloatingActionButton(
-              cartListener,
-              context,
-              cartProvider,
-              shopListener,
-              paymentProvider,
-              orderProvider,
-              userListener),
+          floatingActionButton: _buildFloatingActionButton(context),
           body: cartListener.isCartEmpty
               ? _buildIsEmptyWidget(context)
               : Stack(
@@ -330,15 +323,14 @@ class _CartScreenState extends State<CartScreen>
     );
   }
 
-  Widget _buildFloatingActionButton(
-    CartProvider cartListener,
-    BuildContext context,
-    CartProvider cartProvider,
-    ShopProvider shopListener,
-    PaymentProvider paymentProvider,
-    OrderProvider orderProvider,
-    UserProvider userListener,
-  ) {
+  Widget _buildFloatingActionButton(BuildContext context) {
+    final cartListener = context.watch<CartProvider>();
+    final cartProvider = context.read<CartProvider>();
+    final shopListener = context.read<ShopProvider>();
+    final paymentProvider = context.read<PaymentProvider>();
+    final orderProvider = context.read<OrderProvider>();
+    final userListener = context.watch<UserProvider>();
+
     return Visibility(
       visible: !cartListener.isCartEmpty &&
           !(cartListener.cartTransferring ||
@@ -373,34 +365,8 @@ class _CartScreenState extends State<CartScreen>
                       ? Row(
                           children: [
                             Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Total Amount".toUpperCase(),
-                                    style: context.customTextTheme.text12W500
-                                        .copyWith(
-                                            color:
-                                                Theme.of(context).brightness ==
-                                                        Brightness.dark
-                                                    ? Colors.white
-                                                    : null),
-                                  ),
-                                  Text(
-                                    cartListener.cartTotalPriceDisplay ??
-                                        "${AppConfig.instance.country.symbol} 00.00",
-                                    style: context.customTextTheme.text20W400
-                                        .copyWith(
-                                            fontWeight: FontWeight.bold,
-                                            color:
-                                                Theme.of(context).brightness ==
-                                                        Brightness.dark
-                                                    ? Colors.white
-                                                    : null),
-                                  ),
-                                ],
-                              ),
-                            ),
+                                child: _buildTotalAmountWidget(
+                                    "${cartListener.cartTotalPriceDisplay}")),
                             Expanded(
                               child: InkWell(
                                 onTap: () async {
@@ -511,35 +477,8 @@ class _CartScreenState extends State<CartScreen>
                           ? Row(
                               children: [
                                 Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Total Amount".toUpperCase(),
-                                        style: context
-                                            .customTextTheme.text12W500
-                                            .copyWith(
-                                                color: Theme.of(context)
-                                                            .brightness ==
-                                                        Brightness.dark
-                                                    ? Colors.white
-                                                    : null),
-                                      ),
-                                      Text(
-                                        "${AppConfig.instance.country.symbol} ${cartListener.totalAmount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}",
-                                        style: context
-                                            .customTextTheme.text20W400
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color: Theme.of(context)
-                                                            .brightness ==
-                                                        Brightness.dark
-                                                    ? Colors.white
-                                                    : null),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                    child: _buildTotalAmountWidget(
+                                        "${AppConfig.instance.country.symbol} ${cartListener.totalAmount.toStringAsFixed(AppConfig.instance.country.decimalPlaces)}")),
                                 Expanded(
                                   child: InkWell(
                                     onTap: cartProvider.createOrderPending
@@ -620,36 +559,10 @@ class _CartScreenState extends State<CartScreen>
                           : Row(
                               children: [
                                 Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Total Amount".toUpperCase(),
-                                        style: context
-                                            .customTextTheme.text12W500
-                                            .copyWith(
-                                                color: Theme.of(context)
-                                                            .brightness ==
-                                                        Brightness.dark
-                                                    ? Colors.white
-                                                    : null),
-                                      ),
-                                      Text(
-                                        cartListener.totalAmount
-                                            .toStringAsFixed(AppConfig.instance.country.decimalPlaces),
-                                        style: context
-                                            .customTextTheme.text20W400
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color: Theme.of(context)
-                                                            .brightness ==
-                                                        Brightness.dark
-                                                    ? Colors.white
-                                                    : null),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                    child: _buildTotalAmountWidget(cartListener
+                                        .totalAmount
+                                        .toStringAsFixed(AppConfig
+                                            .instance.country.decimalPlaces))),
                                 Expanded(
                                   child: InkWell(
                                     onTap: cartListener.createOrderPending
@@ -761,6 +674,29 @@ class _CartScreenState extends State<CartScreen>
                               ],
                             )),
             ),
+    );
+  }
+
+  Widget _buildTotalAmountWidget(String amount) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "Total Amount".toUpperCase(),
+          style: context.customTextTheme.text12W500.copyWith(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : null),
+        ),
+        Text(
+          amount,
+          style: context.customTextTheme.text20W400.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : null),
+        ),
+      ],
     );
   }
 

@@ -1,65 +1,139 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:customer_core/src/domain/cart/models/cart_details_model.dart';
+
 class CalculatedDeliveryChargeDetailsModel {
   final String? message;
   final String? status;
   final String? userType;
-  final double? cart_GrossAmount;
-  final double? discountAmount;
-  final double? cart_NetAmount;
-  final double? deliveryFeeAmount;
+  final String? cartGrossAmount;
+  final String? cartDiscountAmount;
+  final String? cartTotalAmount;
+  final String? deliveryDiscount;
+  final String? cartNetAmount_ExcludingTax;
+  final String? taxTotalAmount;
+  final String? cart_NetAmount;
+  final String? deliveryFeeAmount;
+  final String? cart_NetAmount_IncludingDelivery;
+  final String? totalDiscount;
+  final String? minimumAmountForDelivery;
+  final String? minimumAmountType;
+  final String? isTaxApplied;
+
   final DeliveryFeeGeneralData? generalData;
   final DeliveryFeeDeliverySettings? calculatedDeliverySettings;
+  final DeliveryFeeAmountInPaisa? amountInPaisa;
+  final DeliveryFeeAmountFormatted? amountFormatted;
+  final List<DeliveryFeeTaxDetailsGroup> taxDetailsGroup;
+  final CartDetailsModel? cartData;
+
+  
 
   CalculatedDeliveryChargeDetailsModel({
     this.message,
     this.status,
     this.userType,
-    this.cart_GrossAmount,
-    this.discountAmount,
     this.cart_NetAmount,
     this.deliveryFeeAmount,
     this.generalData,
     this.calculatedDeliverySettings,
+    this.cartGrossAmount,
+    this.cartDiscountAmount,
+    this.cartTotalAmount,
+    this.deliveryDiscount,
+    this.cartNetAmount_ExcludingTax,
+    this.taxTotalAmount,
+    this.cart_NetAmount_IncludingDelivery,
+    this.totalDiscount,
+    this.minimumAmountForDelivery,
+    this.minimumAmountType,
+    this.isTaxApplied,
+    this.amountInPaisa,
+    this.amountFormatted,
+    this.taxDetailsGroup = const [],
+    this.cartData,
+
   });
 
   CalculatedDeliveryChargeDetailsModel copyWith({
     String? message,
     String? status,
     String? userType,
-    double? cart_GrossAmount,
-    double? discountAmount,
-    double? cart_NetAmount,
-    double? deliveryFeeAmount,
+    String? cart_NetAmount,
+    String? deliveryFeeAmount,
+    String? isTaxApplied,
+    String? minimumAmountForDelivery,
+    String? minimumAmountType,
+    String? totalDiscount,
+    String? cart_NetAmount_IncludingDelivery,
+    String? taxTotalAmount,
+    String? cartNetAmount_ExcludingTax,
+    String? deliveryDiscount,
+    String? cartTotalAmount,
+    String? cartDiscountAmount,
+    String? cartGrossAmount,
     DeliveryFeeGeneralData? generalData,
     DeliveryFeeDeliverySettings? calculatedDeliverySettings,
+    DeliveryFeeAmountInPaisa? amountInPaisa,
+      DeliveryFeeAmountFormatted? amountFormatted,
+      List<DeliveryFeeTaxDetailsGroup>? taxDetailsGroup,
+      CartDetailsModel? cartData,
   }) {
     return CalculatedDeliveryChargeDetailsModel(
       message: message ?? this.message,
       status: status ?? this.status,
       userType: userType ?? this.userType,
-      cart_GrossAmount: cart_GrossAmount ?? this.cart_GrossAmount,
-      discountAmount: discountAmount ?? this.discountAmount,
+      cartDiscountAmount: cartDiscountAmount ?? this.cartDiscountAmount,
+      cartGrossAmount: cartGrossAmount ?? this.cartGrossAmount,
+      cartTotalAmount: cartTotalAmount ?? this.cartTotalAmount,
+      deliveryDiscount: deliveryDiscount ?? this.deliveryDiscount,
+      cartNetAmount_ExcludingTax:
+          cartNetAmount_ExcludingTax ?? this.cartNetAmount_ExcludingTax,
+      taxTotalAmount: taxTotalAmount ?? this.taxTotalAmount,
+      cart_NetAmount_IncludingDelivery:
+          cart_NetAmount_IncludingDelivery ?? this.cart_NetAmount_IncludingDelivery,
+      totalDiscount: totalDiscount ?? this.totalDiscount,
+      minimumAmountForDelivery: minimumAmountForDelivery ?? this.minimumAmountForDelivery,
+      minimumAmountType: minimumAmountType ?? this.minimumAmountType,
+      isTaxApplied: isTaxApplied ?? this.isTaxApplied,
       cart_NetAmount: cart_NetAmount ?? this.cart_NetAmount,
       deliveryFeeAmount: deliveryFeeAmount ?? this.deliveryFeeAmount,
       generalData: generalData ?? this.generalData,
       calculatedDeliverySettings:
           calculatedDeliverySettings ?? this.calculatedDeliverySettings,
+          amountInPaisa: amountInPaisa ?? this.amountInPaisa,
+          amountFormatted: amountFormatted ?? this.amountFormatted,
+          taxDetailsGroup: taxDetailsGroup ?? this.taxDetailsGroup,
+          cartData: cartData ?? this.cartData,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+     
       'message': message,
       'status': status,
       'userType': userType,
-      'cart_GrossAmount': cart_GrossAmount,
-      'discountAmount': discountAmount,
+      'cartGrossAmount': cartGrossAmount,
+      'cartDiscountAmount': cartDiscountAmount,
+      'cartTotalAmount': cartTotalAmount,
+      'deliveryDiscount': deliveryDiscount,
+      'cartNetAmount_ExcludingTax': cartNetAmount_ExcludingTax,
+      'taxTotalAmount': taxTotalAmount,
+      'cart_NetAmount_IncludingDelivery': cart_NetAmount_IncludingDelivery,
+      'totalDiscount': totalDiscount,
+      'minimumAmountForDelivery': minimumAmountForDelivery,
+      'minimumAmountType': minimumAmountType,
+      'isTaxApplied': isTaxApplied,
       'cart_NetAmount': cart_NetAmount,
       'deliveryFeeAmount': deliveryFeeAmount,
       'generalData': generalData?.toMap(),
       'calculatedDeliverySettings': calculatedDeliverySettings?.toMap(),
+      'amountInPaisa': amountInPaisa?.toMap(),
+      'amountFormatted': amountFormatted?.toMap(),
+      'taxDetailsGroup': taxDetailsGroup,
+        'cartData': cartData?.toMap(),
     };
   }
 
@@ -69,17 +143,44 @@ class CalculatedDeliveryChargeDetailsModel {
       message: map['message'] != null ? map['message'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
       userType: map['userType'] != null ? map['userType'] as String : null,
-      cart_GrossAmount: map['cart_GrossAmount'] != null
-          ? double.tryParse(map['cart_GrossAmount'].toString())
+      cartGrossAmount: map['cartGrossAmount'] != null
+          ? map['cartGrossAmount'] as String
           : null,
-      discountAmount: map['discountAmount'] != null
-          ? double.tryParse(map['discountAmount'].toString())
+      cartDiscountAmount: map['cartDiscountAmount'] != null
+          ? map['cartDiscountAmount'] as String
+          : null,
+      cartTotalAmount: map['cartTotalAmount'] != null
+          ? map['cartTotalAmount'] as String
+          : null,
+      deliveryDiscount: map['deliveryDiscount'] != null
+          ? map['deliveryDiscount'] as String
+          : null,
+      cartNetAmount_ExcludingTax: map['cartNetAmount_ExcludingTax'] != null
+          ? map['cartNetAmount_ExcludingTax'] as String
+          : null,
+      taxTotalAmount: map['taxTotalAmount'] != null
+          ? map['taxTotalAmount'] as String
+          : null,
+      cart_NetAmount_IncludingDelivery: map['cart_NetAmount_IncludingDelivery'] != null
+          ? map['cart_NetAmount_IncludingDelivery'] as String
+          : null,
+      totalDiscount: map['totalDiscount'] != null
+          ? map['totalDiscount'] as String
+          : null,
+      minimumAmountForDelivery: map['minimumAmountForDelivery'] != null
+          ? map['minimumAmountForDelivery'] as String
+          : null,
+      minimumAmountType: map['minimumAmountType'] != null
+          ? map['minimumAmountType'] as String
+          : null,
+      isTaxApplied: map['isTaxApplied'] != null
+          ? map['isTaxApplied'] as String
           : null,
       cart_NetAmount: map['cart_NetAmount'] != null
-          ? double.tryParse(map['cart_NetAmount'].toString())
+          ? map['cart_NetAmount'] as String
           : null,
       deliveryFeeAmount: map['deliveryFeeAmount'] != null
-          ? (map['deliveryFeeAmount'] as num).toDouble()
+          ? map['deliveryFeeAmount'] as String
           : null,
       generalData: map['generalData'] != null
           ? DeliveryFeeGeneralData.fromMap(
@@ -88,6 +189,21 @@ class CalculatedDeliveryChargeDetailsModel {
       calculatedDeliverySettings: map['calculatedDeliverySettings'] != null
           ? DeliveryFeeDeliverySettings.fromMap(
               map['calculatedDeliverySettings'] as Map<String, dynamic>)
+          : null,
+      amountInPaisa: map['amountInPaisa'] != null
+          ? DeliveryFeeAmountInPaisa.fromMap(
+              map['amountInPaisa'] as Map<String, dynamic>)
+          : null,
+      amountFormatted: map['amountFormatted'] != null
+          ? DeliveryFeeAmountFormatted.fromMap(
+              map['amountFormatted'] as Map<String, dynamic>)
+          : null,
+      taxDetailsGroup: (map['taxDetailsGroup'] as List<dynamic>?)
+              ?.map((e) => DeliveryFeeTaxDetailsGroup.fromMap(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      cartData: map['cartData'] != null
+          ? CartDetailsModel.fromMap(map['cartData'] as Map<String, dynamic>)
           : null,
     );
   }
@@ -100,7 +216,7 @@ class CalculatedDeliveryChargeDetailsModel {
 
   @override
   String toString() {
-    return 'CalculatedDeliveryChargeDetailsModel(message: $message, status: $status, userType: $userType, cart_GrossAmount: $cart_GrossAmount, discountAmount: $discountAmount, cart_NetAmount: $cart_NetAmount, deliveryFeeAmount: $deliveryFeeAmount, generalData: $generalData, calculatedDeliverySettings: $calculatedDeliverySettings)';
+    return 'CalculatedDeliveryChargeDetailsModel(message: $message, status: $status, userType: $userType, cart_NetAmount: $cart_NetAmount, deliveryFeeAmount: $deliveryFeeAmount, generalData: $generalData, calculatedDeliverySettings: $calculatedDeliverySettings, cartGrossAmount: $cartGrossAmount, cartDiscountAmount: $cartDiscountAmount, cartTotalAmount: $cartTotalAmount, deliveryDiscount: $deliveryDiscount, cartNetAmount_ExcludingTax: $cartNetAmount_ExcludingTax, taxTotalAmount: $taxTotalAmount, cart_NetAmount_IncludingDelivery: $cart_NetAmount_IncludingDelivery, totalDiscount: $totalDiscount, minimumAmountForDelivery: $minimumAmountForDelivery, minimumAmountType: $minimumAmountType, isTaxApplied: $isTaxApplied, amountInPaisa: $amountInPaisa, amountFormatted: $amountFormatted, taxDetailsGroup: $taxDetailsGroup, cartData: $cartData)';
   }
 
   @override
@@ -110,12 +226,24 @@ class CalculatedDeliveryChargeDetailsModel {
     return other.message == message &&
         other.status == status &&
         other.userType == userType &&
-        other.cart_GrossAmount == cart_GrossAmount &&
-        other.discountAmount == discountAmount &&
+        other.cartDiscountAmount == cartDiscountAmount &&
+        other.cartTotalAmount == cartTotalAmount &&
+        other.deliveryDiscount == deliveryDiscount &&
+        other.cartNetAmount_ExcludingTax == cartNetAmount_ExcludingTax &&
+        other.taxTotalAmount == taxTotalAmount &&
+        other.cart_NetAmount_IncludingDelivery == cart_NetAmount_IncludingDelivery &&
+        other.totalDiscount == totalDiscount &&
+        other.minimumAmountForDelivery == minimumAmountForDelivery &&
+        other.minimumAmountType == minimumAmountType &&
+        other.isTaxApplied == isTaxApplied &&
         other.cart_NetAmount == cart_NetAmount &&
         other.deliveryFeeAmount == deliveryFeeAmount &&
         other.generalData == generalData &&
-        other.calculatedDeliverySettings == calculatedDeliverySettings;
+        other.calculatedDeliverySettings == calculatedDeliverySettings &&
+        other.amountInPaisa == amountInPaisa &&
+        other.amountFormatted == amountFormatted &&
+        other.taxDetailsGroup == taxDetailsGroup &&
+        other.cartData == cartData;
   }
 
   @override
@@ -123,12 +251,24 @@ class CalculatedDeliveryChargeDetailsModel {
     return message.hashCode ^
         status.hashCode ^
         userType.hashCode ^
-        cart_GrossAmount.hashCode ^
-        discountAmount.hashCode ^
+        cartDiscountAmount.hashCode ^
+        cartTotalAmount.hashCode ^
+        deliveryDiscount.hashCode ^
+        cartNetAmount_ExcludingTax.hashCode ^
+        taxTotalAmount.hashCode ^
+        cart_NetAmount_IncludingDelivery.hashCode ^
+        totalDiscount.hashCode ^
+        minimumAmountForDelivery.hashCode ^
+        minimumAmountType.hashCode ^
+        isTaxApplied.hashCode ^
         cart_NetAmount.hashCode ^
         deliveryFeeAmount.hashCode ^
         generalData.hashCode ^
-        calculatedDeliverySettings.hashCode;
+        calculatedDeliverySettings.hashCode ^
+        amountInPaisa.hashCode ^
+        amountFormatted.hashCode ^
+        taxDetailsGroup.hashCode ^
+        cartData.hashCode;
   }
 }
 
@@ -141,7 +281,7 @@ class DeliveryFeeGeneralData {
   final int? calibratedDistance;
   final String? duration;
   final int? cartItemsCount;
-  final int? discountPercentage;
+  final double? discountPercentage;
 
   DeliveryFeeGeneralData({
     this.shopID,
@@ -164,7 +304,7 @@ class DeliveryFeeGeneralData {
     int? calibratedDistance,
     String? duration,
     int? cartItemsCount,
-    int? discountPercentage,
+    double? discountPercentage,
   }) {
     return DeliveryFeeGeneralData(
       shopID: shopID ?? this.shopID,
@@ -211,7 +351,7 @@ class DeliveryFeeGeneralData {
       cartItemsCount:
           map['cartItemsCount'] != null ? map['cartItemsCount'] as int : null,
       discountPercentage: map['discountPercentage'] != null
-          ? map['discountPercentage'] as int
+          ? map['discountPercentage'] as double
           : null,
     );
   }
@@ -388,4 +528,313 @@ class DeliveryFeeDeliverySettings {
         freeDeliveryMinOrder.hashCode ^
         calculateNormalDeliveryFee.hashCode;
   }
+}
+
+class DeliveryFeeAmountInPaisa {
+   
+
+final int? cartGrossAmount;
+  final int? cartDiscountAmount;
+  final int? cartTotalAmount;
+  final int? deliveryDiscount;
+  final int? cartNetAmount_ExcludingTax;
+  final int? taxTotalAmount;
+  final int? cart_NetAmount;
+  final int? deliveryFeeAmount;
+  final int? cart_NetAmount_IncludingDelivery;
+  final int? totalDiscount;
+  DeliveryFeeAmountInPaisa({
+    this.cartGrossAmount,
+    this.cartDiscountAmount,
+    this.cartTotalAmount,
+    this.deliveryDiscount,
+    this.cartNetAmount_ExcludingTax,
+    this.taxTotalAmount,
+    this.cart_NetAmount,
+    this.deliveryFeeAmount,
+    this.cart_NetAmount_IncludingDelivery,
+    this.totalDiscount,
+  });
+
+
+
+  DeliveryFeeAmountInPaisa copyWith({
+    int? cartGrossAmount,
+    int? cartDiscountAmount,
+    int? cartTotalAmount,
+    int? deliveryDiscount,
+    int? cartNetAmount_ExcludingTax,
+    int? taxTotalAmount,
+    int? cart_NetAmount,
+    int? deliveryFeeAmount,
+    int? cart_NetAmount_IncludingDelivery,
+    int? totalDiscount,
+  }) {
+    return DeliveryFeeAmountInPaisa(
+      cartGrossAmount: cartGrossAmount ?? this.cartGrossAmount,
+      cartDiscountAmount: cartDiscountAmount ?? this.cartDiscountAmount,
+      cartTotalAmount: cartTotalAmount ?? this.cartTotalAmount,
+      deliveryDiscount: deliveryDiscount ?? this.deliveryDiscount,
+      cartNetAmount_ExcludingTax: cartNetAmount_ExcludingTax ?? this.cartNetAmount_ExcludingTax,
+      taxTotalAmount: taxTotalAmount ?? this.taxTotalAmount,
+      cart_NetAmount: cart_NetAmount ?? this.cart_NetAmount,
+      deliveryFeeAmount: deliveryFeeAmount ?? this.deliveryFeeAmount,
+      cart_NetAmount_IncludingDelivery: cart_NetAmount_IncludingDelivery ?? this.cart_NetAmount_IncludingDelivery,
+      totalDiscount: totalDiscount ?? this.totalDiscount,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'cartGrossAmount': cartGrossAmount,
+      'cartDiscountAmount': cartDiscountAmount,
+      'cartTotalAmount': cartTotalAmount,
+      'deliveryDiscount': deliveryDiscount,
+      'cartNetAmount_ExcludingTax': cartNetAmount_ExcludingTax,
+      'taxTotalAmount': taxTotalAmount,
+      'cart_NetAmount': cart_NetAmount,
+      'deliveryFeeAmount': deliveryFeeAmount,
+      'cart_NetAmount_IncludingDelivery': cart_NetAmount_IncludingDelivery,
+      'totalDiscount': totalDiscount,
+    };
+  }
+
+  factory DeliveryFeeAmountInPaisa.fromMap(Map<String, dynamic> map) {
+    return DeliveryFeeAmountInPaisa(
+      cartGrossAmount: map['cartGrossAmount'] != null ? map['cartGrossAmount'] as int : null,
+      cartDiscountAmount: map['cartDiscountAmount'] != null ? map['cartDiscountAmount'] as int : null,
+      cartTotalAmount: map['cartTotalAmount'] != null ? map['cartTotalAmount'] as int : null,
+      deliveryDiscount: map['deliveryDiscount'] != null ? map['deliveryDiscount'] as int : null,
+      cartNetAmount_ExcludingTax: map['cartNetAmount_ExcludingTax'] != null ? map['cartNetAmount_ExcludingTax'] as int : null,
+      taxTotalAmount: map['taxTotalAmount'] != null ? map['taxTotalAmount'] as int : null,
+      cart_NetAmount: map['cart_NetAmount'] != null ? map['cart_NetAmount'] as int : null,
+      deliveryFeeAmount: map['deliveryFeeAmount'] != null ? map['deliveryFeeAmount'] as int : null,
+      cart_NetAmount_IncludingDelivery: map['cart_NetAmount_IncludingDelivery'] != null ? map['cart_NetAmount_IncludingDelivery'] as int : null,
+      totalDiscount: map['totalDiscount'] != null ? map['totalDiscount'] as int : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory DeliveryFeeAmountInPaisa.fromJson(String source) => DeliveryFeeAmountInPaisa.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'DeliveryFeeAmountInPaisa(cartGrossAmount: $cartGrossAmount, cartDiscountAmount: $cartDiscountAmount, cartTotalAmount: $cartTotalAmount, deliveryDiscount: $deliveryDiscount, cartNetAmount_ExcludingTax: $cartNetAmount_ExcludingTax, taxTotalAmount: $taxTotalAmount, cart_NetAmount: $cart_NetAmount, deliveryFeeAmount: $deliveryFeeAmount, cart_NetAmount_IncludingDelivery: $cart_NetAmount_IncludingDelivery, totalDiscount: $totalDiscount)';
+  }
+
+  @override
+  bool operator ==(covariant DeliveryFeeAmountInPaisa other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.cartGrossAmount == cartGrossAmount &&
+      other.cartDiscountAmount == cartDiscountAmount &&
+      other.cartTotalAmount == cartTotalAmount &&
+      other.deliveryDiscount == deliveryDiscount &&
+      other.cartNetAmount_ExcludingTax == cartNetAmount_ExcludingTax &&
+      other.taxTotalAmount == taxTotalAmount &&
+      other.cart_NetAmount == cart_NetAmount &&
+      other.deliveryFeeAmount == deliveryFeeAmount &&
+      other.cart_NetAmount_IncludingDelivery == cart_NetAmount_IncludingDelivery &&
+      other.totalDiscount == totalDiscount;
+  }
+
+  @override
+  int get hashCode {
+    return cartGrossAmount.hashCode ^
+      cartDiscountAmount.hashCode ^
+      cartTotalAmount.hashCode ^
+      deliveryDiscount.hashCode ^
+      cartNetAmount_ExcludingTax.hashCode ^
+      taxTotalAmount.hashCode ^
+      cart_NetAmount.hashCode ^
+      deliveryFeeAmount.hashCode ^
+      cart_NetAmount_IncludingDelivery.hashCode ^
+      totalDiscount.hashCode;
+  }
+}
+
+class DeliveryFeeAmountFormatted {
+   
+
+final String? cartGrossAmount;
+  final String? cartDiscountAmount;
+  final String? cartTotalAmount;
+  final String? deliveryDiscount;
+  final String? cartNetAmount_ExcludingTax;
+  final String? taxTotalAmount;
+  final String? cart_NetAmount;
+  final String? deliveryFeeAmount;
+  final String? cart_NetAmount_IncludingDelivery;
+  final String? totalDiscount;
+  DeliveryFeeAmountFormatted({
+    this.cartGrossAmount,
+    this.cartDiscountAmount,
+    this.cartTotalAmount,
+    this.deliveryDiscount,
+    this.cartNetAmount_ExcludingTax,
+    this.taxTotalAmount,
+    this.cart_NetAmount,
+    this.deliveryFeeAmount,
+    this.cart_NetAmount_IncludingDelivery,
+    this.totalDiscount,
+  });
+
+  DeliveryFeeAmountFormatted copyWith({
+    String? cartGrossAmount,
+    String? cartDiscountAmount,
+    String? cartTotalAmount,
+    String? deliveryDiscount,
+    String? cartNetAmount_ExcludingTax,
+    String? taxTotalAmount,
+    String? cart_NetAmount,
+    String? deliveryFeeAmount,
+    String? cart_NetAmount_IncludingDelivery,
+    String? totalDiscount,
+  }) {
+    return DeliveryFeeAmountFormatted(
+      cartGrossAmount: cartGrossAmount ?? this.cartGrossAmount,
+      cartDiscountAmount: cartDiscountAmount ?? this.cartDiscountAmount,
+      cartTotalAmount: cartTotalAmount ?? this.cartTotalAmount,
+      deliveryDiscount: deliveryDiscount ?? this.deliveryDiscount,
+      cartNetAmount_ExcludingTax: cartNetAmount_ExcludingTax ?? this.cartNetAmount_ExcludingTax,
+      taxTotalAmount: taxTotalAmount ?? this.taxTotalAmount,
+      cart_NetAmount: cart_NetAmount ?? this.cart_NetAmount,
+      deliveryFeeAmount: deliveryFeeAmount ?? this.deliveryFeeAmount,
+      cart_NetAmount_IncludingDelivery: cart_NetAmount_IncludingDelivery ?? this.cart_NetAmount_IncludingDelivery,
+      totalDiscount: totalDiscount ?? this.totalDiscount,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'cartGrossAmount': cartGrossAmount,
+      'cartDiscountAmount': cartDiscountAmount,
+      'cartTotalAmount': cartTotalAmount,
+      'deliveryDiscount': deliveryDiscount,
+      'cartNetAmount_ExcludingTax': cartNetAmount_ExcludingTax,
+      'taxTotalAmount': taxTotalAmount,
+      'cart_NetAmount': cart_NetAmount,
+      'deliveryFeeAmount': deliveryFeeAmount,
+      'cart_NetAmount_IncludingDelivery': cart_NetAmount_IncludingDelivery,
+      'totalDiscount': totalDiscount,
+    };
+  }
+
+  factory DeliveryFeeAmountFormatted.fromMap(Map<String, dynamic> map) {
+    return DeliveryFeeAmountFormatted(
+      cartGrossAmount: map['cartGrossAmount'] != null ? map['cartGrossAmount'] as String : null,
+      cartDiscountAmount: map['cartDiscountAmount'] != null ? map['cartDiscountAmount'] as String : null,
+      cartTotalAmount: map['cartTotalAmount'] != null ? map['cartTotalAmount'] as String : null,
+      deliveryDiscount: map['deliveryDiscount'] != null ? map['deliveryDiscount'] as String : null,
+      cartNetAmount_ExcludingTax: map['cartNetAmount_ExcludingTax'] != null ? map['cartNetAmount_ExcludingTax'] as String : null,
+      taxTotalAmount: map['taxTotalAmount'] != null ? map['taxTotalAmount'] as String : null,
+      cart_NetAmount: map['cart_NetAmount'] != null ? map['cart_NetAmount'] as String : null,
+      deliveryFeeAmount: map['deliveryFeeAmount'] != null ? map['deliveryFeeAmount'] as String : null,
+      cart_NetAmount_IncludingDelivery: map['cart_NetAmount_IncludingDelivery'] != null ? map['cart_NetAmount_IncludingDelivery'] as String : null,
+      totalDiscount: map['totalDiscount'] != null ? map['totalDiscount'] as String : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory DeliveryFeeAmountFormatted.fromJson(String source) => DeliveryFeeAmountFormatted.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'DeliveryFeeAmountFormatted(cartGrossAmount: $cartGrossAmount, cartDiscountAmount: $cartDiscountAmount, cartTotalAmount: $cartTotalAmount, deliveryDiscount: $deliveryDiscount, cartNetAmount_ExcludingTax: $cartNetAmount_ExcludingTax, taxTotalAmount: $taxTotalAmount, cart_NetAmount: $cart_NetAmount, deliveryFeeAmount: $deliveryFeeAmount, cart_NetAmount_IncludingDelivery: $cart_NetAmount_IncludingDelivery, totalDiscount: $totalDiscount)';
+  }
+
+  @override
+  bool operator ==(covariant DeliveryFeeAmountFormatted other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.cartGrossAmount == cartGrossAmount &&
+      other.cartDiscountAmount == cartDiscountAmount &&
+      other.cartTotalAmount == cartTotalAmount &&
+      other.deliveryDiscount == deliveryDiscount &&
+      other.cartNetAmount_ExcludingTax == cartNetAmount_ExcludingTax &&
+      other.taxTotalAmount == taxTotalAmount &&
+      other.cart_NetAmount == cart_NetAmount &&
+      other.deliveryFeeAmount == deliveryFeeAmount &&
+      other.cart_NetAmount_IncludingDelivery == cart_NetAmount_IncludingDelivery &&
+      other.totalDiscount == totalDiscount;
+  }
+
+  @override
+  int get hashCode {
+    return cartGrossAmount.hashCode ^
+      cartDiscountAmount.hashCode ^
+      cartTotalAmount.hashCode ^
+      deliveryDiscount.hashCode ^
+      cartNetAmount_ExcludingTax.hashCode ^
+      taxTotalAmount.hashCode ^
+      cart_NetAmount.hashCode ^
+      deliveryFeeAmount.hashCode ^
+      cart_NetAmount_IncludingDelivery.hashCode ^
+      totalDiscount.hashCode;
+  }
+}
+
+class DeliveryFeeTaxDetailsGroup {
+  final String? taxSlab;
+  final String? totaltax;
+  final int? totalTaxPaisa;
+  DeliveryFeeTaxDetailsGroup({
+    this.taxSlab,
+    this.totaltax,
+    this.totalTaxPaisa,
+  });
+
+  
+
+  DeliveryFeeTaxDetailsGroup copyWith({
+    String? taxSlab,
+    String? totaltax,
+    int? totalTaxPaisa,
+  }) {
+    return DeliveryFeeTaxDetailsGroup(
+      taxSlab: taxSlab ?? this.taxSlab,
+      totaltax: totaltax ?? this.totaltax,
+      totalTaxPaisa: totalTaxPaisa ?? this.totalTaxPaisa,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'taxSlab': taxSlab,
+      'totaltax': totaltax,
+      'totalTaxPaisa': totalTaxPaisa,
+    };
+  }
+
+  factory DeliveryFeeTaxDetailsGroup.fromMap(Map<String, dynamic> map) {
+    return DeliveryFeeTaxDetailsGroup(
+      taxSlab: map['taxSlab'] != null ? map['taxSlab'] as String : null,
+      totaltax: map['totaltax'] != null ? map['totaltax'] as String : null,
+      totalTaxPaisa: map['totalTaxPaisa'] != null ? map['totalTaxPaisa'] as int : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory DeliveryFeeTaxDetailsGroup.fromJson(String source) => DeliveryFeeTaxDetailsGroup.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'DeliveryFeeTaxDetailsGroup(taxSlab: $taxSlab, totaltax: $totaltax, totalTaxPaisa: $totalTaxPaisa)';
+
+  @override
+  bool operator ==(covariant DeliveryFeeTaxDetailsGroup other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.taxSlab == taxSlab &&
+      other.totaltax == totaltax &&
+      other.totalTaxPaisa == totalTaxPaisa;
+  }
+
+  @override
+  int get hashCode => taxSlab.hashCode ^ totaltax.hashCode ^ totalTaxPaisa.hashCode;
 }
