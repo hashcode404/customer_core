@@ -1,4 +1,3 @@
-import 'package:customer_core/src/domain/store/models/favourite_product_data_model.dart';
 import 'package:customer_core/src/domain/user/models/user_consent_list_data_model.dart';
 import 'package:customer_core/src/domain/user/models/user_login_request.dart';
 import 'package:customer_core/src/domain/user/models/user_login_response.dart';

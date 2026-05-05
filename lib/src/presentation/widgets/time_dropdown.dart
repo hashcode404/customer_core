@@ -1,5 +1,4 @@
 import 'package:customer_core/src/core/utils/ui_utils.dart';
-import 'package:dartx/dartx.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

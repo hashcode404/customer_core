@@ -520,7 +520,7 @@ class _SummaryRow extends StatelessWidget {
 }
 
 class _CartItemsSummary extends StatelessWidget {
-  const _CartItemsSummary({super.key});
+  const _CartItemsSummary();
 
   @override
   Widget build(BuildContext context) {

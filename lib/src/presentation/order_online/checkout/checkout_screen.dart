@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/payment/payment_provider.dart';
 import 'package:customer_core/src/application/user/user_provider.dart';
-import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
 import 'package:customer_core/src/presentation/widgets/custom_back_button.dart';

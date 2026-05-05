@@ -1,5 +1,4 @@
 import 'package:customer_core/customer_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:customer_core/src/application/core/base_controller.dart';

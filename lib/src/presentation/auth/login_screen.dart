@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'dart:ui';
 
 import 'package:customer_core/customer_core.dart';
-import 'package:customer_core/gen/assets.gen.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:auto_route/auto_route.dart';
@@ -16,7 +15,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:customer_core/src/application/auth/auth_provider.dart';
 import 'package:customer_core/src/application/theme/theme_provider.dart';
 import 'package:customer_core/src/application/user/user_provider.dart';
-import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/theme/app_colors.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
@@ -24,7 +22,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 
-import '../../application/core/dependency_registrar.dart';
 import '../../core/utils/alert_dialogs.dart';
 import '../widgets/button_progress.dart';
 import '../widgets/custom_text_field.dart';

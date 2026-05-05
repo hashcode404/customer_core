@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:customer_core/src/core/utils/alert_dialogs.dart';
 import 'package:customer_core/src/domain/store/models/store_delivery_slot_model.dart';

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import 'package:customer_core/src/application/auth/auth_provider.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
-import 'package:customer_core/src/core/utils/alert_dialogs.dart';
 
 import '../../core/theme/app_colors.dart';
 

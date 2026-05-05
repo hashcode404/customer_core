@@ -1,20 +1,14 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:customer_core/customer_core.dart';
 import 'package:flutter/services.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:customer_core/src/application/products/products_provider.dart';
-import 'package:customer_core/src/core/routes/routes.gr.dart';
-import 'package:customer_core/src/core/utils/ui_utils.dart';
-import 'package:customer_core/gen/assets.gen.dart';
 import 'package:customer_core/src/presentation/order_online/categories/categories_screen.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/order/order_provider.dart';
-import 'package:customer_core/src/presentation/order_online/cart/cart_screen.dart';
 import 'package:customer_core/src/presentation/order_online/home/order_online_home_screen.dart';
 import 'package:customer_core/src/presentation/order_online/orders/order_history_screens.dart';
 import 'package:customer_core/src/presentation/order_online/profile/profile_screen.dart';

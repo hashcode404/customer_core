@@ -1,6 +1,5 @@
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
-import 'package:customer_core/src/core/theme/app_colors.dart';
 import 'package:lottie/lottie.dart';
 
 class CustomNavItem extends StatelessWidget {

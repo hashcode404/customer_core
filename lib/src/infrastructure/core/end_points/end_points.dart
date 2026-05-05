@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:customer_core/src/core/config/app_env.dart';
 
 class Endpoints {

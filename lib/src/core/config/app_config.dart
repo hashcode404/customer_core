@@ -1,6 +1,4 @@
 import 'package:customer_core/customer_core.dart';
-import 'package:customer_core/src/core/config/app_env.dart';
-import 'package:flutter/material.dart';
 
 class AppConfig {
   static late AppConfig instance;

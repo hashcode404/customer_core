@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/core/base_controller.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:customer_core/src/presentation/order_online/checkout/checkout_screen.dart';
 
 @LazySingleton()
 class NotificationProvider extends ChangeNotifier with BaseController {
@@ -15,7 +14,7 @@ class NotificationProvider extends ChangeNotifier with BaseController {
 
   bool get isPermissionGranted => _isPermissionGranted;
 
-  List<String> _notifications = [];
+  final List<String> _notifications = [];
 
   List<String> get notifications => _notifications;
 

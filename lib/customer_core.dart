@@ -1,4 +1,4 @@
-library customer_core;
+library;
 
 export 'src/customer_app.dart';
 export 'src/core/config/app_config.dart';

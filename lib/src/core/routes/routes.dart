@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:customer_core/src/core/routes/routes.gr.dart';
-import 'package:customer_core/src/presentation/order_online/favourite/favourite_products_screen.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Route')
 class AppRouter extends RootStackRouter {

@@ -1,14 +1,10 @@
-import 'dart:io';
 
 import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:customer_core/src/application/core/api_response.dart';
 import 'package:customer_core/src/application/search/search_provider.dart';
-import 'package:customer_core/src/application/theme/theme_provider.dart';
-import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/infrastructure/notification/notification_shared_prefs_repo.dart';
 import 'package:customer_core/src/infrastructure/store/recent_search_product_prefs.dart';
 import 'package:customer_core/src/presentation/widgets/animated_search_bar.dart';
@@ -16,7 +12,6 @@ import 'package:customer_core/src/presentation/widgets/animated_search_bar.dart'
 import 'package:customer_core/src/presentation/widgets/qty_counter_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -1257,7 +1252,7 @@ class ProductSearchDelegate extends SearchDelegate {
 
 class _SearchResults extends StatefulWidget {
   final String query;
-  const _SearchResults({super.key, required this.query});
+  const _SearchResults({required this.query});
 
   @override
   State<_SearchResults> createState() => __SearchResultsState();

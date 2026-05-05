@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:customer_core/customer_core.dart';
 import 'package:flutter/material.dart';
-import 'package:customer_core/src/application/core/dependency_registrar.dart';
-import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/theme/app_colors.dart';
 
 

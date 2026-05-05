@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:customer_core/customer_core.dart';
 import 'package:dartx/dartx.dart';
 
-import 'package:dartx/dartx.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/auth/auth_provider.dart';

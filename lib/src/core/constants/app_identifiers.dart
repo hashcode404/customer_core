@@ -1,5 +1,4 @@
 import 'package:customer_core/customer_core.dart';
-import 'package:customer_core/src/core/config/app_env.dart';
 
 class AppIdentifiers {
   static String kApplicationName = AppConfig.instance.applicationName;

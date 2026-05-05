@@ -5,7 +5,6 @@ import 'dart:developer';
 
 // import 'package:dartx/dartx.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -353,8 +352,9 @@ class CartProvider extends ChangeNotifier with BaseController {
   }
 
   int getProductCartIndex(String? pID) {
-    if (pID == null)
+    if (pID == null) {
       return -1; // Return -1 if pID is null (indicating not found)
+    }
 
     return cartItems.indexWhere((e) => e.pID == pID);
   }

@@ -3,10 +3,8 @@ import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_core/src/application/order/order_provider.dart';
-import 'package:customer_core/src/application/user/user_provider.dart';
 import 'package:customer_core/src/core/theme/app_theme.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
-import 'package:customer_core/src/domain/user/models/user_login_response.dart';
 import 'package:customer_core/src/presentation/widgets/custom_painer_shape.dart';
 import 'package:customer_core/src/presentation/widgets/get_provider_view.dart';
 

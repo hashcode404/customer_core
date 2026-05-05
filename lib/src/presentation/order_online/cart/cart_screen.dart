@@ -3,7 +3,6 @@ import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
 import 'package:dartx/dartx.dart';
 
-import 'package:dartx/dartx.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +23,6 @@ import 'package:customer_core/src/presentation/widgets/bottom_sheet_drag_handler
 import 'package:customer_core/src/presentation/widgets/custom_close_icon.dart';
 
 import '../../../application/order/order_provider.dart';
-import '../../../core/routes/routes.gr.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/utils.dart';
 

@@ -7,7 +7,6 @@ import 'package:customer_core/src/core/theme/app_colors.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
 import 'package:customer_core/src/domain/table/models/table_reservation_details.dart';
-import 'package:customer_core/src/presentation/home/home_screen.dart';
 import 'package:customer_core/src/presentation/widgets/button_progress.dart';
 import 'package:customer_core/src/presentation/widgets/custom_back_button.dart';
 import 'package:customer_core/src/presentation/widgets/get_provider_view.dart';

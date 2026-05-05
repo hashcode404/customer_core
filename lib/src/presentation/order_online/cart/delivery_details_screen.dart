@@ -5,7 +5,6 @@ import 'package:customer_core/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:customer_core/src/application/shop/shop_provider.dart';
 import 'package:customer_core/src/application/theme/theme_provider.dart';
-import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/alert_dialogs.dart';
 import 'package:customer_core/src/domain/user/models/user_address_list_data_model.dart';
@@ -13,14 +12,12 @@ import 'package:customer_core/src/presentation/widgets/custom_close_icon.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartx/dartx.dart';
 
-import 'package:dartx/dartx.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
-import 'package:toastification/toastification.dart';
 
 import '../../../application/cart/cart_provider.dart';
 import '../../../application/user/user_provider.dart';
@@ -1168,8 +1165,9 @@ class _DeliveryDetailsScreenState extends State<DeliveryDetailsScreen> {
                                                   onChanged:
                                                       (UserAddressDataModel?
                                                           newAddress) {
-                                                    if (newAddress == null)
+                                                    if (newAddress == null) {
                                                       return;
+                                                    }
                                                     context
                                                         .read<CartProvider>()
                                                         .onChangeAddress(

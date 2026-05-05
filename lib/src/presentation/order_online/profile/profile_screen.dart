@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:customer_core/customer_core.dart';
 import 'package:customer_core/gen/assets.gen.dart';
@@ -7,7 +6,6 @@ import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/home/home_provider.dart';
 import 'package:customer_core/src/application/order/order_provider.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:dartx/dartx.dart';
 
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +14,9 @@ import 'package:customer_core/src/application/theme/theme_provider.dart';
 // Import flutter_svg to handle SVG
 import 'package:customer_core/src/application/user/user_provider.dart';
 import 'package:customer_core/src/core/constants/app_identifiers.dart';
-import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/theme/app_colors.dart';
 import 'package:customer_core/src/core/theme/custom_text_styles.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
-import 'package:customer_core/src/infrastructure/theme/theme_shared_prefs_repo.dart';
 import 'package:customer_core/src/presentation/auth/login_screen.dart';
 import 'package:customer_core/src/presentation/order_online/profile/delete_account_screen.dart';
 import 'package:customer_core/src/presentation/widgets/bottom_sheet_drag_handler.dart';

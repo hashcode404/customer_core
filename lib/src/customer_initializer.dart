@@ -4,7 +4,6 @@ import 'package:customer_core/src/domain/notification/models/notification_model.
 import 'package:customer_core/src/infrastructure/notification/notification_shared_prefs_repo.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'application/notification/notification_provider.dart';

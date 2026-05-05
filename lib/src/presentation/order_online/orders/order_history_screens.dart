@@ -5,7 +5,6 @@ import 'package:customer_core/gen/assets.gen.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:customer_core/src/presentation/widgets/animated_search_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/order/order_provider.dart';
@@ -22,7 +21,6 @@ import 'package:customer_core/src/presentation/widgets/button_progress.dart';
 import 'package:customer_core/src/presentation/widgets/get_provider_view.dart';
 
 import '../../../core/routes/routes.gr.dart';
-import '../../widgets/custom_back_button.dart';
 
 @RoutePage()
 class OrderHistoryScreen extends GetProviderView<OrderProvider> {
@@ -213,8 +211,9 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                                                     .elementAt(index);
                                                 return InkWell(
                                                   onTap: () {
-                                                    if (order.orderID == null)
+                                                    if (order.orderID == null) {
                                                       return;
+                                                    }
                                                     orderProvider
                                                         .updateViewOrderId(
                                                             order.orderID!);
@@ -257,8 +256,9 @@ class OrderHistoryScreen extends GetProviderView<OrderProvider> {
                                                       .elementAt(index);
                                                   return InkWell(
                                                     onTap: () {
-                                                      if (order.orderID == null)
+                                                      if (order.orderID == null) {
                                                         return;
+                                                      }
                                                       orderProvider
                                                           .updateViewOrderId(
                                                               order.orderID!);

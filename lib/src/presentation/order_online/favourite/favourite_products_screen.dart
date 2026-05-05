@@ -5,7 +5,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:customer_core/src/application/cart/cart_provider.dart';
 import 'package:customer_core/src/application/products/products_provider.dart';
-import 'package:customer_core/src/application/user/user_provider.dart';
 import 'package:customer_core/src/core/routes/routes.gr.dart';
 import 'package:customer_core/src/core/utils/ui_utils.dart';
 import 'package:customer_core/src/domain/store/models/product_details_model.dart';

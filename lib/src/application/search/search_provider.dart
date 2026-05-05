@@ -1,9 +1,7 @@
-import 'dart:developer';
 
 import 'package:customer_core/src/application/core/base_controller.dart';
 import 'package:customer_core/src/domain/store/models/product_details_model.dart';
 // import 'package:customer_core/src/domain/search/model/search_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
