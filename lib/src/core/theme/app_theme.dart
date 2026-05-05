@@ -99,7 +99,7 @@ ThemeData appLightTheme(BuildContext context) {
         backgroundColor:
             Theme.of(context).colorScheme.primary.withOpacity(0.1)),
     iconTheme: const IconThemeData(
-      color: AppColors.kBlack, // light mode
+      color: AppColors.kGray, // light mode
     ),
     colorScheme: ColorScheme.light(
       primary: Theme.of(context).colorScheme.primary,
@@ -172,7 +172,7 @@ ThemeData appDarkTheme(BuildContext context) {
     ),
     drawerTheme: const DrawerThemeData(backgroundColor: AppColors.kDarkBg),
     iconTheme: const IconThemeData(
-      color: AppColors.kBlack, // light mode
+      color: AppColors.kWhite, // light mode
     ),
     colorScheme: ColorScheme.dark(
       primary: Theme.of(context).colorScheme.primary,

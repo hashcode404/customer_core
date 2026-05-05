@@ -192,7 +192,7 @@ class _QtyCounterButton2State extends State<QtyCounterButton2> {
                   )),
               child: Icon(
                 Icons.remove_rounded,
-                color: Theme.of(context).colorScheme.onSurface,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
           ),

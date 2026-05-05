@@ -188,8 +188,7 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
                     actions: [
                       InkWell(
                         onTap: () {
-                          // context.router.push(const NotificationScreenRoute());
-                          cartProvider.listCartItems();
+                          context.router.push(const NotificationScreenRoute());
                         },
                         child: Badge.count(
                           count: notificationCount,
@@ -205,10 +204,10 @@ class _OrderOnlineHomeScreenState extends State<OrderOnlineHomeScreen>
                                   : Colors.grey.shade200,
                               borderRadius: BorderRadius.circular(14),
                             ),
-                            child: const Center(
+                            child: Center(
                               child: Icon(
                                 FluentIcons.alert_20_regular,
-                                color: Colors.white,
+                                color: Theme.of(context).iconTheme.color,
                               ),
                             ),
                           ),
